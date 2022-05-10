@@ -1,0 +1,47 @@
+header {
+  margin: 30px 136px;
+  padding: 0px;
+  height: 51px;
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+}
+
+header .logo {
+  position: fixed;
+  top: 4%;
+}
+
+header .nav {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  position: fixed;
+  left: 70%;
+  top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #828282;
+}
+
+header .nav .nav-link {
+  margin-right: 36px;
+}
+
+header .nav .button-my {
+  font-weight: 700;
+  border: none;
+  color: #4295F5;
+}
+
+span {
+  width: 1px;
+  height: 29px;
+  background-color: #828282;
+  border-radius: 2px;
+  margin-right: 36px;
+}
