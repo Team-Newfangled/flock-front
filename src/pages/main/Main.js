@@ -1,13 +1,12 @@
 import React from "react";
 import "../../styles/main.scss";
-import Button from "../../components/Button";
+import Chat from "../../components/chat/Chat.js";
 
 const Main = () => {
   return (
-    <div>
-      <h1>main</h1>
-      <Button></Button>
-    </div>
+    <>
+      <Chat></Chat>
+    </>
   );
 };
 
