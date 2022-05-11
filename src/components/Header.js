@@ -16,7 +16,7 @@ const Header = () => {
         <div className="nav-link">
           <NavLink to='/'>SNS</NavLink>
         </div>
-        <span />
+        <span className="line"/>
         <div className="nav-link">
           <button button className="button-my">로그인</button>
         </div>

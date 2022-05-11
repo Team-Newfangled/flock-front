@@ -1,17 +1,12 @@
 import React from "react";
 import "../../styles/main.scss";
-import Chat from "../../components/chat/Chat.js";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import Layout from "./Layout";
 
 const Main = () => {
-  return (
-    <>
-      <Header />
+  return(
+    <Layout>
       <div className="test"></div>
-      <Chat />
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

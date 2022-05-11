@@ -1,16 +1,81 @@
-.ch-btn {
-  cursor: pointer;
-  position: fixed;
-  width: 66px;
-  height: 66px;
-  right:3%;
-  bottom:5%;
-  box-shadow: 4px 0px 20px 2px rgba(0, 0, 0, 0.15), inset 2px 2px 20px rgba(0, 0, 0, 0.14);
-  border-radius: 40px;
+$shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.25);
 
-  background-image: url(https://client.messaging.adobe.com/latest/assets/cta.svg);
+@mixin background($url) {
+  background-image: url($url);
   background-repeat: no-repeat;    
   background-position: center;
+}
+
+@mixin position($right, $bottom) {
+  position: fixed;
+  right: $right;
+  bottom: $bottom;
+}
+
+@mixin border($radius) {
+  border: none;
+  border-radius: $radius;
+}
+
+.ch-btn {
+  cursor: pointer;
+  @include position(3%, 5%);
+  @include border(45%);
+  @include background("../images/mainButton.svg");
+  width: 110px;
+  height: 110px;
+  box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.09);
+  filter: drop-shadow(6px 4px 10px rgba(0, 0, 0, 0.09));
+  z-index: 999;
   
-  z-index: 1000;
+  .ch {
+    .ch-sns{
+      @include background("../images/SNS.svg");
+      @include position(-10%, 110%);
+      @include border(50%);
+      width: 60px;
+      height: 60px;
+      box-shadow: $shadow;
+      animation: chShow 1s;
+    }
+  
+    .ch-profile{
+      @include background("../images/profile.svg");
+      @include position(60%, 100%);
+      @include border(50%);
+      width: 90px;
+      height: 90px;
+      box-shadow: $shadow;
+      animation: chShow 1s;
+    }
+  
+    .ch-message {
+      @include background("../images/message.svg");
+      @include position(125%, 50%);
+      @include border(50%);
+      width: 60px;
+      height: 60px;
+      box-shadow: $shadow;
+      animation: chShow 1s;
+    }
+  
+    .ch-project {
+      @include background("../images/project.svg");
+      @include position(109%, -15%);
+      @include border(50%);
+      width: 60px;
+      height: 60px;
+      box-shadow: $shadow;
+      animation: chShow 1s;
+    }
+  }
+}
+
+@keyframes chShow {
+  from  {
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 }
