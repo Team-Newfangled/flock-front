@@ -1,6 +1,23 @@
 @import "./base/reset.scss";
 
-.test {
+.first {
   width:100%;
   height: 1000px;
+
+  .mainImage {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: contain;
+    background-image: url('../images/mainImage.svg');
+    background-repeat: no-repeat;
+
+    .mainText1 {
+      position: absolute;
+      top: 50%;
+      width: 236px;
+      height: 77px;
+      z-index: 100;
+    }
+  }
 }
