@@ -22,16 +22,16 @@ footer {
   }
 
   .footerP{
+    @include position(35%);
+    color: #ffffff;
+
     font: {
       family: $family;
       style: $style;
       weight: $weight;
       size: $size;
     }
-
-    @include position(35%);
-    color: #ffffff;
-
+    
     p {
       &:nth-child(1){
         margin-top: 8px;

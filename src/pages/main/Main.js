@@ -1,15 +1,18 @@
 import React from "react";
 import "../../styles/main.scss";
 import Layout from "./Layout";
+import First from "./First";
+import Second from "./Second";
+import Third from "./Third";
+import Fourth from "./Fourth";
 
 const Main = () => {
   return(
     <Layout>
-      <div className="first">
-        <div className="mainImage">
-          <img className="mainText1" src="../../images/mainText1.svg"></img>
-        </div>
-      </div>
+      <First />
+      <Second />
+      <Third />
+      <Fourth /> 
     </Layout>
   );
 };
