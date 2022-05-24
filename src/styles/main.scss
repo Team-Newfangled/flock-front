@@ -20,14 +20,14 @@
     background-size: cover;
     background-image: url('../images/mainImage.svg');
     background-repeat: no-repeat;
-
+    overflow: hidden;
     .mainText1 {
-      @include position(top, left, 29%, 13%);
+      @include position(top, left, 29%, -23%); // 이동후 13%
       @include size(236px, 77px);
     }
 
     .mainText2 {
-      @include position(top, left, 42%, 13%);
+      @include position(top, left, 42%, -23%); // 이동후 13%
       @include size(389px, 106px);
     }
 
@@ -45,7 +45,6 @@
 
 .second {
   @include size(100%,100vh);
-
   .mainBg {
     @include size(100%, 100%);
     position: relative;
@@ -57,12 +56,12 @@
     }
 
     .mainText3 {
-      @include position(top, right, 29%, 13%);
+      @include position(top, right, 29%, 130%); // 이동후 13%
       @include size(648px, 58px);
     }
 
     .mainText4 {
-      @include position(top, right, 38%, 13%);
+      @include position(top, right, 38%, 130%); // 이동후 13%
       @include size(546px, 101px);
     }
 
@@ -80,19 +79,18 @@
 
 .third {
   @include size(100%,100vh);
-
   .mainBg {
     @include size(100%, 100%);
     position: relative;
     background-color: #D6DAFF;
 
     .mainText5 {
-      @include position(top, left, 38%, 13%);
+      @include position(top, left, 38%, -38%); // 이동후 13%
       @include size(595px, 58px);
     }
 
     .mainText6 {
-      @include position(top, left, 48%, 13%);
+      @include position(top, left, 48%, -38%); // 이동후 13%
       @include size(484px, 101px);
     }
 
@@ -105,19 +103,19 @@
 
 .fourth {
   @include size(100%,100vh);
-
+  overflow: hidden;
   .mainBg {
     @include size(100%, 100%);
     position: relative;
     background-color: #FFE3E3;
 
     .mainText7 {
-      @include position(top, right, 10%, 32%);
+      @include position(top, right, 10%, -45%); // 이동후 32%
       @include size(694px, 58px);
     }
 
     .mainText8 {
-      @include position(top, right, 18%, 35%);
+      @include position(top, right, 18%, 145%); // 이동후 35%
       @include size(571px, 102px);
     }
 

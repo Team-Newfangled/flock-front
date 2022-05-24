@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/main.scss";
+import "../../styles/css/main-slide.css";
 import Layout from "./Layout";
 import First from "./First";
 import Second from "./Second";
