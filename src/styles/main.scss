@@ -45,6 +45,7 @@
 
 .second {
   @include size(100%,100vh);
+
   .mainBg {
     @include size(100%, 100%);
     position: relative;
