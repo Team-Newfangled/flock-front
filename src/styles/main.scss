@@ -21,6 +21,7 @@
     background-image: url('../images/mainImage.svg');
     background-repeat: no-repeat;
     overflow: hidden;
+
     .mainText1 {
       @include position(top, left, 29%, -23%); // 이동후 13%
       @include size(236px, 77px);
@@ -52,6 +53,7 @@
     @include size(100%, 100%);
     position: relative;
     background-color: #D6E9FF;
+    overflow: hidden;
     
     .loginImg {
       @include position(top, left, 22%, 15%);
@@ -59,13 +61,13 @@
     }
 
     .mainText3 {
-      @include position(top, right, 29%, 130%); // 이동후 13%
+      @include position(top, right, 29%, -30%); // 이동후 13%
       @include size(648px, 58px);
       opacity: 0;
     }
 
     .mainText4 {
-      @include position(top, right, 38%, 130%); // 이동후 13%
+      @include position(top, right, 38%, -30%); // 이동후 13%
       @include size(546px, 101px);
       opacity: 0;
     }
@@ -88,6 +90,7 @@
     @include size(100%, 100%);
     position: relative;
     background-color: #D6DAFF;
+    overflow: hidden;
 
     .mainText5 {
       @include position(top, left, 38%, -38%); // 이동후 13%
@@ -115,6 +118,7 @@
     @include size(100%, 100%);
     position: relative;
     background-color: #FFE3E3;
+    overflow: hidden;
 
     .mainText7 {
       @include position(top, right, 10%, -45%); // 이동후 32%

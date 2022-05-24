@@ -1,5 +1,23 @@
-.after-text1{
-    left: 13%;
-    opacity: 1;
-    transition: all .3s;
+.after-left{
+    left: 13% !important;
+    opacity: 1 !important;
+    transition: all 1.5s;
+}
+
+.after-right{
+    right: 13% !important;
+    opacity: 1 !important;
+    transition: all 1.5s;
+}
+
+.after-mid1{
+    right: 32% !important;
+    opacity: 1 !important;
+    transition: all 1.5s;
+}
+
+.after-mid2{
+    right: 35% !important;
+    opacity: 1 !important;
+    transition: all 1.5s;
 }

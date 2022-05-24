@@ -15,23 +15,19 @@ const Main = () => {
   }
 
   useEffect(() => {
-    console.log(scroll);
-  },[scroll])
-
-  useEffect(() => {
     window.addEventListener('scroll', handle);
 
     return () => {
       window.removeEventListener('scroll', handle)
     }
-  })
+  },[scroll])
 
   return(
     <Layout>
-      <First />
-      <Second />
-      <Third />
-      <Fourth /> 
+      <First scroll={scroll}/>
+      <Second scroll={scroll}/>
+      <Third scroll={scroll}/>
+      <Fourth scroll={scroll}/> 
     </Layout>
   );
 };
