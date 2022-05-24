@@ -24,11 +24,13 @@
     .mainText1 {
       @include position(top, left, 29%, -23%); // 이동후 13%
       @include size(236px, 77px);
+      opacity: 0;
     }
 
     .mainText2 {
       @include position(top, left, 42%, -23%); // 이동후 13%
       @include size(389px, 106px);
+      opacity: 0;
     }
 
     .startButton {
@@ -59,11 +61,13 @@
     .mainText3 {
       @include position(top, right, 29%, 130%); // 이동후 13%
       @include size(648px, 58px);
+      opacity: 0;
     }
 
     .mainText4 {
       @include position(top, right, 38%, 130%); // 이동후 13%
       @include size(546px, 101px);
+      opacity: 0;
     }
 
     .startButton2 {
@@ -88,11 +92,13 @@
     .mainText5 {
       @include position(top, left, 38%, -38%); // 이동후 13%
       @include size(595px, 58px);
+      opacity: 0;
     }
 
     .mainText6 {
       @include position(top, left, 48%, -38%); // 이동후 13%
       @include size(484px, 101px);
+      opacity: 0;
     }
 
     .chListIma {
@@ -113,11 +119,13 @@
     .mainText7 {
       @include position(top, right, 10%, -45%); // 이동후 32%
       @include size(694px, 58px);
+      opacity: 0;
     }
 
     .mainText8 {
       @include position(top, right, 18%, 145%); // 이동후 35%
       @include size(571px, 102px);
+      opacity: 0;
     }
 
     .calenderImg {
