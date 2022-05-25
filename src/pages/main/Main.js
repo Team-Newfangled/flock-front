@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../../styles/main.scss";
 import "../../styles/css/main-slide.css";
+import Scroll from '../../components/Scroll/scroll';
 import Layout from "./Layout";
 import First from "./First";
 import Second from "./Second";
@@ -8,20 +9,10 @@ import Third from "./Third";
 import Fourth from "./Fourth";
 
 const Main = () => {
-  const [scroll, setScroll] = useState(0);
+  
+  const scroll = Scroll();
 
-  const handle = () => {
-    setScroll(window.pageYOffset / (document.body.scrollHeight - window.innerHeight) * 100);
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handle);
-
-    return () => {
-      window.removeEventListener('scroll', handle)
-    }
-  },[scroll])
-
+  console.log(scroll);
   return(
     <Layout>
       <First scroll={scroll}/>
