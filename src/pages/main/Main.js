@@ -12,7 +12,6 @@ const Main = () => {
   
   const scroll = Scroll();
 
-  console.log(scroll);
   return(
     <Layout>
       <First scroll={scroll}/>

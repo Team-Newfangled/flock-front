@@ -4,11 +4,7 @@ import "../../styles/chat.scss";
 const Chat = () => {
   const [isOpen, setOpen] = useState(false);
   const List = () => {
-   if(isOpen){
-    setOpen(false);
-   }else{
-     setOpen(true);
-   }
+    setOpen(!isOpen);
   }
   return(
     <>
