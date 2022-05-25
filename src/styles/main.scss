@@ -58,6 +58,8 @@
     .loginImg {
       @include position(top, left, 22%, 15%);
       @include size(400px, 462px);
+      border-radius: 20px;
+      box-shadow: -80px 80px 0px rgba(66, 149, 245, 0.5);;
     }
 
     .mainText3 {
@@ -107,6 +109,8 @@
     .chListIma {
       @include position(top, right, 20%, 18%);
       @include size(374px, 527px);
+      border-radius: 20px;
+      box-shadow: 80px 90px 0 rgba(196, 175, 255, 0.5);
     }
   }
 }
@@ -121,13 +125,13 @@
     overflow: hidden;
 
     .mainText7 {
-      @include position(top, right, 10%, -45%); // 이동후 32%
+      @include position(top, right, 10%, 10%); // 이동후 32%
       @include size(694px, 58px);
       opacity: 0;
     }
 
     .mainText8 {
-      @include position(top, right, 18%, 145%); // 이동후 35%
+      @include position(top, right, 18%, 70%); // 이동후 35%
       @include size(571px, 102px);
       opacity: 0;
     }
@@ -135,11 +139,16 @@
     .calenderImg {
       @include position(top, left, 45%, 28%);
       @include size(458px, 372px);
+      border-radius: 30px;
+      box-shadow: -50px -50px 0 rgba(250, 137, 123, 0.5);;
     }
 
     .termImg {
       @include position(top, right, 45%, 22%);
       @include size(349px, 373px);
+      
+      border-radius: 30px;
+      box-shadow: -50px -50px 0 rgba(250, 137, 123, 0.5);;
     }
   }
 }
