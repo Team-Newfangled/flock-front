@@ -1,10 +1,12 @@
 import React from "react";
+import Layout from "./Layout";
+import ProfileUi from "./ProfileUi";
 
 const Profile = () => {
   return (
-    <div>
-      <h1>Profile</h1>
-    </div>
+    <Layout>
+      <ProfileUi />
+    </Layout>
   );
 };
 
