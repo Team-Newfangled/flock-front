@@ -1,0 +1,76 @@
+.inputArea1 {
+  position: absolute;
+  width: 290px;
+  top: 12%;
+  left: 25%;
+  
+  .bg{
+    background: #EFF2F9;
+    border: none;
+    border-radius: 15px;
+  }
+
+  .input1 {
+    width: 280px;
+    height: 52px;
+  }
+
+  .change {
+    position: absolute;
+    left: 100%;
+  
+    button {
+      width: 95px;
+      height: 52px;
+      background: #4295F5;
+      border: none;
+      border-radius: 15px; 
+      color: #fff;
+      font: {
+        family: 'Inter';
+        style: normal;
+        weight: 700;
+        size: 16px;
+      }
+    }
+  }
+}
+
+.inputArea2 {
+  position: absolute;
+  width: 481px;
+  top: 25%;
+  left: 25%;
+  
+  .bg{
+    background: #EFF2F9;
+    border: none;
+    border-radius: 15px;
+  }
+
+  .input2 {
+    width: 471px;
+    height: 52px;
+  }
+
+  .change {
+    position: absolute;
+    left: 100%;
+  
+    button {
+      width: 95px;
+      height: 52px;
+      background: #4295F5;
+      border: none;
+      border-radius: 15px; 
+      color: #fff;
+      font: {
+        family: 'Inter';
+        style: normal;
+        weight: 700;
+        size: 16px;
+      }
+    }
+  }
+}
+

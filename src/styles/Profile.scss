@@ -1,7 +1,7 @@
 .h1Box{
   position: relative;
   top: 100px;
-  left: 20%;
+  left: 19%;
   width: 129px;
 
   h1 {
@@ -30,8 +30,11 @@
     border-radius: 20px;
 
     .profileImg{
+      position: absolute;
       width: 166px;
       height: 166px;
+      top: 100px;
+      left: 60px;
     }
   }
 }
