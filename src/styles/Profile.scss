@@ -1,6 +1,6 @@
 .h1Box{
   position: relative;
-  top: 100px;
+  top: 12%;
   left: 19%;
   width: 129px;
 
@@ -16,8 +16,8 @@
 
 .profile{
   position: relative;
+  top: 13%;
   width: 100vw;
-  top: 110px;
   display: flex;
   justify-content: center;
 
@@ -35,6 +35,14 @@
       height: 166px;
       top: 100px;
       left: 60px;
+    }
+
+    .inputarea {
+      position: absolute;
+      width: 578px;
+      height: 452px;
+      left: 304px;
+      top: 70px;
     }
   }
 }

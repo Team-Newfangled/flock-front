@@ -1,8 +1,8 @@
 .inputArea1 {
-  position: absolute;
+  position: relative;
   width: 290px;
-  top: 12%;
-  left: 25%;
+  height: 70px;
+  margin-bottom: 30px;
   
   .bg{
     background: #EFF2F9;
@@ -37,10 +37,8 @@
 }
 
 .inputArea2 {
-  position: absolute;
+  position: relative;
   width: 481px;
-  top: 25%;
-  left: 25%;
   
   .bg{
     background: #EFF2F9;
@@ -74,3 +72,15 @@
   }
 }
 
+.changeArea {
+  height: 146px;
+}
+
+.none {
+  display: none;
+}
+
+.changeInput {
+  position: absolute;
+  bottom: 0%;
+}
