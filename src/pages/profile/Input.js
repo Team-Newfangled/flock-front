@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import '../../styles/Input.scss'
 
-const Input = ({divClassName, className, label}) => {
+const Input = ({setAllChange, allChange, divClassName, className, label}) => {
   const [change, setChange] = useState(false);
   const [changeName, setChangeName] = useState(divClassName);
   const getChange = () => {
     setChange(true);
     setChangeName(divClassName + ' changeArea')
+    setAllChange(allChange + 1)
   }
 
   return (
@@ -25,10 +26,10 @@ const Input = ({divClassName, className, label}) => {
         <> 
           <div>
             <input className={className + " changeInput"} 
-                   placeholder="변경할 닉네임"/>
+                   placeholder={label === '닉네임' ? '변경할 닉네임' : '변경할 소속'}/>
           </div> 
-          <div className='change'>
-            <button onClick={getChange} className={!change ? 'none' : null}>변경</button>
+          <div className='change buttonarea'>
+            <button onClick={getChange} className={allChange === 2 ? 'none' : null}>변경</button>
           </div>
         </>: null}
       </div>
