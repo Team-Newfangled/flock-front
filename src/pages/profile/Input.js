@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../../styles/Input.scss'
 
 const Input = ({setAllChange, allChange, divClassName, className, label}) => {
   const [change, setChange] = useState(false);

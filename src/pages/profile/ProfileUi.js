@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from './Input';
 import '../../styles/Profile.scss'
+import axios from "axios";
 
 const ProfileUi = () => {
   const [allChange, setAllChange] = useState(0);
@@ -12,6 +13,45 @@ const ProfileUi = () => {
     setFiles(file)
   }
 
+  const changeClick = e => {
+    const formdata = new FormData();
+    formdata.append('uploadImage,', files[0]);
+
+    const config = {
+      Headers: {
+        'content-type': 'multipart/form-data',
+      },
+    };
+
+    axios.patch('http://localhost:3000/users/{user-id}/picture', formdata, config)
+    .thre(res => {
+      console.log(res)
+    })
+    .catch(res =>{
+      console.log(res)
+    })
+  }
+
+  useEffect(() => {
+    preview();
+
+    return () => preview()
+  })
+
+  const preview = () =>{
+    if(!files) return false;
+
+    const imgEl = document.querySelector('.imgWrap')
+
+    const reader = new FileReader();
+
+    reader.onload = () =>{
+      (imgEl.style.backgroundImage = 'url(${reader.result})')
+
+      reader.readAsDataURL(files[0]);
+    }
+  }
+
   return (
     <>
       <div className="h1Box">
@@ -19,9 +59,15 @@ const ProfileUi = () => {
       </div>
       <div className="profile">
         <div className="profileBox">
-          <img className='profileImg' src={require('../../images/myProfile.svg').default} alt="프로필"/>
-          <input type="file" className="editButton" onChange={onLoadFile}/>
-          <img src={require('../../images/Wrench.svg').default} alt="편집"/>
+          <div className="imgWrap">
+            <img className='profileImg' src={require('../../images/myProfile.svg').default} alt="프로필"/>
+          </div>
+          <div className="fileInputBox">
+            <label for="file_input" style={{cursor: 'pointer'}}>
+              <img src={require('../../images/Wrench.svg').default} alt="편집"/>
+            </label>
+            <input type="file" id="file_input" onChange={onLoadFile} style={{display : 'none'}}/>
+          </div>
           <div className="inputarea">
             <Input setAllChange={setAllChange} 
                    allChange={allChange} 
