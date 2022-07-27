@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const Input = ({setAllChange, allChange, divClassName, className, label}) => {
   const [change, setChange] = useState(false);
   const [changeName, setChangeName] = useState(divClassName);
+  
   const getChange = () => {
     setChange(true);
     setChangeName(divClassName + ' changeArea')

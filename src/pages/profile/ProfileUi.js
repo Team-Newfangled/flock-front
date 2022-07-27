@@ -1,21 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Input from './Input';
 import '../../styles/Profile.scss'
 import axios from "axios";
 
 const ProfileUi = () => {
   const [allChange, setAllChange] = useState(0);
-  const [files, setFiles] = useState('');
+  const [file, setFile] = useState('');
 
   const onLoadFile = e => {
-    const file = e.target.files;
-    console.log(file)
-    setFiles(file)
-  }
+    const {target: {files},} = e;
+    console.log(files)
+    const theFile = files[0];
+    const reader = new FileReader();
 
+    reader.onloadend = (finishedEvent) => {
+      const {
+        currentTarget: {result},
+      } = finishedEvent;
+      setFile(result)
+      console.log(result)
+    }
+    reader.readAsDataURL(theFile);
+  }
+  
   const changeClick = e => {
     const formdata = new FormData();
-    formdata.append('uploadImage,', files[0]);
+    formdata.append('uploadImage,', file);
 
     const config = {
       Headers: {
@@ -24,32 +34,12 @@ const ProfileUi = () => {
     };
 
     axios.patch('http://localhost:3000/users/{user-id}/picture', formdata, config)
-    .thre(res => {
+    .then(res => {
       console.log(res)
     })
     .catch(res =>{
       console.log(res)
     })
-  }
-
-  useEffect(() => {
-    preview();
-
-    return () => preview()
-  })
-
-  const preview = () =>{
-    if(!files) return false;
-
-    const imgEl = document.querySelector('.imgWrap')
-
-    const reader = new FileReader();
-
-    reader.onload = () =>{
-      (imgEl.style.backgroundImage = 'url(${reader.result})')
-
-      reader.readAsDataURL(files[0]);
-    }
   }
 
   return (
@@ -60,10 +50,10 @@ const ProfileUi = () => {
       <div className="profile">
         <div className="profileBox">
           <div className="imgWrap">
-            <img className='profileImg' src={require('../../images/myProfile.svg').default} alt="프로필"/>
+            <img className='profileImg' src={file || require('../../images/myProfile.svg').default} alt="프로필"/>
           </div>
           <div className="fileInputBox">
-            <label for="file_input" style={{cursor: 'pointer'}}>
+            <label htmlFor="file_input" style={{cursor: 'pointer'}}>
               <img src={require('../../images/Wrench.svg').default} alt="편집"/>
             </label>
             <input type="file" id="file_input" onChange={onLoadFile} style={{display : 'none'}}/>
@@ -79,7 +69,7 @@ const ProfileUi = () => {
                    divClassName='inputArea2' 
                    className='input2 bg' 
                    label='소속'/>
-            {allChange === 2 ? <button className="allChange">모두 변경</button> : null}
+            {allChange === 2 ? <button className="allChange" onClick={changeClick}>모두 변경</button> : null}
           </div>
         </div> 
       </div>
