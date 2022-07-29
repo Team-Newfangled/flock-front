@@ -1,17 +1,19 @@
 header {
   position: fixed;
   width: 100vw;
-  height: 100px;
+  height: 80px;
   top: 0;
   background-color: #EFF2F9;
   margin: 0;
   z-index: 50;
   transition: all .5s ease-in;
+
   .logo{
     position: absolute;
     top: 50%;
     left: 13%;
     transform: translateY(-50%);
+    width: 120px;
   }
 
   .nav {
@@ -19,7 +21,7 @@ header {
       family: 'Inter';
       style: normal;
       weight: 400;
-      size: 24px;
+      size: 20px;
     };
     position: absolute;
     top: 50%;
