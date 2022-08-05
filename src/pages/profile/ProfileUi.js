@@ -22,8 +22,8 @@ const ProfileUi = () => {
     }
     reader.readAsDataURL(theFile);
   }
-  
-  const changeClick = e => {
+
+  const patchFile = () => {
     const formdata = new FormData();
     formdata.append('uploadImage,', file);
 
@@ -33,13 +33,27 @@ const ProfileUi = () => {
       },
     };
 
-    axios.patch('http://localhost:3000/users/{user-id}/picture', formdata, config)
-    .then(res => {
-      console.log(res)
+    return axios.patch('http://localhost:3000/users/{user-id}/picture', formdata, config);
+  }
+
+  const patchName = () => {
+    return axios.patch('http://localhost:3000/users/{user-id}/name',{
+      name: 123,
     })
-    .catch(res =>{
-      console.log(res)
+  }
+
+  const patchOrganizaion = () => {
+    return axios.patch('http://localhost:3000/users/{user-id}/organizaion',{
+      name: "카카오",
     })
+  }
+
+  const changeClick = async(e) => {
+    e.preventDefault();
+    await axios.all([patchFile(), patchName(), patchOrganizaion()])
+      .then(axios.spread(function (file, name, organ) {
+        console.log(file, name, organ);
+      }))
   }
 
   return (
