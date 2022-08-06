@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Input from './Input';
 import '../../styles/Profile.scss'
 import axios from "axios";
 import { API } from "../../lib/API";
 
 const ProfileUi = () => {
+  const user = useSelector((state) => state.user.value)
+  const dispatch = useDispatch();
   const [allChange, setAllChange] = useState(0);
-  const [file, setFile] = useState('');
-  const [name, setName] = useState('');
-  const [organizaion, setOrganizaion] = useState('');
+  const [file, setFile] = useState(user.image);
+  const [name, setName] = useState(user.name);
+  const [organizaion, setOrganizaion] = useState(user.organizaion);
 
   const onLoadFile = e => {
     const {target: {files},} = e;
@@ -26,16 +29,6 @@ const ProfileUi = () => {
     reader.readAsDataURL(theFile);
   }
 
-  const getUser = async() => {
-    // await API.get('{user-id}')
-    //   .then((res) => {
-    //     console.log(res.data)
-    //   })
-    //   .catch((error) => {
-    //     console.log(error)
-    //   })
-  }
-
   const patchFile = () => {
     const formdata = new FormData();
     formdata.append('uploadImage,', file);
@@ -45,7 +38,7 @@ const ProfileUi = () => {
         'content-type': 'multipart/form-data',
       },
     };
-
+    
     return API.patch('{user-id}/picture', formdata, config);
   }
 
@@ -69,10 +62,6 @@ const ProfileUi = () => {
         console.log(file, name, organ);
       }))
   }
-
-  useEffect(() => {
-    getUser();
-  }, []);
 
   return (
     <>
