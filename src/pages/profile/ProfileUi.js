@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from './Input';
 import '../../styles/Profile.scss'
 import axios from "axios";
+import { API } from "../../lib/API";
 
 const ProfileUi = () => {
   const [allChange, setAllChange] = useState(0);
   const [file, setFile] = useState('');
+  const [name, setName] = useState('');
+  const [organizaion, setOrganizaion] = useState('');
 
   const onLoadFile = e => {
     const {target: {files},} = e;
@@ -23,6 +26,16 @@ const ProfileUi = () => {
     reader.readAsDataURL(theFile);
   }
 
+  const getUser = async() => {
+    // await API.get('{user-id}')
+    //   .then((res) => {
+    //     console.log(res.data)
+    //   })
+    //   .catch((error) => {
+    //     console.log(error)
+    //   })
+  }
+
   const patchFile = () => {
     const formdata = new FormData();
     formdata.append('uploadImage,', file);
@@ -33,18 +46,19 @@ const ProfileUi = () => {
       },
     };
 
-    return axios.patch('http://localhost:3000/users/{user-id}/picture', formdata, config);
+    return API.patch('{user-id}/picture', formdata, config);
   }
 
   const patchName = () => {
-    return axios.patch('http://localhost:3000/users/{user-id}/name',{
-      name: 123,
+    return API.patch('{user-id}/name',{
+      name: name,
     })
   }
 
   const patchOrganizaion = () => {
-    return axios.patch('http://localhost:3000/users/{user-id}/organizaion',{
-      name: "카카오",
+    console.log()
+    return API.patch('{user-id}/organizaion',{
+      name: organizaion,
     })
   }
 
@@ -55,6 +69,10 @@ const ProfileUi = () => {
         console.log(file, name, organ);
       }))
   }
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <>
@@ -74,15 +92,19 @@ const ProfileUi = () => {
           </div>
           <div className="inputarea">
             <Input setAllChange={setAllChange} 
-                   allChange={allChange} 
-                   divClassName='inputArea1' 
-                   className='input1 bg' 
-                   label='닉네임'/>
+                   allChange={allChange}
+                   name="닉네임" 
+                   onClick={patchName}
+                   onChange={setName}
+                   item={name} 
+                   />
             <Input setAllChange={setAllChange} 
-                   allChange={allChange} 
-                   divClassName='inputArea2' 
-                   className='input2 bg' 
-                   label='소속'/>
+                   allChange={allChange}
+                   name="소속"
+                   onClick={patchOrganizaion}
+                   onChange={setOrganizaion}
+                   item={organizaion} 
+                   />
             {allChange === 2 ? <button className="allChange" onClick={changeClick}>모두 변경</button> : null}
           </div>
         </div> 

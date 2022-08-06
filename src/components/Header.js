@@ -9,7 +9,6 @@ const Header = () => {
   const [isPopup, setIsPopup] = useState(false);
   const scroll = Scroll();
 
-  console.log(scroll)
   const loginClick = () => {
     setIsPopup(!isPopup);
     !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
