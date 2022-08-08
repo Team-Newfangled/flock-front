@@ -36,7 +36,7 @@
 
     .startButton {
       @include position(top, left, 60%, 13%);
-      @include size(209px, 77px);
+      @include size(180px, 70px);
       background-image: url('../images/startButton.svg');
       background-repeat: no-repeat;
       background-size: contain;
