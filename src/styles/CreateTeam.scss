@@ -1,0 +1,45 @@
+*{
+  user-select: none;
+}
+
+.dateBox{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 600px;
+  background-color: #EFF2F9;
+  border-radius: 20px;
+}
+
+#link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 90%;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+  background-color: #4295F580;
+  color: #004DA7;
+  font-weight:900;
+  font-size: 18px;
+}
+
+#link:hover{
+  color: #4295F5;
+  text-decoration: underline
+}
+
+.date{
+  width: 90%;
+  height: 64%;
+  background-color: #fff;
+  border-radius: 20px;
+  margin: 40px auto;
+  color: #004DA7;
+  font-weight:bolder;
+  font-size: 20px;
+  padding: 10px;
+}

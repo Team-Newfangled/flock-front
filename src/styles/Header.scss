@@ -7,6 +7,7 @@ header {
   margin: 0;
   z-index: 50;
   transition: all .5s ease-in;
+  user-select: none;
 
   .logo{
     position: absolute;
