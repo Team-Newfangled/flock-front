@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/Header";
+import TeamHeader from "../../components/TeamHeader";
 import { useState } from 'react'
 import '../../styles/CreateTeam.scss'
 import { NavLink } from "react-router-dom";
@@ -13,10 +13,10 @@ const CreateTeam = () => {
 
   return (
     <>
-      <Header/>
+      <TeamHeader/>
 
       <div>
-        
+
       </div>
 
       <div className="dateBox">

@@ -27,7 +27,7 @@ header {
 
     position: absolute;
     top: 50%;
-    left: 75%;
+    right:13%;
     transform: translateY(-50%);
     display: flex;
     justify-content: center;
@@ -53,6 +53,18 @@ header {
     }
   }
 }
+
+.teamBtn{
+  font-size: 18px;
+  font-weight: bold;
+  width: 140px;
+  height: 46px;
+  border: none;
+  background-color: #4295F5;
+  border-radius: 12px;
+  color: #fff;
+}
+
 
 .head-up{
   background-color: rgba( 255, 255, 255, 0.5 );
