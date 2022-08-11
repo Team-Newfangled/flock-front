@@ -2,6 +2,44 @@
   user-select: none;
 }
 
+.teamBox{
+  position: absolute;
+  left: 13%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 40px;
+  width: 50%;
+  height: 80%;
+  background-color: #004DA7;
+}
+
+.projectBox{
+  width: 90%;
+  height:35%;
+  background-color: #f3dcdc;
+  overflow: scroll;
+}
+
+.p-create{
+  display: flex;
+  justify-content: center;
+  width: 180px;
+  height: 200px;
+  background-color: #EFF2F9;
+  border-radius:20px;
+  margin-left:10px;
+  float: left;
+}
+
+
+.tName{
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0px 10px 10px 10px ;
+}
+
+
+
 .dateBox{
   position: absolute;
   top: 50%;
