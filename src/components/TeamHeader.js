@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Login from "./login/Login";
 import { ReactComponent as Logo } from '../images/Logo.svg';
 import '../styles/Header.scss';
 import Scroll from "./Scroll/scroll";
+import Team from "../pages/createTeam/Team.js";
 
 const Header = () => {
   const [isPopup, setIsPopup] = useState(false);
   const scroll = Scroll();
 
-  const loginClick = () => {
+  const teamClick = () => {
     setIsPopup(!isPopup);
     !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
   } 
@@ -21,10 +21,10 @@ const Header = () => {
         <NavLink to='/'><Logo /></NavLink>
         </div>
         <div className="nav">
-          <button className="teamBtn">팀만들기</button>
+          <button className="teamBtn" onClick={teamClick}>팀만들기</button>
         </div>
       </header>
-      {isPopup ? <Login loginClick={loginClick}/> : ''}
+      {isPopup ? <Team teamClick={teamClick}/> : ''}
     </div>
   )
 }
