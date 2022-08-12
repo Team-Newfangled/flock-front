@@ -19,8 +19,31 @@ const CreateTeam = () => {
         <div className="projectBox">
           <p className="tName">팀이름</p>
             <div className="wrap">
+              <div className="p-create">
+                <p className="p-name">프로젝트 명</p>
+                <img className="modify_btn" src={require('../../images/Add.svg').default} alt="추가아이콘"/>
+              </div>
               <div className="p-create"/>
               <div className="p-create"/>
+              <div className="p-create"/>
+              <div className="p-create"/>
+              <div className="p-create add-team">
+                <img className="add-btn" src={require('../../images/Add.svg').default} alt="추가아이콘"/>
+              </div>
+            </div>
+        </div>
+        
+        <div className="projectBox2">
+          <p className="tName">팀이름</p>
+            <div className="wrap">
+              <div className="p-create"/>
+              <div className="p-create"/>
+              <div className="p-create"/>
+              <div className="p-create"/>
+              <div className="p-create"/>
+              <div className="p-create add-team">
+                <img className="add-btn" src={require('../../images/Add.svg').default} alt="추가아이콘"/>
+              </div>
             </div>
         </div>
       </div>
