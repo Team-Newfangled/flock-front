@@ -6,10 +6,19 @@ import { NavLink } from "react-router-dom";
 import Calendar from 'react-calendar';
 import '../../styles/Calendar.scss';
 import moment from "moment";
+import Scroll from "../../components/Scroll/scroll.js";
+import Project from "./Project.js";
 
 
 const CreateTeam = () => {
   const [value, onChange] = useState(new Date());
+
+  const [isPopup, setIsPopup] = useState(false);
+  const scroll = Scroll();
+  const projectClick = () => {
+    setIsPopup(!isPopup);
+    !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
+  } 
 
   return (
     <>
@@ -27,8 +36,8 @@ const CreateTeam = () => {
               <div className="p-create"/>
               <div className="p-create"/>
               <div className="p-create"/>
-              <div className="p-create add-team">
-                <img className="add-btn" src={require('../../images/Add.svg').default} alt="추가아이콘"/>
+              <div className="p-create add-team" onClick={projectClick}>
+                <img className="add-btn"  src={require('../../images/Add.svg').default} alt="추가아이콘"/>
               </div>
             </div>
         </div>
@@ -41,7 +50,7 @@ const CreateTeam = () => {
               <div className="p-create"/>
               <div className="p-create"/>
               <div className="p-create"/>
-              <div className="p-create add-team">
+              <div className="p-create add-team" onClick={projectClick}>
                 <img className="add-btn" src={require('../../images/Add.svg').default} alt="추가아이콘"/>
               </div>
             </div>
@@ -60,6 +69,7 @@ const CreateTeam = () => {
           />
         </div>
       </div>
+      {isPopup ? <Project projectClick={projectClick}/> : ''}
     </>  
   );
 };

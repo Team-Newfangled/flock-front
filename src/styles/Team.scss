@@ -1,12 +1,57 @@
 .create{
-  width: 80%;
-  height: 140px;
-  background-color: #FFFFFFE5;
+  width: 50%;
+  height: 14%;
+  border-radius: 20px;
+  background-color: #e9e9e9f5;
 }
 
 .important{
-  
+  color: #ff0101;
+  font-size: 20px;
+}
+
+.text{
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .createBtn{
+  width: 17%;
+  height: 60px;
+  border-radius:10px;
+  border:none;
+  background-color: #4295F5;
+  color:#fff;
+  margin-left: 3%;
+  font: {
+    weight: 900;
+    size: 16px;
+  };
 }
+
+.createBtn:focus{
+  outline:4px solid #4296f546;
+}
+
+.nameBox{
+  width: 80%;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  font: {
+    weight: 900;
+    size: 16px;
+  };
+}
+
+.nameBox:focus{
+  outline:4px solid #4296f546;
+}
+
+.nameBox::placeholder{
+  color: #0000003b;
+}
+
