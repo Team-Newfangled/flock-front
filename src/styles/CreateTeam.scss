@@ -13,11 +13,20 @@
   background-color: #004DA7;
 }
 
+.wrap{
+  width: 100%;
+  height: 200px;
+  overflow-x:auto;
+  white-space:nowrap; 
+  margin:0 auto;
+}
+
 .projectBox{
-  width: 90%;
+  position: absolute;
+  width: 40%;
   height:35%;
   background-color: #f3dcdc;
-  overflow: scroll;
+
 }
 
 .p-create{

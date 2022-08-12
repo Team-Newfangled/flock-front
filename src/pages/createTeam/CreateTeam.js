@@ -18,10 +18,10 @@ const CreateTeam = () => {
       <div className="teamBox">
         <div className="projectBox">
           <p className="tName">팀이름</p>
-          <div className="p-create"></div>
-          <div className="p-create">
-            <img style={{width: '50px'}} src={require('../../images/Add.svg').default} alt="플러스아이콘"/>
-          </div>
+            <div className="wrap">
+              <div className="p-create"/>
+              <div className="p-create"/>
+            </div>
         </div>
       </div>
 
