@@ -21,7 +21,7 @@ const CreateTeam = () => {
             <div className="wrap">
               <div className="p-create">
                 <p className="p-name">프로젝트 명</p>
-                <img className="modify_btn" src={require('../../images/Add.svg').default} alt="추가아이콘"/>
+                <img className="modify_btn" src={require('../../images/modify.svg').default} alt="추가아이콘"/>
               </div>
               <div className="p-create"/>
               <div className="p-create"/>
