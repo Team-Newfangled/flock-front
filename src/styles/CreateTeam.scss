@@ -13,35 +13,55 @@
   background-color: #004DA7;
 }
 
+.projectBox{
+  position: absolute;
+  width: 100%;
+  height:35%;
+  background-color: #f3dcdc;
+}
+.projectBox2{
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 35%;
+  background-color: #f3dcdc;
+}
 .wrap{
   width: 100%;
-  height: 200px;
+  height: 230px;
   overflow-x:auto;
   white-space:nowrap; 
   margin:0 auto;
 }
 
-.projectBox{
-  position: absolute;
-  width: 40%;
-  height:35%;
-  background-color: #f3dcdc;
-
-}
-
 .p-create{
-  display: flex;
+  display: inline-block;
   justify-content: center;
   width: 180px;
   height: 200px;
   background-color: #EFF2F9;
   border-radius:20px;
   margin-left:10px;
-  float: left;
+  position: relative;
+}
+.p-name{
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
+.modify_btn{
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
 }
 
-.addIcon{
-  max-width: 60px;
+.add-team{
+  .add-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 
