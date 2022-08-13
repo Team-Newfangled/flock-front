@@ -1,0 +1,39 @@
+.h1Box{
+  position: relative;
+  top: 12%;
+  left: 19%;
+  width: 129px;
+
+  h1 {
+    position: relative;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+.tName{
+  font-weight: 700;
+  font-size: 26px;
+  color: #004DA7;
+  padding: 10px;
+}
+
+.team{
+  position: relative;
+  top: 11%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+  .TeamBox{
+    position: relative;
+    width: 64%;
+    height: 744px;
+    background: #FFFFFF;
+    border: 2px solid #4295F5;
+    border-radius: 20px;
+  }
