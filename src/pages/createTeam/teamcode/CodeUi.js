@@ -11,6 +11,7 @@ import React from "react";
         <div className="profileBox">
           <h2 className="tName">팀이름</h2>
         </div>
+        <div></div>
       </div>
 
 
