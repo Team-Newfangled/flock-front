@@ -23,17 +23,25 @@
 
 .team{
   position: relative;
-  top: 11%;
+  top: 13%;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-  .TeamBox{
-    position: relative;
-    width: 64%;
-    height: 744px;
-    background: #FFFFFF;
-    border: 2px solid #4295F5;
-    border-radius: 20px;
+.TeamBox{
+  position: absolute;
+  width: 64%;
+  height: 744px;
+  border: 2px solid #4295F5;
+  border-radius: 20px;
+}
+
+h3{
+  font:{
+    size: 20px;
+    weight: 700;
   }
+    color: #004DA7;
+    padding: 10px;
+}
