@@ -50,10 +50,10 @@
 }
 
 h3{
-  font-size:20px;
+  font-size:22px;
   font-weight: 700;
-    color: #0067E0;
-    padding: 10px;
+  color: #0067E0;
+  padding: 10px;
 }
 
 .people{
@@ -98,15 +98,16 @@ h3{
   width:90px;
   height: 50px;
   border: none;
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  font-weight: 700;
+  font-weight: 400;
+  font-size: 16px;
   color: #fff;
-  margin: 10px;
+  margin: 10px 0px 10px 10px;
 }
 
 .capyInput{
   background-color: #EFF2F9;
+  font-size: 16px;
   border: none;
   border-radius: 15px;
   width:70%;
@@ -124,4 +125,38 @@ h3{
 
 .capyBtn:focus{
   outline:4px solid #4296f546;
+}
+
+.membarBox{
+  width: 80%;
+  height: 70%;
+  margin: 20px auto 0px;
+  overflow: auto;
+}
+
+.membarBox::-webkit-scrollbar {
+  width: 16px;
+}
+.membarBox::-webkit-scrollbar-thumb {
+  background-color: #004DA7B2;
+  border-radius: 10px;
+  background-clip: padding-box;
+}
+.membarBox::-webkit-scrollbar-track {
+  background-color: #EFF2F9;
+  border-radius: 10px;
+}
+
+.king{
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 12%;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #EFF2F9;
+  margin-bottom: 20px;
+  color: #004DA7;
+  font-weight: 700;
+  font-size: 18px;
 }

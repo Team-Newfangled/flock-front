@@ -59,7 +59,7 @@ const CreateTeam = () => {
 
       <div className="dateBox">
         <NavLink to='/'><button id='link'>My Page</button></NavLink>
-        <NavLink to='/'><button id='link'>My Team</button></NavLink>
+        <NavLink to='/TeamCode'><button id='link'>My Team</button></NavLink>
         <div className="date">데드라인
           <Calendar
             onChange={onChange}

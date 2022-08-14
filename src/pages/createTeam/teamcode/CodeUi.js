@@ -1,6 +1,7 @@
 import React from "react";
 import '../../../styles/TeamCode.scss'
-import Capy from './Capy.js'
+import Capy from './code/Capy.js'
+import People from './code/People.js'
 
 
   const TeamCode = () =>{
@@ -16,16 +17,17 @@ import Capy from './Capy.js'
 
           <div className="sBox">
             <div className="people">
-              <h3>팀원관리</h3>
-              <Capy></Capy>
+              <h3>팀원 관리</h3>
+              <Capy/>
+              <People/>
             </div>
             <div className="ssBox">
             <div className="project">
-              <h3>팀원관리</h3>
+              <h3>프로젝트 관리</h3>
             </div>
 
             <div className="accept">
-              <h3>팀원관리</h3>
+              <h3>팀원 수락</h3>
             </div>
             </div>
           </div>
