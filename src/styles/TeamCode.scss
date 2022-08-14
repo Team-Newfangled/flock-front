@@ -50,10 +50,8 @@
 }
 
 h3{
-  font:{
-    size: 20px;
-    weight: 700;
-  }
+  font-size:20px;
+  font-weight: 700;
     color: #0067E0;
     padding: 10px;
 }
@@ -85,4 +83,45 @@ h3{
   height: 48%;
   border-radius: 16px;
   border: 5px solid #EFF2F9;
+}
+
+.capyBox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 10px 10px;
+}
+
+
+.capyBtn{
+  background-color: #4295F5;
+  width:90px;
+  height: 50px;
+  border: none;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin: 10px;
+}
+
+.capyInput{
+  background-color: #EFF2F9;
+  border: none;
+  border-radius: 15px;
+  width:70%;
+  height: 50px;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+  word-break:break-all;
+  padding: 10px;
+}
+
+.capyInput:focus{
+  outline:4px solid #4296f546;
+}
+
+.capyBtn:focus{
+  outline:4px solid #4296f546;
 }
