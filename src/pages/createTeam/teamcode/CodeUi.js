@@ -11,18 +11,21 @@ import '../../../styles/TeamCode.scss'
       <div className="team">
         <div className="TeamBox">
           <h2 className="tName">팀이름</h2>
-        </div>
 
-        <div className="people">
-          <h3>팀원관리</h3>
-        </div>
+          <div className="sBox">
+            <div className="people">
+              <h3>팀원관리</h3>
+            </div>
+            <div className="ssBox">
+            <div className="project">
+              <h3>팀원관리</h3>
+            </div>
 
-        <div className="project">
-          <h3>팀원관리</h3>
-        </div>
-
-        <div className="accept">
-          <h3>팀원관리</h3>
+            <div className="accept">
+              <h3>팀원관리</h3>
+            </div>
+            </div>
+          </div>
         </div>
       </div>
 
