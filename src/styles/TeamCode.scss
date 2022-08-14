@@ -70,7 +70,7 @@ h3{
 
 .project{
   width: 100%;
-  height: 48%;
+  height: 56%;
   border-radius: 16px;
   border: 5px solid #EFF2F9;
 
@@ -80,7 +80,7 @@ h3{
 .accept{
   margin-top: 7%;
   width: 100%;
-  height: 48%;
+  height: 40%;
   border-radius: 16px;
   border: 5px solid #EFF2F9;
 }
@@ -89,7 +89,7 @@ h3{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0px 10px 10px;
+  margin: 0px 10px;
 }
 
 
@@ -156,7 +156,7 @@ h3{
   align-items: center;
   justify-content: space-between;
   width: 90%;
-  height: 12%;
+  height: 14%;
   padding: 10px;
   border-radius: 15px;
   background-color: #EFF2F9;
@@ -171,7 +171,7 @@ h3{
 }
 
 .pro{
-  height: 50%;
+  height: 44%;
 }
 
 .trash{
@@ -182,7 +182,7 @@ h3{
 .newBtn{
   position: relative;
   width: 80%;
-  height: 20%;
+  height: 66px;
   top:8%;
   left: 50%;
   transform: translate(-50%);
@@ -190,7 +190,20 @@ h3{
   border: none;
   background-color: #004DA7;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: #fff;
+}
+
+.wait{
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+}
+
+.waitBtn{
+  width: 20%;
+  float: left;
+  margin-right:14px;
 }
