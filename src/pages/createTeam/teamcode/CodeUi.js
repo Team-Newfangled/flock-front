@@ -1,10 +1,19 @@
 import React from "react";
+import { useState } from 'react'
 import '../../../styles/TeamCode.scss'
 import Capy from './code/Capy.js'
 import People from './code/People.js'
+import MProject from './code/MProject.js'
+import Project from "../Project.js";
 
 
   const TeamCode = () =>{
+
+    const [isPopup, setIsPopup] = useState(false);
+    const projectClick = () => {
+      setIsPopup(!isPopup);
+      !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
+    }
 
   return (
     <>
@@ -24,6 +33,8 @@ import People from './code/People.js'
             <div className="ssBox">
             <div className="project">
               <h3>프로젝트 관리</h3>
+              <MProject/>
+              <button className="newBtn" onClick={projectClick}>새 프로젝트 생성</button>
             </div>
 
             <div className="accept">
@@ -33,7 +44,7 @@ import People from './code/People.js'
           </div>
         </div>
       </div>
-
+      {isPopup ? <Project projectClick={projectClick}/> : ''}
 
     </>
   );

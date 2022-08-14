@@ -147,9 +147,14 @@ h3{
   border-radius: 10px;
 }
 
+.proBox{
+  height: 40%;
+}
+
 .king{
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 90%;
   height: 12%;
   padding: 10px;
@@ -159,4 +164,33 @@ h3{
   color: #004DA7;
   font-weight: 700;
   font-size: 18px;
+}
+
+.membar{
+  color: #4295F5;
+}
+
+.pro{
+  height: 50%;
+}
+
+.trash{
+  width: 18px;
+  margin: 10px;
+}
+
+.newBtn{
+  position: relative;
+  width: 80%;
+  height: 20%;
+  top:8%;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 15px;
+  border: none;
+  background-color: #004DA7;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
 }
