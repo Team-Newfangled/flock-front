@@ -7,6 +7,7 @@ import MProject from './code/MProject.js'
 import Project from "../Project.js";
 
 
+
   const TeamCode = () =>{
 
     const [isPopup, setIsPopup] = useState(false);
@@ -46,14 +47,13 @@ import Project from "../Project.js";
                 <img className="waitBtn" src={require("../../../images/accept.svg").default}/>
                 승인 대기 목록
               </div>
-              <button className="newBtn" >팀원 승인</button>
+              <button className="newBtn">팀원 승인</button>
             </div>
             </div>
           </div>
         </div>
       </div>
       {isPopup ? <Project projectClick={projectClick}/> : ''}
-
     </>
   );
 };

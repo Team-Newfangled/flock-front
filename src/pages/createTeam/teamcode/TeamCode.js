@@ -7,7 +7,7 @@ const TeamCode = () => {
   return (
     <>
     <CodeLayout>
-      <CodeUi/>
+    <CodeUi/>
     </CodeLayout>
     </>
   );
