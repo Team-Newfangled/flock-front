@@ -10,10 +10,13 @@ import Project from "../Project.js";
   const TeamCode = () =>{
 
     const [isPopup, setIsPopup] = useState(false);
+
+
     const projectClick = () => {
       setIsPopup(!isPopup);
       !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
     }
+
 
   return (
     <>
@@ -43,7 +46,7 @@ import Project from "../Project.js";
                 <img className="waitBtn" src={require("../../../images/accept.svg").default}/>
                 승인 대기 목록
               </div>
-              <button className="newBtn">팀원 승인</button>
+              <button className="newBtn" >팀원 승인</button>
             </div>
             </div>
           </div>
