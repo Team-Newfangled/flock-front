@@ -1,21 +1,23 @@
-
-
 .background{
   position: absolute;
-  width: 70%;
+  width: 50%;
   height: 680px;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
-  background-color: aqua;
+  background-color: #EFF2F9;
+  ;
   border-radius: 20px;
+  padding: 20px;
+
 }
 
 .mBox{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding-bottom: 20px;
+
 }
 
 h1{
@@ -26,4 +28,88 @@ h1{
 
 .close{
   border: none;
+}
+
+thead{
+  position: absolute;
+  left: 12%;
+  top: 12%;
+}
+
+
+.chose{
+  font-size: 20px;
+  font-weight: 600;
+  color: #525252;
+  margin-right: 10px
+}
+
+
+input[type=checkbox] {
+  -webkit-transform: scale(1.4); 
+  }
+
+.waitBox{
+  position: absolute;
+  left: 50%;
+  top: 16%;
+  transform: translate(-50%);
+  width: 80%;
+  height: 64%;
+  overflow: auto;
+}
+
+.waiting{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  width: 92%;
+  height: 20%;
+  margin: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.waitBox::-webkit-scrollbar {
+  width: 16px;
+}
+.waitBox::-webkit-scrollbar-thumb {
+  background-color: #004DA7B2;
+  border-radius: 10px;
+  background-clip: padding-box;
+}
+.waitBox::-webkit-scrollbar-track {
+  background-color: #C4C4C4;
+  border-radius: 10px;
+}
+
+.second-row{
+  margin: 0px 0px 0px 30px;
+}
+
+.name{
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.comment{
+  color: #828282;
+}
+
+.mBtn{
+  position: absolute;
+  bottom: 6%;
+  right: 11%;
+}
+
+.cBtn{
+  margin-left: 20px;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border:none;
+  background-color: #004DA7;
+  color:#fff;
+  font-weight: 700;
+  font-size: 14px;
 }

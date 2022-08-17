@@ -1,15 +1,23 @@
 import '../../../styles/Member.scss'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
+import Header from "../../../components/header/Header";
 
 const TeamCode = () => {
   let navigate = useNavigate();
 
   const data = [
-    {id: 0, title: '선택 1'},
-    {id: 1, title: '선택 2'},
-    {id: 2, title: '선택 3'},
-    {id: 3, title: '선택 4'}
+    {id: 0, title: '선택 1', comment:'대구소프트웨어'},
+    {id: 1, title: '선택 2', comment:'대구소프트웨어'},
+    {id: 2, title: '선택 3', comment:'대구소프트웨어'},
+    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
+    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
+    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
+    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
+    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
+    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
+    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
+    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
   ];
 
    // 체크박스 단일 선택
@@ -41,6 +49,8 @@ const TeamCode = () => {
 
   return (
     <>
+    <Header/>
+
     <div className='background'>
       <div className='mBox'>
         <h1>팀 이름</h1>
@@ -49,28 +59,33 @@ const TeamCode = () => {
         </button>
       </div>
         <thead>
-        <tr>
+        <tr style={{display: 'flex', alignItems: 'center'}}>
+          <th className='chose'>전체 선택</th>
           <th>
             <input type='checkbox' name='select-all'
               onChange={(e) => handleAllCheck(e.target.checked)}
               //하나라도 해제 시 선택 해제
               checked={checkItems.length === data.length ? true : false} />
           </th>
-          <th className='second-row'>전체 선택</th>
         </tr>
       </thead>
-      <tbody>
+      <div className='waitBox'>
         {data?.map((data, key) => (
-          <tr key={key}>
-            <td>
+          <div className='waiting' key={key}>
+            <div>
               <input type='checkbox' name={`select-${data.id}`}
                 onChange={(e) => handleSingleCheck(e.target.checked, data.id)}
                 checked={checkItems.includes(data.id) ? true : false} />
-            </td>
-            <td className='second-row'>{data.title}</td>
-          </tr>
+            </div>
+            <div className='second-row name'>{data.title}</div>
+            <div className='second-row comment'>{data.comment}</div>
+          </div>
         ))}
-      </tbody>
+      </div>
+      <div className='mBtn'>
+        <button className='cBtn'>선택 삭제</button>
+        <button className='cBtn'>선택 승인</button>
+      </div>
     </div>
     </>
   );
