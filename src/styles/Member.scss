@@ -1,0 +1,29 @@
+
+
+.background{
+  position: absolute;
+  width: 70%;
+  height: 680px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background-color: aqua;
+  border-radius: 20px;
+}
+
+.mBox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+h1{
+  color: #004DA7;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.close{
+  border: none;
+}

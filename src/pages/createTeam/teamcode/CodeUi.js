@@ -5,10 +5,13 @@ import Capy from './code/Capy.js'
 import People from './code/People.js'
 import MProject from './code/MProject.js'
 import Project from "../Project.js";
+import { useNavigate } from 'react-router-dom'
 
 
 
   const TeamCode = () =>{
+
+    let navigate = useNavigate();
 
     const [isPopup, setIsPopup] = useState(false);
 
@@ -47,7 +50,7 @@ import Project from "../Project.js";
                 <img className="waitBtn" src={require("../../../images/accept.svg").default}/>
                 승인 대기 목록
               </div>
-              <button className="newBtn">팀원 승인</button>
+              <button className="newBtn" onClick={()=>{ navigate('/Member')}}>팀원 승인</button>
             </div>
             </div>
           </div>
