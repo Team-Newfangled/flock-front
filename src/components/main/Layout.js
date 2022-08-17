@@ -1,7 +1,7 @@
 import React from "react";
 import Chat from "../../components/chat/Chat.js";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import Header from "../header/Header";
+import Footer from "../footer/Footer";
 
 const Layout = ({children}) => {
   return (

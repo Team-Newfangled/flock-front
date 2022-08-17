@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { ReactComponent as Logo } from '../images/Logo.svg';
-import '../styles/Header.scss';
-import Scroll from "./Scroll/scroll";
-import Team from "../pages/createTeam/Team.js";
+import { ReactComponent as Logo } from '../../images/Logo.svg';
+import '../../styles/Header.scss';
+import Scroll from "../Scroll/scroll";
+import Team from "../../pages/createTeam/Team.js";
 
 const Header = () => {
   const [isPopup, setIsPopup] = useState(false);

@@ -1,5 +1,5 @@
 import React from "react";
-import TeamHeader from "../../components/TeamHeader";
+import TeamHeader from "../../components/header/TeamHeader";
 import { useState } from 'react'
 import '../../styles/CreateTeam.scss'
 import { NavLink } from "react-router-dom";

@@ -1,11 +1,11 @@
 import React, { useCallback } from "react";
-//import GoogleLogin from "react-google-login";
+// import GoogleLogin from "react-google-login";
 import { ReactComponent as Logo } from '../../images/Logo.svg';
 import '../../styles/login.scss';
 
 const Login = ({loginClick}) => {
 
-  // const REACT_APP_GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+  const REACT_APP_GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
   const REACT_APP_GITHUB_API_KEY = process.env.REACT_APP_GITHUB_API_KEY;
 
   const SCOPE = "openid";

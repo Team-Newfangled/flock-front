@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Login from "./login/Login";
-import { ReactComponent as Logo } from '../images/Logo.svg';
-import '../styles/Header.scss';
-import Scroll from "./Scroll/scroll";
+import Login from "../login/Login";
+import { ReactComponent as Logo } from '../../images/Logo.svg';
+import '../../styles/Header.scss';
+import Scroll from "../Scroll/scroll";
 
 const Header = () => {
   const [isPopup, setIsPopup] = useState(false);
