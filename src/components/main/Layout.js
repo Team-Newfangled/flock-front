@@ -1,5 +1,5 @@
 import React from "react";
-import Chat from "../../components/chat/Chat.js";
+import Chat from "../common/chat/Chat.js";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 

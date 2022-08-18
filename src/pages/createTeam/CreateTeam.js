@@ -3,16 +3,12 @@ import TeamHeader from "../../components/header/TeamHeader";
 import { useState } from 'react'
 import '../../styles/CreateTeam.scss'
 import { NavLink } from "react-router-dom";
-import Calendar from 'react-calendar';
-import '../../styles/Calendar.scss';
-import moment from "moment";
 import Scroll from "../../components/Scroll/scroll.js";
 import Project from "./Project.js";
+import ProjectCalendar from "../../components/common/calendar/Calendar";
 
 
 const CreateTeam = () => {
-  const [value, onChange] = useState(new Date());
-
   const [isPopup, setIsPopup] = useState(false);
   const scroll = Scroll();
   const projectClick = () => {
@@ -61,12 +57,7 @@ const CreateTeam = () => {
         <NavLink to='/'><button id='link'>My Page</button></NavLink>
         <NavLink to='/TeamCode'><button id='link'>My Team</button></NavLink>
         <div className="date">데드라인
-          <Calendar
-            onChange={onChange}
-            formatDay={(locale, date) => moment(date).format("DD")}
-            value={value}
-            
-          />
+          <ProjectCalendar />
         </div>
       </div>
       {isPopup ? <Project projectClick={projectClick}/> : ''}

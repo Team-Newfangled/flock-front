@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Login from "../login/Login";
-import Scroll from "../Scroll/scroll";
+import Scroll from "../common/Scroll/scroll";
 import { ReactComponent as Logo } from '../../images/Logo.svg';
 import '../../styles/Header.scss';
 
