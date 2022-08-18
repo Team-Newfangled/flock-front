@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/main.scss";
 import "../../styles/css/main-slide.css";
-import Scroll from '../Scroll/scroll';
+import Scroll from "../common/Scroll/scroll";
 import Layout from "./Layout";
 import First from "./First";
 import Second from "./Second";

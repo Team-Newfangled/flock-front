@@ -3,7 +3,7 @@ import TeamHeader from "../../components/header/TeamHeader";
 import { useState } from 'react'
 import '../../styles/CreateTeam.scss'
 import { NavLink } from "react-router-dom";
-import Scroll from "../../components/Scroll/scroll.js";
+import Scroll from "../../components/common/Scroll/scroll";
 import Project from "./Project.js";
 import ProjectCalendar from "../../components/common/calendar/Calendar";
 
