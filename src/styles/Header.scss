@@ -69,3 +69,19 @@ header {
 .head-up{
   background-color: rgba( 255, 255, 255, 0.5 );
 }
+
+.pj-header{
+  position: relative !important;
+  height: 80px;
+  background-color: #C9E2FF;
+  h2{
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 51px;
+    color: #4295F5;
+  }
+}

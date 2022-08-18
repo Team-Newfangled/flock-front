@@ -1,7 +1,7 @@
 .h1Box{
-  position: relative;
+  position: absolute;
   top: 12%;
-  left: 19%;
+  left: 23%;
   width: 129px;
 
   h1 {
@@ -15,8 +15,8 @@
 }
 
 .profile{
-  position: relative;
-  top: 13%;
+  position: absolute;
+  top: 18%;
   width: 100vw;
   display: flex;
   justify-content: center;

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { ReactComponent as Logo } from '../../images/Logo.svg';
-import '../../styles/Header.scss';
 import Scroll from "../Scroll/scroll";
 import Team from "../../pages/createTeam/Team.js";
+import { ReactComponent as Logo } from '../../images/Logo.svg';
+import '../../styles/Header.scss';
 
 const Header = () => {
   const [isPopup, setIsPopup] = useState(false);
@@ -15,17 +15,15 @@ const Header = () => {
   } 
 
   return(
-    <div>
-      <header className={scroll > 3.5 ? 'head-up' : null}>
-        <div className="logo">
-        <NavLink to='/'><Logo /></NavLink>
-        </div>
-        <div className="nav">
-          <button className="teamBtn" onClick={teamClick}>팀만들기</button>
-        </div>
-      </header>
+    <header className={scroll > 3.5 ? 'head-up' : null}>
+      <div className="logo">
+      <NavLink to='/'><Logo /></NavLink>
+      </div>
+      <div className="nav">
+        <button className="teamBtn" onClick={teamClick}>팀만들기</button>
+      </div>
       {isPopup ? <Team teamClick={teamClick}/> : ''}
-    </div>
+    </header>
   )
 }
 

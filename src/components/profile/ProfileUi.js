@@ -64,7 +64,7 @@ const ProfileUi = () => {
   }
 
   return (
-    <>
+    <div>
       <div className="h1Box">
           <h1>내 정보</h1>
       </div>
@@ -98,7 +98,7 @@ const ProfileUi = () => {
           </div>
         </div> 
       </div>
-    </>
+    </div>
   );
 };
 

@@ -24,7 +24,7 @@ import { useNavigate } from 'react-router-dom'
 
   return (
     <>
-    <div className="h1Box">
+    <div className="titleBox">
           <h1>팀 정보</h1>
     </div>
       <div className="team">
