@@ -88,7 +88,8 @@
 .react-calendar__year-view .react-calendar__tile,
 .react-calendar__decade-view .react-calendar__tile,
 .react-calendar__century-view .react-calendar__tile {
-  padding: 2em 0.5em;
+  padding: 16px;
+  font-size: 14px;
 }
 .react-calendar__tile {
   max-width: 100%;
@@ -129,3 +130,9 @@
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
 }
+
+.react-calendar__year-view {
+  padding: 10px;
+  font-size: 14px;
+}
+
