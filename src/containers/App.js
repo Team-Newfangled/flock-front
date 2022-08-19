@@ -7,7 +7,8 @@ import {
   TeamCode, 
   Member,
   Deadline,
-  Project 
+  Project,
+  Teamleader 
 } from "../pages/Pagelist";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/Profile" element={<Profile/>}/>
         <Route path="/CreateTeam" element={<CreateTeam/>}/>
         <Route path="/TeamCode" element={<TeamCode/>}/>
+        <Route path="/Teamleader" element={<Teamleader/>}/>
         <Route path="/Member" element={<Member/>}/>
         <Route path="/Deadline" element={<Deadline/>}/>
         <Route path="/Project" element={<Project/>}/>
