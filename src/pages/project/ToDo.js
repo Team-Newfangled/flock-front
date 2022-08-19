@@ -1,11 +1,13 @@
+import '../../styles/Project.scss';
+
 const ToDo = () => {
 
   return (
     <>
     <div className="todoBox">
-      <h1>TO-DO!</h1>
+      <h2>TO-DO!</h2>
       <div className="list">
-        
+
       </div>
     </div>
     </>
