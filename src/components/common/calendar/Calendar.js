@@ -10,9 +10,11 @@ const ProjectCalendar = () => {
     <>
       <Calendar
         onChange={setValue}
-        formatDay={(locale, date) => moment(date).format("DD")}
+        formatDay={(locale, date) => moment(date).format("D")}
         value={value}
         locale="en-GB"
+        next2Label={null}
+        prev2Label={null}
       />
     </>
   );
