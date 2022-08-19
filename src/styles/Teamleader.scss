@@ -55,7 +55,14 @@
     color: #0067E0;
     padding: 10px;
   }
-  
+  h4{
+    font-size: 20px;
+    font-weight: bold;
+    color: #0067E0;
+    padding: 10px;
+    margin-left: 10%;
+    margin-top: 10px;
+  }
   .people{
     width: 46%;
     height: 100%;
@@ -70,21 +77,14 @@
   
   .project{
     width: 100%;
-    height: 56%;
-    border-radius: 16px;
-    border: 5px solid #EFF2F9;
-  
-  
-  }
-  
-  .accept{
-    margin-top: 7%;
-    width: 100%;
-    height: 40%;
+    height: 100%;
     border-radius: 16px;
     border: 5px solid #EFF2F9;
   }
-  
+  .changecover{
+    margin: auto;
+    margin-top:15px ;
+}
   .capyBox{
     display: flex;
     align-items: center;
@@ -118,7 +118,7 @@
     word-break:break-all;
     padding: 10px;
   }
-  
+  .projectRname{margin-left: 5%;}
   .capyInput:focus{
     outline:4px solid #4296f546;
   }
@@ -150,22 +150,14 @@
   .proBox{
     height: 40%;
   }
-  
-  .king{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 90%;
-    height: 14%;
-    padding: 10px;
-    border-radius: 15px;
-    background-color: #EFF2F9;
-    margin-bottom: 20px;
-    color: #004DA7;
-    font-weight: 700;
-    font-size: 18px;
+  .teamGo{
+    top:1% !important;
   }
-  
+  .manager{
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+  }
   .membar{
     color: #4295F5;
   }
@@ -173,7 +165,6 @@
   .pro{
     height: 44%;
   }
-  
   .trash{
     width: 18px;
     margin: 10px;

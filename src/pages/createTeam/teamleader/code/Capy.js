@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef, useState } from 'react';
-import '../../../../styles/TeamCode.scss'
+import '../../../../styles/Teamleader.scss'
 
 function Copy() {
 

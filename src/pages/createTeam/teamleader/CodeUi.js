@@ -29,12 +29,15 @@ import { useNavigate } from 'react-router-dom'
             <div className="ssBox">
               <div className="project">
                 <h3>프로젝트 관리</h3>
-              </div>
-
-              <div className="accept">
-
-
-                <button className="newBtn" onClick={()=>{ navigate('/Member')}}>팀원 승인</button>
+                <img className="changecover" src={require('../../../images/changecover.svg').default} alt="커버 변경하기"/>
+                <h4>프로젝트 명</h4>
+                <div className="projectRname">
+                  <input className='capyInput' value="프로젝트 명" type="text"></input>
+                  <button className='capyBtn'>수정</button>
+                </div>
+                <h4>대기 중인 팀원</h4>
+                <button className="newBtn teamGo" onClick={()=>{ navigate('/Member')}}>팀원 승인하러 가기</button>
+                
               </div>
             </div>
           </div>
