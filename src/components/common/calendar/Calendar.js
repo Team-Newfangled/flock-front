@@ -12,6 +12,7 @@ const ProjectCalendar = () => {
         onChange={setValue}
         formatDay={(locale, date) => moment(date).format("DD")}
         value={value}
+        locale="en-GB"
       />
     </>
   );
