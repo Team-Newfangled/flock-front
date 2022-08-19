@@ -1,0 +1,181 @@
+.titleBox{
+    position: relative;
+    top: 12%;
+    left: 18%;
+    width: 129px;
+  
+    h1 {
+      position: relative;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 44px;
+    }
+  }
+  
+  .tName{
+    font-weight: 700;
+    font-size: 26px;
+    color: #004DA7;
+    padding: 10px;
+  }
+  
+  .team{
+    position: relative;
+    top: 13%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .TeamBox{
+    position: absolute;
+    width: 64%;
+    height: 744px;
+    border: 2px solid #4295F5;
+    border-radius: 20px;
+  }
+  
+  .sBox{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 86%;
+  }
+  
+  .ssBox{
+    width: 46%;
+  }
+  
+  h3{
+    font-size:22px;
+    font-weight: 700;
+    color: #0067E0;
+    padding: 10px;
+  }
+  
+  .people{
+    width: 46%;
+    height: 100%;
+  
+    border: #EFF2F9;
+    margin-right: 3%;
+    border-radius: 16px;
+    border: 5px solid #EFF2F9;
+  
+    
+  }
+  
+  .project{
+    width: 100%;
+    height: 56%;
+    border-radius: 16px;
+    border: 5px solid #EFF2F9;
+  
+  
+  }
+  
+  .accept{
+    margin-top: 7%;
+    width: 100%;
+    height: 40%;
+    border-radius: 16px;
+    border: 5px solid #EFF2F9;
+  }
+  
+  .capyBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 10px;
+  }
+  
+  
+  .capyBtn{
+    background-color: #4295F5;
+    width:90px;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+    margin: 10px 0px 10px 10px;
+  }
+  
+  .capyInput{
+    background-color: #EFF2F9;
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    width:70%;
+    height: 50px;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    word-break:break-all;
+    padding: 10px;
+  }
+  
+  .capyInput:focus{
+    outline:4px solid #4296f546;
+  }
+  
+  .capyBtn:focus{
+    outline:4px solid #4296f546;
+  }
+  
+  .membarBox{
+    width: 80%;
+    height: 70%;
+    margin: 20px auto 0px;
+    overflow: auto;
+  }
+  
+  .membarBox::-webkit-scrollbar {
+    width: 16px;
+  }
+  .membarBox::-webkit-scrollbar-thumb {
+    background-color: #004DA7B2;
+    border-radius: 10px;
+    background-clip: padding-box;
+  }
+  .membarBox::-webkit-scrollbar-track {
+    background-color: #EFF2F9;
+    border-radius: 10px;
+  }
+  
+  .proBox{
+    height: 40%;
+  }
+  
+  .king{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    height: 14%;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #EFF2F9;
+    margin-bottom: 20px;
+    color: #004DA7;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  
+  .membar{
+    color: #4295F5;
+  }
+  
+  .pro{
+    height: 44%;
+  }
+  
+  .trash{
+    width: 18px;
+    margin: 10px;
+  }
+  
