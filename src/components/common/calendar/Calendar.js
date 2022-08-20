@@ -3,12 +3,13 @@ import Calendar from 'react-calendar';
 import moment from "moment";
 import '../../../styles/Calendar.scss';
 
-const ProjectCalendar = () => {
+const ProjectCalendar = ({className}) => {
   const [value, setValue] = useState(new Date());
 
   return(
     <>
       <Calendar
+        className={className}
         onChange={setValue}
         formatDay={(locale, date) => moment(date).format("D")}
         value={value}
