@@ -27,7 +27,7 @@ import { useNavigate } from 'react-router-dom'
               <People/>
             </div>
             <div className="ssBox">
-              <div className="project">
+              <div className="projectbbb">
                 <h3>프로젝트 관리</h3>
                 <img className="changecover" src={require('../../../images/changecover.svg').default} alt="커버 변경하기"/>
                 <h4>프로젝트 명</h4>
