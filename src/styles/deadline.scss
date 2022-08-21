@@ -1,6 +1,8 @@
 .deadline-calendar{
   width: 960px;
   height: 775px;
+  left: 14%;
+  margin-top: 40px;
   border-radius: 20px;
   
   .react-calendar__navigation{
@@ -25,4 +27,16 @@
       color: black;
     }
   }
+}
+
+.mark{
+  position: absolute;
+  right:14%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 40px;
+  width: 400px;
+  height: 775px;
+  background-color: #EFF2F9;
+  border-radius: 20px;
 }

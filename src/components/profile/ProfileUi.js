@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Input from './Input';
+import InputForm from './InputForm';
 import '../../styles/Profile.scss'
 import axios from "axios";
 import { API } from "../../lib/API";
@@ -80,14 +80,14 @@ const ProfileUi = () => {
             <input type="file" id="file_input" onChange={onLoadFile} style={{display : 'none'}}/>
           </div>
           <div className="inputarea">
-            <Input setAllChange={setAllChange} 
+            <InputForm setAllChange={setAllChange} 
                    allChange={allChange}
                    name="닉네임" 
                    onClick={patchName}
                    onChange={setName}
                    item={name} 
                    />
-            <Input setAllChange={setAllChange} 
+            <InputForm setAllChange={setAllChange} 
                    allChange={allChange}
                    name="소속"
                    onClick={patchOrganizaion}

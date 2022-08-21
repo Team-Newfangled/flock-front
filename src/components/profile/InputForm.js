@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Input = ({setAllChange, allChange, name, onClick, onChange, item}) => {
+const InputForm = ({setAllChange, allChange, name, onClick, onChange, item}) => {
   const [change, setChange] = useState(false);
   const [changeName, setChangeName] = useState(name === "닉네임"? "inputArea1" :  "inputArea2");
   const className = name === "닉네임"? "input1 bg" :  "input2 bg";
@@ -39,4 +39,4 @@ const Input = ({setAllChange, allChange, name, onClick, onChange, item}) => {
   );
 };
 
-export default Input;
+export default InputForm;
