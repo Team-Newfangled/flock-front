@@ -1,7 +1,7 @@
 .deadline-calendar{
   width: 960px;
   height: 775px;
-  left: 14%;
+  left: 16%;
   margin-top: 40px;
   border-radius: 20px;
   
@@ -31,7 +31,7 @@
 
 .mark{
   position: absolute;
-  right:14%;
+  right:16%;
   top: 50%;
   transform: translateY(-50%);
   margin-top: 40px;
@@ -39,4 +39,115 @@
   height: 775px;
   background-color: #EFF2F9;
   border-radius: 20px;
+
+  .deadline-list{
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .deadline{
+      position: relative;
+      width: 360px;
+      height: 110px;
+      margin-bottom: 20px;
+      background-color: white;
+      border-radius: 20px;
+
+      .title{
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        display: flex;
+        align-items: center;
+
+        h2{
+          color: #000000;
+          margin-right: 6px;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 25px;
+          line-height: 30px;
+        }
+      }
+
+      p{
+        position: absolute;
+        bottom:10%;
+        left:5%;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  .change-deadline{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 3%;
+    width: 360px;
+    height: 336px;
+    background-color: white;
+    border-radius: 20px;
+
+    h2{
+      margin: 20px 0 10px 10px;
+      width: 90px;
+      white-space: nowrap;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 30px;
+      color: #000000;
+    }
+
+    .preview{
+      cursor: pointer;
+      width: 340px;
+      height: 60px;
+      border-radius: 10px;
+      margin: 0 0 20px 10px;
+    }
+
+    .picker{
+      position: absolute;
+      top: 20%;
+      right: 105%;
+      width: 227px;
+      height: 264px;
+      background-color: white;
+      border: 1px solid #000000;
+
+      .close{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        background-image:url("../images/Close.svg");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .chrome-picker{
+        position: absolute;
+        bottom: 0;
+      }
+    }
+
+    .change-date{
+      h4{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        color: #000000;
+        margin-left: 10px;
+        padding: 0;
+      }
+    }
+  }
 }
