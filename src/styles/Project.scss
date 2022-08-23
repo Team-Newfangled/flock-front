@@ -1,10 +1,10 @@
 .todoBox{
   position: absolute;
   top: 60%;
-  left: 13%;
+  left: 16%;
   transform: translateY(-58%);
-  width: 22%;
-  height: 700px;
+  width: 360px;
+  height: 660px;
   padding: 20px;
   border-radius: 30px;
   background: #EFF2F9;
@@ -16,4 +16,31 @@ h2{
   font-weight: 900;
   color:#004DA7;
   ;
+}
+
+.go{
+  position: absolute;
+  top: 16%;
+  right: 16%;
+  width: 46%;
+}
+
+.iBox{
+  display: flex;
+  position: absolute;
+  right: 16%;
+  top: 58%;
+  justify-content: flex-end;
+}
+
+.feed{
+  width: 52%;
+}
+
+.lineImg{
+  width: 34%;
+}
+
+.space{
+  width: 48px;
 }
