@@ -14,7 +14,7 @@ const Project = () => {
           <img className='go' src={require('../../images/go.svg').default} />
         </div>
         <div className="iBox">
-          <img className='lineImg' src={require('../../images/lineBox.svg').default} />
+          <img className='lineImg' src={require('../../images/lineBox.svg').default}/>
           <div className="space"></div>
           <img className='feed' src={require('../../images/feed.svg').default} />
         </div>
