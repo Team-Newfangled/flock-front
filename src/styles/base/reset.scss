@@ -4,6 +4,7 @@
 html, body {height:100%;}
 img, picture, video, canvas, svg {display: block;max-width:100%;}
 button {background:none;cursor:pointer;}
+button:focus-visible {outline: none;}
 a {text-decoration:none}
 a:hover {text-decoration:underline}
 table {border-collapse:collapse;border-spacing:0}

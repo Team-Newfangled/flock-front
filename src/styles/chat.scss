@@ -28,47 +28,47 @@ $shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.25);
   box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.09);
   filter: drop-shadow(6px 4px 10px rgba(0, 0, 0, 0.09));
   z-index: 50;
-  
-  .ch {
-    .ch-sns{
-      @include background("../images/SNS.svg");
-      @include position(-10%, 110%);
-      @include border(50%);
-      width: 60px;
-      height: 60px;
-      box-shadow: $shadow;
-      animation: chShow 1s;
-    }
-  
-    .ch-profile{
-      @include background("../images/profile.svg");
-      @include position(60%, 100%);
-      @include border(50%);
-      width: 90px;
-      height: 90px;
-      box-shadow: $shadow;
-      animation: chShow 1s;
-    }
-  
-    .ch-message {
-      @include background("../images/message.svg");
-      @include position(125%, 50%);
-      @include border(50%);
-      width: 60px;
-      height: 60px;
-      box-shadow: $shadow;
-      animation: chShow 1s;
-    }
-  
-    .ch-project {
-      @include background("../images/project.svg");
-      @include position(109%, -15%);
-      @include border(50%);
-      width: 60px;
-      height: 60px;
-      box-shadow: $shadow;
-      animation: chShow 1s;
-    }
+}
+
+.ch {
+  .ch-sns{
+    @include background("../images/SNS.svg");
+    @include position(2%, 16.5%);
+    @include border(50%);
+    width: 60px;
+    height: 60px;
+    box-shadow: $shadow;
+    animation: chShow 1s;
+  }
+
+  .ch-profile{
+    @include background("../images/profile.svg");
+    @include position(5.799999%, 16%);
+    @include border(50%);
+    width: 90px;
+    height: 90px;
+    box-shadow: $shadow;
+    animation: chShow 1s;
+  }
+
+  .ch-message {
+    @include background("../images/message.svg");
+    @include position(9.33333%, 10%);
+    @include border(50%);
+    width: 60px;
+    height: 60px;
+    box-shadow: $shadow;
+    animation: chShow 1s;
+  }
+
+  .ch-project {
+    @include background("../images/project.svg");
+    @include position(8.88888%, 2.5%);
+    @include border(50%);
+    width: 60px;
+    height: 60px;
+    box-shadow: $shadow;
+    animation: chShow 1s;
   }
 }
 
