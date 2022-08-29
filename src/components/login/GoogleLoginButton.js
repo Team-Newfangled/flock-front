@@ -7,12 +7,12 @@ const GoogleLoginButton = () => {
 
   return(
     <>
-          <a href={loginUrl} >
-            <button className="googleLogin">
-              <img className="oauthLogo" alt="googleLogo" src={require('../../images/google.svg').default} />
-              <span>구글로 계속하기</span>
-            </button>
-          </a>
+      <a href={loginUrl} >
+        <button className="googleLogin">
+          <img className="oauthLogo" alt="googleLogo" src={require('../../images/google.svg').default} />
+          <span>구글로 계속하기</span>
+        </button>
+      </a>
     </>
   )
 }
