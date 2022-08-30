@@ -22,8 +22,12 @@ const Main = () => {
         console.log(code);
         console.log(scope);
 
-        const { data } = login({code});
-        console.log(data) 
+        const { data } = await login(code);
+        const access_token = data.access_token;
+        console.log(access_token); 
+        if(data.refresh_token){
+          localStorage.setItem('refresh_token', data.refresh_token);
+        } 
       }
     })();
   }, [])
