@@ -6,3 +6,4 @@ export {  default as TeamCode } from "./createTeam/teamcode/TeamCode";
 export {  default as Teamleader } from "./createTeam/teamleader/Teamleader";
 export {  default as Member } from "./createTeam/member/Member";
 export {  default as Project } from "./project/Project";
+export {  default as Feed } from "./feed/Feed";

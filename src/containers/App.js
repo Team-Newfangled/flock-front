@@ -8,7 +8,8 @@ import {
   Member,
   Deadline,
   Project,
-  Teamleader 
+  Teamleader, 
+  Feed
 } from "../pages/Pagelist";
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/Member" element={<Member/>}/>
         <Route path="/Deadline" element={<Deadline/>}/>
         <Route path="/Project" element={<Project/>}/>
+        <Route path="/Feed" element={<Feed/>}/>
       </Routes>
     </Router>
   );
