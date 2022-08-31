@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import InputForm from './InputForm';
 import '../../styles/Profile.scss'
 import axios from "axios";
-import { API } from "../../lib/API";
+import { authAPI } from "../../lib/API";
 
 const ProfileUi = () => {
   const user = useSelector((state) => state.user.value)
-  const dispatch = useDispatch();
   const [allChange, setAllChange] = useState(0);
   const [file, setFile] = useState(user.image);
-  const [name, setName] = useState(user.name);
-  const [organizaion, setOrganizaion] = useState(user.organizaion);
+  const [name, setName] = useState(user.nickname);
+  const [organizaion, setOrganizaion] = useState(user.company);
 
   const onLoadFile = e => {
     const {target: {files},} = e;
@@ -39,18 +38,18 @@ const ProfileUi = () => {
       },
     };
     
-    return API.patch('{user-id}/picture', formdata, config);
+    return authAPI.patch(`users/{user-id}/picture`, formdata, config);
   }
 
   const patchName = () => {
-    return API.patch('{user-id}/name',{
+    return authAPI.patch(`users/{user-id}/name`,{
       name: name,
     })
   }
 
   const patchOrganizaion = () => {
     console.log()
-    return API.patch('{user-id}/organizaion',{
+    return authAPI.patch(`users/{user-id}/organizaion`,{
       name: organizaion,
     })
   }

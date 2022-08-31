@@ -17,39 +17,50 @@ header {
     width: 120px;
   }
 
-  .nav {
-    font: {
-      family: 'Inter';
-      style: normal;
-      weight: 400;
-      size: 20px;
-    };
+  .nav-form{
+    .nav {
+      font: {
+        family: 'Inter';
+        style: normal;
+        weight: 400;
+        size: 20px;
+      };
 
-    position: absolute;
-    top: 50%;
-    right:13%;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #828282;
+      position: absolute;
+      top: 50%;
+      right:13%;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #828282;
 
-    .nav-link {
-      margin-right: 36px;
-    }
+      .nav-link {
+        margin-right: 36px;
+      }
 
-    .button-my {
-      font-weight: 700;
-      border: none;
-      color: #4295F5;
-    }
-    .line {
-      width: 1px;
-      height: 29px;
-      background-color: #828282;
-      border-radius: 2px;
-      margin-right: 36px;
+      .button-my {
+        font-weight: 700;
+        border: none;
+        color: #4295F5;
+      }
+
+      .line {
+        width: 1px;
+        height: 29px;
+        background-color: #828282;
+        border-radius: 2px;
+        margin-right: 36px;
+      }
+
+      .my-nav {
+        position: absolute;
+        top: 10%;
+        width: 92px;
+        height: 84px;
+        background-image: url('../images/myModal.svg');
+      }
     }
   }
 }
