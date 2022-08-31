@@ -13,7 +13,7 @@ const TodoList = styled.div`
       width: 14px;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: #004DA7B2;
+      background-color: #004DA780;
       border-radius: 10px;
       background-clip: padding-box;
     }
