@@ -1,6 +1,8 @@
 import TeamHeader from "../../components/header/Header";
 import '../../styles/Project.scss';
-import ToDo from "./ToDo.js";
+import Head from './todo/Head.js';
+import List from './todo/List.js';
+import Todo from "./todo/Todo.js";
 
 
 const Project = () => {
@@ -8,7 +10,10 @@ const Project = () => {
   return (
     <>
       <TeamHeader/>
-      <ToDo/>
+      <Todo>
+        <Head/>
+        <List/>
+      </Todo>
       <div>
         <div>
           <img className='go' src={require('../../images/go.svg').default} />
