@@ -37,3 +37,38 @@
 .plus:focus{
   outline: 3px solid #569fff80;
 }
+
+.TodoList {
+  position: relative;
+    top: 6%;
+    width: 90%;
+    height: 64%;
+    overflow: auto;
+}
+    
+.TodoList::-webkit-scrollbar {
+      width: 14px;
+    }
+.TodoList::-webkit-scrollbar-thumb {
+      background-color: #004DA780;
+      border-radius: 10px;
+      background-clip: padding-box;
+    }
+.TodoList::-webkit-scrollbar-track {
+      background-color: #fff;
+      border-radius: 10px;
+    }
+
+
+ .TodoStyle{
+  position: absolute;
+  top: 60%;
+  left: 13%;
+  transform: translateY(-60%);
+  width: 400px;
+  height: 660px;
+  padding: 20px;
+  border-radius: 30px;
+  background: #EFF2F9;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.1);
+ }
