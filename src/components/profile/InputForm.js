@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
+import { changeCompany, changeName } from '../../util/api/user';
 
-const InputForm = ({setAllChange, allChange, name, onClick, onChange, item}) => {
+const InputForm = ({setAllChange, allChange, name, onChange, item, value}) => {
   const [change, setChange] = useState(false);
-  const [changeName, setChangeName] = useState(name === "닉네임"? "inputArea1" :  "inputArea2");
+  const [changeClass, setChangeClass] = useState(name === "닉네임"? "inputArea1" :  "inputArea2");
   const className = name === "닉네임"? "input1 bg" :  "input2 bg";
 
   const getChange = () => {
     setChange(true);
-    setChangeName(changeName + ' changeArea')
+    setChangeClass(changeClass + ' changeArea')
     setAllChange(allChange + 1)
+  }
+
+  const changeValue = () => {
+    if(name === "닉네임"){
+      changeName(item)
+    }else {
+      changeCompany(item)
+    }
   }
 
   return (
     <>
-      <div className={changeName} >
+      <div className={changeClass} >
           <div>
             <label>{name}</label>
           </div>
           <div>
-            <input className={className} value={item} disabled/>
+            <input className={className} value={value} disabled/>
           </div>
         <div className='change'>
           <button onClick={getChange} className={change ? 'none' : null}>변경</button>
@@ -31,7 +40,7 @@ const InputForm = ({setAllChange, allChange, name, onClick, onChange, item}) => 
                    onChange={(e) => onChange(e.target.value)}/>
           </div> 
           <div className='change buttonarea'>
-            <button onClick={onClick} className={allChange === 2 ? 'none' : null}>변경</button>
+            <button onClick={changeValue} className={allChange === 2 ? 'none' : null}>변경</button>
           </div>
         </>: null}
       </div>

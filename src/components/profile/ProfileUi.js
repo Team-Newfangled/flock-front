@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { 
+  changeCompany, 
+  changeFile, 
+  changeName
+} from "../../util/api/user";
 import InputForm from './InputForm';
 import '../../styles/Profile.scss'
 import axios from "axios";
-import { authAPI } from "../../lib/API";
 
 const ProfileUi = () => {
   const user = useSelector((state) => state.user.value)
   const [allChange, setAllChange] = useState(0);
   const [file, setFile] = useState(user.image);
-  const [name, setName] = useState(user.nickname);
-  const [organizaion, setOrganizaion] = useState(user.company);
+  const [name, setName] = useState('');
+  const [company, setCompany] = useState('');
 
-  const onLoadFile = e => {
+  const onLoadFile = (e) => {
     const {target: {files},} = e;
     console.log(files)
     const theFile = files[0];
@@ -28,39 +32,13 @@ const ProfileUi = () => {
     reader.readAsDataURL(theFile);
   }
 
-  const patchFile = () => {
-    const formdata = new FormData();
-    formdata.append('uploadImage,', file);
-
-    const config = {
-      Headers: {
-        'content-type': 'multipart/form-data',
-      },
-    };
-    
-    return authAPI.patch(`users/{user-id}/picture`, formdata, config);
-  }
-
-  const patchName = () => {
-    return authAPI.patch(`users/{user-id}/name`,{
-      name: name,
-    })
-  }
-
-  const patchOrganizaion = () => {
-    console.log()
-    return authAPI.patch(`users/{user-id}/organizaion`,{
-      name: organizaion,
-    })
-  }
-
   const changeClick = async(e) => {
     e.preventDefault();
-    await axios.all([patchFile(), patchName(), patchOrganizaion()])
-      .then(axios.spread(function (file, name, organ) {
-        console.log(file, name, organ);
-      }))
-  }
+    await axios.all([changeFile(file), changeName(name), changeCompany(company)])
+    .then(axios.spread(function (file, name, company) {
+      console.log(file, name, company);
+    }));
+  };
 
   return (
     <div>
@@ -79,20 +57,22 @@ const ProfileUi = () => {
             <input type="file" id="file_input" onChange={onLoadFile} style={{display : 'none'}}/>
           </div>
           <div className="inputarea">
-            <InputForm setAllChange={setAllChange} 
+            <InputForm 
+                   setAllChange={setAllChange} 
                    allChange={allChange}
                    name="닉네임" 
-                   onClick={patchName}
                    onChange={setName}
-                   item={name} 
-                   />
-            <InputForm setAllChange={setAllChange} 
+                   item={name}
+                   value={user.nickname} 
+            />
+            <InputForm 
+                   setAllChange={setAllChange} 
                    allChange={allChange}
                    name="소속"
-                   onClick={patchOrganizaion}
-                   onChange={setOrganizaion}
-                   item={organizaion} 
-                   />
+                   onChange={setCompany}
+                   item={company}
+                   value={user.company} 
+            />
             {allChange === 2 ? <button className="allChange" onClick={changeClick}>모두 변경</button> : null}
           </div>
         </div> 
