@@ -1,0 +1,77 @@
+.penBox{
+  width: 1000px;
+  height: 70%;
+  background-color: #fff;
+}
+
+
+textarea{
+  resize: none;
+}
+
+.textDiv{
+  position: relative;
+  top: 46%;
+  transform: translate(0%,-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.writeDiv{
+  font-size: 24px;
+  font-weight: 700;
+  color: #004DA7;
+  position: relative;
+  right: 36%;
+  margin-bottom:20px
+}
+
+.fileplus{
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#feedtext{
+  width: 80%;
+  height: 240px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+  padding: 10px;
+  display: flex;
+  background-color: #EFF2F9;
+}
+
+#feedtext:focus{
+  outline: 4px solid #004ea748;
+}
+
+#fileuplode{
+  width: 80%;
+  height: 160px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+  background-color: #EFF2F9;
+}
+
+#fileBtn{
+  width: 100px;
+  height: 40px;
+  position: relative;
+  left: 35%;
+  border:none;
+  border-radius: 10px;
+  background-color: #004DA7;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+#fileUploadBtn{
+  left: 50%;
+  bottom: 22%;
+  transform: translate(-50%);
+  position: absolute;
+}

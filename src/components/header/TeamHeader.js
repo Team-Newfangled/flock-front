@@ -19,7 +19,7 @@ const Header = () => {
       <div className="logo">
       <NavLink to='/'><Logo /></NavLink>
       </div>
-      <div className="nav">
+      <div className="navButton">
         <button className="teamBtn" onClick={teamClick}>팀만들기</button>
       </div>
       {isPopup ? <Team teamClick={teamClick}/> : ''}

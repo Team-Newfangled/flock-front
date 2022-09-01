@@ -65,6 +65,13 @@ header {
   }
 }
 
+.navButton{
+  position: absolute;
+  top: 50%;
+  right: 13%;
+  transform: translate(0,-50%);
+}
+
 .teamBtn{
   font-size: 18px;
   font-weight: bold;
