@@ -19,7 +19,7 @@ const Feed = () => {
                             <img alt="user" src={require('../../images/userimg.svg').default}/>
                             <p>팀원이름</p>
                         </div>
-                        <img alt="user" src={require('../../images/detail.svg').default}/>
+                        <img alt="user" src={require('../../images/addlook.svg').default}/>
                     </div>
                     <div className="feedmean">
                         <p className="commentmean"> 내용 </p>
