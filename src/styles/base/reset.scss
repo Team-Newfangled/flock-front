@@ -3,7 +3,7 @@
 :root {-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;text-size-adjust:100%;cursor:default;line-height:1.5;overflow-wrap:break-word;-moz-tab-size:4;tab-size:4}
 html, body {height:100%;}
 img, picture, video, canvas, svg {display: block;max-width:100%;}
-button {background:none;cursor:pointer;}
+button {background:none;cursor:pointer;border:none;}
 button:focus-visible {outline: none;}
 a {text-decoration:none}
 a:hover {text-decoration:underline}
