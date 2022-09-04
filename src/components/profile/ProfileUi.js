@@ -35,7 +35,7 @@ const ProfileUi = () => {
   const changeClick = async(e) => {
     e.preventDefault();
     await axios.all([changeFile(file), changeName(name), changeCompany(company)])
-    .then(axios.spread(function (file, name, company) {
+    .then(axios.spread((file, name, company) => {
       console.log(file, name, company);
     }));
   };
