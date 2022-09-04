@@ -10,7 +10,8 @@ import {
   Project,
   Teamleader, 
   Feed,
-  Pen
+  Pen,
+  Progress
 } from "../pages/Pagelist";
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/Deadline" element={<Deadline/>}/>
         <Route path="/Project" element={<Project/>}/>
         <Route path="/Feed" element={<Feed/>}/>
+        <Route path="/Progress" element={<Progress/>}/>
         <Route path="/Pen" element={<Pen/>}/>
       </Routes>
     </Router>
