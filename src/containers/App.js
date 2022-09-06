@@ -11,7 +11,8 @@ import {
   Teamleader, 
   Feed,
   Pen,
-  Progress
+  Progress,
+  Ongoing
 } from "../pages/Pagelist";
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/Feed" element={<Feed/>}/>
         <Route path="/Progress" element={<Progress/>}/>
         <Route path="/Pen" element={<Pen/>}/>
+        <Route path="/Ongoing" element={<Ongoing/>}/>
       </Routes>
     </Router>
   );

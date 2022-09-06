@@ -9,3 +9,5 @@ export {  default as Project } from "./project/Project";
 export {  default as Feed } from "./feed/Feed";
 export {  default as Pen } from "./project/Pen.js";
 export {  default as Progress } from "./progress/Progress.js";
+export {  default as Ongoing } from "./ongoing/Ongoing";
+

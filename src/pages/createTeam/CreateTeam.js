@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import Scroll from "../../components/common/Scroll/scroll";
 import Project from "./Project.js";
 import ProjectCalendar from "../../components/common/calendar/Calendar";
+import Chat from "../../components/common/chat/Chat";
 
 
 const CreateTeam = () => {
@@ -19,7 +20,7 @@ const CreateTeam = () => {
   return (
     <>
       <TeamHeader/>
-
+      <Chat/>
       <div className="teamBox">
         <div className="projectBox">
           <p className="tName">팀이름</p>

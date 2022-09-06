@@ -1,4 +1,5 @@
 import React from "react";
+import Chat from "../../components/common/chat/Chat";
 import TeamHeader from "../../components/header/Header";
 import '../../styles/Feed.scss';
 import Head from '../project/todo/Head.js';
@@ -8,6 +9,7 @@ const Feed = () => {
     return(
         <>
             <TeamHeader/>
+            <Chat/>
             <Todo>
                 <Head/>
                 <List/>
