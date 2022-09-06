@@ -1,42 +1,10 @@
-.deadline-calendar{
-  width: 960px;
-  height: 775px;
-  left: 16%;
-  margin-top: 40px;
-  border-radius: 20px;
-  
-  .react-calendar__navigation{
-    margin-top: 20px;
-    padding: 0 45px 0 45px;
-
-    span{
-      font-weight: 700;
-      font-size: 25px;
-      line-height: 30px;
-    }
-  }
-
-  .react-calendar__month-view__weekdays__weekday,
-  .react-calendar__month-view__days__day--neighboringMonth{
-    color: darkgray !important;
-  }
-  .react-calendar__month-view__days{
-    height: 664px;
-
-    .react-calendar__month-view__days__day--weekend{
-      color: black;
-    }
-  }
-}
-
 .mark{
   position: absolute;
   right:16%;
   top: 50%;
   transform: translateY(-50%);
-  margin-top: 40px;
   width: 400px;
-  height: 775px;
+  height: 778px;
   background-color: #EFF2F9;
   border-radius: 20px;
 
@@ -139,6 +107,9 @@
     }
 
     .change-date{
+      position: relative;
+      height: 198px;
+
       h4{
         font-style: normal;
         font-weight: 400;
@@ -147,6 +118,18 @@
         color: #000000;
         margin-left: 10px;
         padding: 0;
+      }
+      
+
+      .change{
+        position: absolute;
+        right: 5%;
+        bottom: 10%;
+        width: 84px;
+        height: 34px;
+        border-radius: 10px;
+        background: #4295F5;
+        color: #ffffff;
       }
     }
   }

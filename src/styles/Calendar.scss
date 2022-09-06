@@ -135,3 +135,89 @@
   padding: 10px;
   font-size: 14px;
 }
+
+.calendar{
+  position: absolute;
+  left: 16%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 966px;
+  background-color: #EFF2F9;
+  border-radius: 20px;
+
+  .calendar-header {
+    position: relative;
+    width: 966px;
+    height: 70px;
+
+    .prev-month{
+      position: absolute;
+      top: 50%;
+      left: 2%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background-color: white;
+      border-radius: 50%;
+    }
+  
+    .month{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 700;
+      font-size: 25px;
+      color: #004DA7;
+    }
+  
+    .next-month{
+      position: absolute;
+      top: 50%;
+      right: 2%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background-color: white;
+      border-radius: 50%; 
+    }
+  }
+  
+  .days {
+    display: flex;
+    width: 966px;
+    height: 25px;
+  
+    .col {
+      width: 138px;
+      text-align: center;
+      font-weight: 400;
+      font-size: 16px;
+      color: rgb(146, 146, 146);
+    }
+  }
+  
+  .cells{
+    width: 966px;
+
+    .row{
+      display: flex;
+
+      .cell{
+        position: relative;
+        width: 138px;
+        height: 138px;
+
+        span{
+          position: absolute;
+          top: 20px;
+          left: 20px;
+        }
+      }
+
+      .different {
+        color: rgb(146, 146, 146);
+      }
+    }
+  }
+}

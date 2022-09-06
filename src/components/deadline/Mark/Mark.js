@@ -3,6 +3,7 @@ import { ChromePicker } from "react-color";
 import todos from "./data.json";
 
 const Mark = () => {
+  const [currentColor] = useState('#8DF1CD')
   const [color, setColor] = useState('#8DF1CD');
   const [isPicker, setIsPicker] = useState(true);
 
@@ -31,7 +32,7 @@ const Mark = () => {
           <div 
               className="preview" 
               onClick={pickerHandler} 
-              style={{backgroundColor: color}}>
+              style={{background: `linear-gradient(90deg, ${color} 0%, ${currentColor} 100%)`}}>
           </div>
           <div className="picker" style={{display: isPicker ? '' : 'none'}}> 
             <button className="close" onClick={pickerHandler}/>
@@ -42,6 +43,9 @@ const Mark = () => {
           </div>
           <div className="change-date">
             <h4>날짜</h4>
+            <button></button>
+            <span>~</span>
+            <button className="change">완료</button>
           </div>
       </div>
     </div>
