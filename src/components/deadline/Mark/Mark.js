@@ -5,7 +5,7 @@ import todos from "./data.json";
 const Mark = () => {
   const [currentColor] = useState('#8DF1CD')
   const [color, setColor] = useState('#8DF1CD');
-  const [isPicker, setIsPicker] = useState(true);
+  const [isPicker, setIsPicker] = useState(false);
 
   const pickerHandler = () => setIsPicker(!isPicker);
 
@@ -43,8 +43,11 @@ const Mark = () => {
           </div>
           <div className="change-date">
             <h4>날짜</h4>
-            <button></button>
-            <span>~</span>
+            <div className="day">
+              <input className="date-input" value={"2022/05/04"}/>
+              <span>~</span>
+              <input className="date-input" value={"2022/05/04"}/>
+            </div>
             <button className="change">완료</button>
           </div>
       </div>

@@ -8,8 +8,13 @@ const Deadline = () => {
   return(
     <>
       <Header title="데드라인"/>
-      <Calendar />
-      <Mark />
+      <main style={{
+                    position: 'relative',
+                    height: '92vh'
+                  }}>
+        <Calendar />
+        <Mark />
+      </main>
     </>
   );
 };

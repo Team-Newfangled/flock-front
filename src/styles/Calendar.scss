@@ -158,6 +158,9 @@
       width: 30px;
       height: 30px;
       background-color: white;
+      background-image: url('../images/left.svg');
+      background-position: center;
+      background-repeat: no-repeat;
       border-radius: 50%;
     }
   
@@ -179,6 +182,9 @@
       width: 30px;
       height: 30px;
       background-color: white;
+      background-image: url('../images/right.svg');
+      background-position: center;
+      background-repeat: no-repeat;
       border-radius: 50%; 
     }
   }
