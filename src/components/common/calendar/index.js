@@ -7,6 +7,7 @@ import "../../../styles/Calendar.scss";
 
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [nowDate, setNowDate] = useState(new Date());
 
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
@@ -14,10 +15,6 @@ const Calendar = () => {
 
   const nextMonth = () => {
     setCurrentMonth(addMonths(currentMonth, 1));
-  }
-
-  const onDateClick = (date) => {
-    
   }
 
   return (
@@ -30,7 +27,7 @@ const Calendar = () => {
       <Days />
       <Cells 
         currentMonth={currentMonth}
-        onDateClick={onDateClick}
+        nowDate={nowDate}
       />
     </div>
   )
