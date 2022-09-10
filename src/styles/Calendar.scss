@@ -248,9 +248,18 @@
         background-color: black;
       }
 
+      .start {
+        border-radius: 15px 0 0 15px;
+      }
+
       .mid {
         width: 100%;
         border-radius: 0;
+      }
+
+      .end {
+        width: 100%;
+        border-radius: 0 15px 15px 0;
       }
     }
   }
