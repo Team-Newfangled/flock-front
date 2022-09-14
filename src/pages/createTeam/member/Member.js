@@ -2,6 +2,7 @@ import '../../../styles/Member.scss'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import Header from "../../../components/header/Header";
+import axios from 'axios';
 
 const TeamCode = () => {
   let navigate = useNavigate();
@@ -10,13 +11,6 @@ const TeamCode = () => {
     {id: 0, title: '선택 1', comment:'대구소프트웨어'},
     {id: 1, title: '선택 2', comment:'대구소프트웨어'},
     {id: 2, title: '선택 3', comment:'대구소프트웨어'},
-    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
-    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
-    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
-    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
-    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
-    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
-    {id: 3, title: '선택 4', comment:'대구소프트웨어'},
     {id: 3, title: '선택 4', comment:'대구소프트웨어'},
   ];
 
@@ -83,8 +77,12 @@ const TeamCode = () => {
         ))}
       </div>
       <div className='mBtn'>
-        <button className='cBtn'>선택 삭제</button>
-        <button className='cBtn'>선택 승인</button>
+        <button className='cBtn' onClick={()=>{
+          axios.post("",{adf:data}).then(()=>{})
+        }}>선택 삭제</button>
+        <button className='cBtn'onClick={()=>{
+          axios.post("",{adf:data}).then(()=>{})
+        }}>선택 승인</button>
       </div>
     </div>
     </>

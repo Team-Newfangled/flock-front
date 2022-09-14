@@ -1,6 +1,7 @@
+import axios from "axios";
 import React from "react";
 import { useRef, useState } from 'react';
-import '../../../../styles/TeamCode.scss'
+import '../../../../styles/Teamleader.scss'
 
 function Copy() {
 
@@ -18,7 +19,10 @@ function Copy() {
   return (
     <>
     <div className="capyBox">
-      <input className='capyInput' type="text" value="Test Text" ref={textInput} readOnly></input>
+      <input className='capyInput' type="text" value={()=>{
+        axios.get('/')
+        .then((result)=>{})
+      }} ref={textInput} readOnly></input>
       <button className='capyBtn' onClick={copy}>복사</button>
     </div>
       {

@@ -1,6 +1,7 @@
 import React from "react";
 import TeamHeader from "../../components/header/TeamHeader";
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import '../../styles/CreateTeam.scss'
 import { NavLink } from "react-router-dom";
 import Scroll from "../../components/common/Scroll/scroll";
@@ -17,41 +18,54 @@ const CreateTeam = () => {
     !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
   } 
 
+  let navigate = useNavigate();
+
+  const data = [
+    {id: 0, title: '선택 1'},
+    {id: 1, title: '선택 2'},
+    {id: 2, title: '선택 3'},
+    {id: 3, title: '선택 4'},
+  ];
+
+  const data1=[
+    {id:0, name:'zz'},
+    {id:1, name:'ㅇㅁ'},
+    {id:2, name:'ㅁㅇㄹ'},
+  ]
+  
+  let [box, setBox]=useState(data);
+  let [team, setTeam]=useState(data1);
+
   return (
     <>
       <TeamHeader/>
       <Chat/>
       <div className="teamBox">
-        <div className="projectBox">
-          <p className="tName">팀이름</p>
-            <div className="wrap">
-              <div className="p-create">
-                <p className="p-name">프로젝트 명</p>
-                <img className="modify_btn" src={require('../../images/modify.svg').default} alt="추가아이콘"/>
+        {
+          team.map(function(x,y) {
+            return(
+              <div className="projectBox" key={x.id}>
+                <p className="tName">{x.name}</p>
+                  <div className="wrap">
+                    {
+                      box.map(function(a,i){
+                        return(
+                          <div className="p-create" key={a.id}>
+                            <p className="p-name">{a.title}</p>
+                            <img className="modify_btn" onClick={()=>{navigate('/teamleader')}} src={require('../../images/modify.svg').default} alt="추가아이콘"/>
+                          </div>
+                        )
+                      })
+                    }
+
+                    <div className="p-create add-team" onClick={projectClick}>
+                      <img className="add-btn"  src={require('../../images/Add.svg').default} alt="추가아이콘"/>
+                    </div>
+                  </div>
               </div>
-              <div className="p-create"/>
-              <div className="p-create"/>
-              <div className="p-create"/>
-              <div className="p-create"/>
-              <div className="p-create add-team" onClick={projectClick}>
-                <img className="add-btn"  src={require('../../images/Add.svg').default} alt="추가아이콘"/>
-              </div>
-            </div>
-        </div>
-        
-        <div className="projectBox2">
-          <p className="tName">팀이름</p>
-            <div className="wrap">
-              <div className="p-create"/>
-              <div className="p-create"/>
-              <div className="p-create"/>
-              <div className="p-create"/>
-              <div className="p-create"/>
-              <div className="p-create add-team" onClick={projectClick}>
-                <img className="add-btn" src={require('../../images/Add.svg').default} alt="추가아이콘"/>
-              </div>
-            </div>
-        </div>
+            )
+          })
+        }
       </div>
 
       <div className="dateBox">

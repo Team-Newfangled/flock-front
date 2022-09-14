@@ -10,22 +10,16 @@
   margin-top: 40px;
   width: 50%;
   height: 80%;
-  background-color: #004DA7;
+  overflow: auto;
 }
 
 .projectBox{
-  position: absolute;
   width: 100%;
   height:35%;
-  background-color: #f3dcdc;
+  margin-bottom:40px;
+
 }
-.projectBox2{
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  height: 35%;
-  background-color: #f3dcdc;
-}
+
 .wrap{
   width: 100%;
   height: 230px;

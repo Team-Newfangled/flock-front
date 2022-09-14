@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom'
     let navigate = useNavigate();
 
     const [isPopup, setIsPopup] = useState(false);
+    let tn=['팀이름']
 
 
     const projectClick = () => {
@@ -29,7 +30,7 @@ import { useNavigate } from 'react-router-dom'
     </div>
       <div className="team">
         <div className="TeamBox">
-          <h2 className="tName">팀이름</h2>
+          <h2 className="tName">{tn}</h2>
 
           <div className="sBox">
             <div className="people">

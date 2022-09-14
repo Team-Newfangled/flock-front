@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import '../../../../styles/TeamCode.scss'
 
 const pagemove = () =>{
@@ -6,25 +6,30 @@ const pagemove = () =>{
 }
 function MProject() {
 
+  const data=[
+    {id:1,name:'프로젝트 명'},
+    {id:2,name:'프로젝트 명1'},
+    {id:3,name:'프로젝트 명2'},
+    {id:4,name:'프로젝트 명3'},
+  ];
+
+  let [mp, setMp]=useState(data);
+
   return (
     <>
-      <div className="membarBox proBox">
-        <div className="king pro" onClick={pagemove}>프로젝트이름
-        <img className='trash' src={require('../../../../images/trash.svg').default}/>
-        </div>
-        <div className="king pro">프로젝트이름
-        <img className='trash' src={require('../../../../images/trash.svg').default}/>
-        </div>
-        <div className="king pro">프로젝트이름
-        <img className='trash' src={require('../../../../images/trash.svg').default}/>
-        </div>
-        <div className="king pro">프로젝트이름
-        <img className='trash' src={require('../../../../images/trash.svg').default}/>
-        </div>
-        <div className="king pro">프로젝트이름
-        <img className='trash' src={require('../../../../images/trash.svg').default}/>
-        </div>
-      </div>
+    <div className="membarBox proBox">
+    {
+      mp.map(function(a){
+        
+        return(
+          
+            <div className="king pro" onClick={pagemove}>{a.name}
+            <img className='trash' src={require('../../../../images/trash.svg').default}/>
+            </div>
+        )
+      })
+    }
+    </div>
       
     </>
   );
