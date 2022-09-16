@@ -7,8 +7,7 @@ import {
   addDays,
   format,
   isSameDay,
-  parseISO,
-  isSameMonth
+  parseISO
 } from "date-fns";
 
 const Cells = ({ currentMonth, nowDate}) => {
@@ -34,6 +33,7 @@ const Cells = ({ currentMonth, nowDate}) => {
         isStart = true;
         isSchedule = true;
       }else if (format(scheduleEndDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')) {
+        isStart = false;
         isMid = false;
         isEnd = true;
       }else{

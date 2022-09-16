@@ -13,7 +13,7 @@ const Deadline = () => {
                     height: '92vh'
                   }}>
         <Calendar />
-        {/* <Mark /> */}
+        <Mark />
       </section>
     </>
   );
