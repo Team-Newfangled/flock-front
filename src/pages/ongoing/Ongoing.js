@@ -7,18 +7,19 @@ import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
 
 const Ongoing = () => {
-    const [value, setValue] = useState([0, 0])
-    const [members, setMembers] = useState(["이윤성", "김건호"])
+    const [value, setValue] = useState([0, 0, 0])
+    const [members, setMembers] = useState(["이윤성", "김건호", "이원준"])
+    const [isRender, setRender] = useState(false);
     const handleClick = () => {
       setValue(0);
     };
     const displayvalue = (idx, event) => {
-        console.log(event, idx)
-        console.log(value)
-        const temp = [...value]
-        temp[idx] = event[idx]
+        const temp = value
+        temp[idx] = parseInt(event[0])
         setValue(temp)
+        setRender(prev => !prev)
     }
+
     return(
         <>
             <Header/>
@@ -48,7 +49,7 @@ const Ongoing = () => {
                         <div className="Ongoning" key={idx}>
                             <img alt="user" src={require('../../images/userimg.svg').default}/>
                             <div className="nouislider">
-                        <p className="nouislider-p">나</p>
+                        <p className="nouislider-p">{member}</p>
                         <div className="nouislider-1">
                             <Nouislider
                                 start={value[idx]}
@@ -58,7 +59,7 @@ const Ongoing = () => {
                                 }}
                                 connect onChange={(e) => displayvalue(idx, e)} 
                             />
-                            <p className="nouislider-2">진행도 : {value[0]}%</p>
+                            <p className="nouislider-2">진행도 : {value[idx]}%</p>
                         </div>  
                     </div>
                         </div>
