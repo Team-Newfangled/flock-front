@@ -9,8 +9,21 @@
   transform: translateY(-50%);
   margin-top: 40px;
   width: 50%;
+  padding: 5px;
   height: 80%;
   overflow: auto;
+}
+.teamBox::-webkit-scrollbar {
+  width: 16px;
+}
+.teamBox::-webkit-scrollbar-thumb {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  background-clip: padding-box;
+}
+.teamBox::-webkit-scrollbar-track {
+  background-color: #FFFFFF;
+  border-radius: 10px;
 }
 
 .projectBox{
@@ -27,7 +40,18 @@
   white-space:nowrap; 
   margin:0 auto;
 }
-
+.wrap::-webkit-scrollbar {
+  width: 16px;
+}
+.wrap::-webkit-scrollbar-thumb {
+  background-color: #9fbadab2;
+  border-radius: 10px;
+  background-clip: padding-box;
+}
+.wrap::-webkit-scrollbar-track {
+  background-color: #EFF2F9;
+  border-radius: 10px;
+}
 .p-create{
   display: inline-block;
   justify-content: center;
