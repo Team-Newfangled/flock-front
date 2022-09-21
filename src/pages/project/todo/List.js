@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Item from "./Item.js";
 import '../../../styles/Todo.scss'
+import axios from "axios";
+import IP from "../../../CommonIp.js";
 
 function List() {
+
+  let [items,setitems] = useState([])
+
+  useEffect(( )=>{
+    const getitem = () => {
+      axios.get(
+        IP
+      )
+      .then((response) => {
+        setitems([...response])
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    }
+    getitem()
+  },[])
+
   return(
     <>
     <div className='TodoList'>

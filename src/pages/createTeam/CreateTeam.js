@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TeamHeader from "../../components/header/TeamHeader";
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import Scroll from "../../components/common/Scroll/scroll";
 import Project from "./Project.js";
 import ProjectCalendar from "../../components/common/calendar/Calendar";
 import Chat from "../../components/common/chat/Chat";
+import IP from "../../CommonIp";
 
 
 const CreateTeam = () => {
@@ -19,6 +20,22 @@ const CreateTeam = () => {
   } 
 
   let navigate = useNavigate();
+
+  useEffect(() => {
+    const getItems = () => {
+      const get = axios.get(
+        IP + ''
+      )
+    }
+  },[])
+
+  useEffect(() => {
+    const postTeam = () => {
+      const post = axios.post(
+        IP + ''
+      )
+    }
+  })
 
   const data = [
     {id: 0, title: '선택 1'},
