@@ -33,17 +33,6 @@ function List() {
         )
       })
     }
-
-      <Item text="메롱" done={true}/>
-      <Item text="커밋" done={false}/>
-      <Item text="커밋" done={false}/>
-      <Item text="커밋" done={false}/>
-      <Item text="커밋" done={false}/>
-      <Item text="커밋" done={false}/>
-      <Item text="커밋" done={false}/>
-      <Item text="야!" done={true}/>
-      <Item text="야!" done={true}/>
-      <Item text="야!" done={true}/>
     </div>
     </>
   )

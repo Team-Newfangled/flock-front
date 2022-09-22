@@ -9,7 +9,7 @@ import Project from "./Project.js";
 import ProjectCalendar from "../../components/common/calendar/Calendar";
 import Chat from "../../components/common/chat/Chat";
 import IP from "../../CommonIp";
-
+import axios from "axios";
 
 const CreateTeam = () => {
   const [isPopup, setIsPopup] = useState(false);
@@ -18,24 +18,40 @@ const CreateTeam = () => {
     setIsPopup(!isPopup);
     !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
   } 
+  const [teams, setTeams] = useState([]);
+  const [projects, setProjects] = useState([]);
 
   let navigate = useNavigate();
 
   useEffect(() => {
-    const getItems = () => {
+    const getTeams = () => {
       const get = axios.get(
-        IP + ''
+        IP + '/users/' + window.localStorage.getItem('user_id') + '/team'
       )
+      .then((response) => {
+        console.log(response)
+        setTeams([...response])
+      })
+      .catch((error) => {
+        console.log(error)
+      })
     }
+    const getProjects = (team_id) => {
+      const get = axios.get(
+        IP + '/projects/' + team_id
+      )
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    }
+    getTeams();
+    teams.map((x) => {
+      getProjects(x.id)
+    })
   },[])
-
-  useEffect(() => {
-    const postTeam = () => {
-      const post = axios.post(
-        IP + ''
-      )
-    }
-  })
 
   const data = [
     {id: 0, title: '선택 1'},
