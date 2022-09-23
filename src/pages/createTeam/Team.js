@@ -7,7 +7,7 @@ const Team = ({teamClick}) => {
 
   const createTeam = () => {
     axios.post(IP + '/teams',{
-      name : document.querySelectorAll('nameBox').values
+      name : document.getElementsByClassName('nameBox').value
     })
     .then((response) => {
       console.log(response)
