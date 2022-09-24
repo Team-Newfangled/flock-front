@@ -16,16 +16,15 @@ export const login = async(code) => {
 };
 
 export const changeFile = async(file) => {
-  const formdata = new FormData();
-  formdata.append('uploadImage,', file);
-
   const config = {
     Headers: {
-      'content-type': 'multipart/form-data',
+      'content-type': 'application/json',
     },
   };
   
-  const res = await authAPI.patch(`users/${user_id}/picture`, formdata, config);
+  const res = await authAPI.patch(`users/${user_id}/picture`, {
+    content: file
+  }, config);
   return res;
 };
 
@@ -37,7 +36,7 @@ export const changeName = async(name) => {
 };
 
 export const changeCompany = async(company) => {
-  const res = await authAPI.patch(`users/${user_id}/organizaion`,{
+  const res = await authAPI.patch(`users/${user_id}/organization`,{
       name: company,
   })
   return res;

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { authAPI } from "../../lib/API";
 import { 
   changeCompany, 
   changeFile, 
@@ -8,13 +8,27 @@ import {
 
 export const editProfile = createAsyncThunk(
   'users/editProfile',
-  async({name, file, company}, thunkAPI) => {
+  async(data) => {
     try{
-      const res = await axios.all([changeFile(file), changeName(name), changeCompany(company)])
-        .then(axios.spread((file, name, company) => {
-          console.log(file, name, company);
-        }));
-      return res.data;
+      if(data.image !== ""){
+        await changeFile(data.image)
+          .then((res) => {
+            console.log("file: ", res)
+          })
+      }
+      if(data.name !== ""){
+        await changeName(data.nickname)
+          .then((res) => {
+            console.log("name: ", res)
+          })
+      }
+      if(data.company !== ""){
+        await changeCompany(data.company)
+          .then((res) => {
+            console.log("company: ", res)
+          })
+      }
+      return data
     }catch(e) {
       console.log(e)
     }

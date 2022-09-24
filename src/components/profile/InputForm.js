@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { changeCompany, changeName } from '../../util/api/user';
 
-const InputForm = ({setAllChange, allChange, name, onChange, item, value}) => {
+const InputForm = ({
+  setAllChange, 
+  allChange, 
+  name, 
+  onChange, 
+  item, 
+  value, 
+  changeClick
+}) => {
   const [change, setChange] = useState(false);
   const [changeClass, setChangeClass] = useState(name === "닉네임"? "inputArea1" :  "inputArea2");
   const className = name === "닉네임"? "input1 bg" :  "input2 bg";
@@ -10,14 +17,6 @@ const InputForm = ({setAllChange, allChange, name, onChange, item, value}) => {
     setChange(true);
     setChangeClass(changeClass + ' changeArea')
     setAllChange(allChange + 1)
-  }
-
-  const changeValue = async() => {
-    if(name === "닉네임"){
-      await changeName(item)
-    }else {
-      await changeCompany(item)
-    }
   }
 
   return (
@@ -40,7 +39,7 @@ const InputForm = ({setAllChange, allChange, name, onChange, item, value}) => {
                    onChange={(e) => onChange(e.target.value)}/>
           </div> 
           <div className='change buttonarea'>
-            <button onClick={changeValue} className={allChange === 2 ? 'none' : null}>변경</button>
+            <button onClick={changeClick} className={allChange === 2 ? 'none' : null}>변경</button>
           </div>
         </>: null}
       </div>
