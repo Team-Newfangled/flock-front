@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
  
@@ -63,6 +63,9 @@ const Text = styled.div`
 `;
  
 function Item({ id, done, text }) {
+
+    const [todoId, settodoId] = useState(id)
+
     return (
         <TodoItemBlock>
             <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>

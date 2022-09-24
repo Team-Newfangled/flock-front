@@ -1,26 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Item from "./Item.js";
 import '../../../styles/Todo.scss'
-import axios from "axios";
+import { getTodoItems } from "../../../util/api/project/index.js";
 
 function List() {
 
   let [items,setitems] = useState([])
 
-  // useEffect(( )=>{
-  //   const getitem = () => {
-  //     axios.get(
-  //       IP + '/projects' + 'id' + 'deadline'
-  //     )
-  //     .then((response) => {
-  //       setitems([...response])
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //     })
-  //   }
-  //   getitem()
-  // },[])
+  setitems([...getTodoItems(window.localStorage.getItem('project-id'))])
 
   return(
     <>
