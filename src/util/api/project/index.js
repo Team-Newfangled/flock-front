@@ -28,8 +28,7 @@ export const deleteProject = async(project_id) => {
 }
 
 export const patchProject = async(project_id,project_name) => {
-    await axios.patch(
-        '/projects' + project_id,
+    await axios.patch( '/projects' + project_id,
         {
             name : project_name
         }
@@ -48,7 +47,7 @@ export const patchProject = async(project_id,project_name) => {
 
 export const getTodoItems = async(project_id) => {
     await axios.get(
-        '/projects/' + project_id + '/todo'
+        '/projects/' + project_id + '/deadline'
     )
     .then((response) => {
         return response
@@ -58,11 +57,11 @@ export const getTodoItems = async(project_id) => {
     })
 };
 
-export const createTodoItems = async(project_id,project_name) => {
+export const createTodoItems = async(project_id,todo_name) => {
     await axios.post(
         '/projects/' + project_id + '/todo',
         {
-            name : project_name
+            content : todo_name
         }
     )
     .then((response) => {
@@ -73,4 +72,45 @@ export const createTodoItems = async(project_id,project_name) => {
     })
 }
 
+export const deleteTodoItems = async(project_id) => {
+    await axios.delete(
+        '/todo/' + project_id,
+        {
+            header : {
+                Authorization : window.localStorage.getItem('access_token')
+            }
+        }
+    )
+}
 
+export const putTodoItems = async(project_id,content,end,start) => {
+    await axios.put(
+        '/todo/' + project_id,
+        {
+            content : content,
+            end_date : end,
+            start_date : start
+        }
+    )
+    .then((response) => {
+        return response
+    })
+    .catch((error) => {
+        return error
+    })
+}
+
+export const patchTodoItems = async(project_id,state) => {
+    await axios.patch(
+        '/todo/' + project_id,
+        {
+            done : state
+        }
+    )
+    .then((response) => {
+        return response
+    })
+    .catch((error) => {
+        return error
+    })
+}
