@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from 'react'
 import '../../../styles/Teamleader.scss'
-import Capy from './code/Capy.js'
+import Copy from './code/Copy.js'
 import People from './code/People.js'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'
@@ -26,7 +26,7 @@ import { useNavigate } from 'react-router-dom'
           <div className="sBox">
             <div className="people">
               <h3>팀원 관리</h3>
-              <Capy/>
+              <Copy/>
               <People/>
             </div>
             <div className="ssBox">
