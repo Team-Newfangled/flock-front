@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
+import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { 
   Main, 
@@ -14,8 +15,26 @@ import {
   Progress,
   Ongoing
 } from "../pages/Pagelist";
+import { authAPI } from "../lib/API";
+import { getUserInfo} from "../store/users/userData";
+import useLogin from "../hooks/useLogin";
 
 const App = () => {
+  const dispatch = useDispatch();
+  const isLogin = useLogin();
+  const getUser = useCallback(async(data) => {
+    await authAPI.get(`users/${data}`)
+    .then(res => {
+      dispatch(getUserInfo(res.data));
+    })
+  }, [dispatch])
+  
+  useEffect(() =>{
+    if(isLogin){
+      getUser(localStorage.getItem('user_id'));
+    }
+  }, [getUser, isLogin])
+
   return (
     <Router>
       <Routes>

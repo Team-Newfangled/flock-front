@@ -12,11 +12,11 @@ const InputForm = ({setAllChange, allChange, name, onChange, item, value}) => {
     setAllChange(allChange + 1)
   }
 
-  const changeValue = () => {
+  const changeValue = async() => {
     if(name === "닉네임"){
-      changeName(item)
+      await changeName(item)
     }else {
-      changeCompany(item)
+      await changeCompany(item)
     }
   }
 
@@ -27,7 +27,7 @@ const InputForm = ({setAllChange, allChange, name, onChange, item, value}) => {
             <label>{name}</label>
           </div>
           <div>
-            <input className={className} value={value} disabled/>
+            <input className={className} value={value || "현재 소속이 없습니다."} disabled/>
           </div>
         <div className='change'>
           <button onClick={getChange} className={change ? 'none' : null}>변경</button>

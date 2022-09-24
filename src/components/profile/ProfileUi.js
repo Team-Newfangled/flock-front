@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { 
-  changeCompany, 
-  changeFile, 
-  changeName
-} from "../../util/api/user";
+import { useDispatch, useSelector } from "react-redux";
 import InputForm from './InputForm';
 import '../../styles/Profile.scss'
-import axios from "axios";
+import { editProfile } from "../../store/users/editProfile";
 
 const ProfileUi = () => {
-  const user = useSelector((state) => state.user.value)
+  const user = useSelector((state) => state.user.value.userInfo)
+  const dispatch = useDispatch();
   const [allChange, setAllChange] = useState(0);
-  const [file, setFile] = useState(user.image);
-  const [name, setName] = useState('');
-  const [company, setCompany] = useState('');
+  const [file, setFile] = useState("");
+  const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
 
   const onLoadFile = (e) => {
     const {target: {files},} = e;
@@ -32,13 +28,8 @@ const ProfileUi = () => {
     reader.readAsDataURL(theFile);
   }
 
-  const changeClick = async(e) => {
-    e.preventDefault();
-    console.log('hi')
-    await axios.all([changeFile(file), changeName(name), changeCompany(company)])
-    .then(axios.spread((file, name, company) => {
-      console.log(file, name, company);
-    }));
+  const changeClick = () => {
+    dispatch(editProfile(name, file, company))
   };
 
   return (

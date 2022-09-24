@@ -1,27 +1,26 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import IP from "../../../../CommonIp";
 import '../../../../styles/Teamleader.scss'
 
 function People() {
 
-  useEffect(() => {
-    const getPeople = () => {
-      const get = () => {
-        axios.get(
-          IP + '/teams/' + window.localStorage.getItem('team-id') + '/mambers'
-        )
-        .then((response) => {
-          console.log(response)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-      }
-    }
+  // useEffect(() => {
+  //   const getPeople = () => {
+  //     const get = () => {
+  //       axios.get(
+  //         IP + '/teams/' + window.localStorage.getItem('team-id') + '/mambers'
+  //       )
+  //       .then((response) => {
+  //         console.log(response)
+  //       })
+  //       .catch((error) => {
+  //         console.log(error)
+  //       })
+  //     }
+  //   }
 
     
-  },[])
+  // },[])
 
   const data=[
     {id:0, name:'zz'},

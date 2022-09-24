@@ -8,7 +8,6 @@ import Scroll from "../../components/common/Scroll/scroll";
 import Project from "./Project.js";
 import ProjectCalendar from "../../components/common/calendar/Calendar";
 import Chat from "../../components/common/chat/Chat";
-import IP from "../../CommonIp";
 import axios from "axios";
 
 const CreateTeam = () => {
@@ -23,35 +22,35 @@ const CreateTeam = () => {
 
   let navigate = useNavigate();
 
-  useEffect(() => {
-    const getTeams = () => {
-      const get = axios.get(
-        IP + '/users/' + window.localStorage.getItem('user_id') + '/team'
-      )
-      .then((response) => {
-        console.log(response)
-        setTeams([...response])
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-    }
-    const getProjects = (team_id) => {
-      const get = axios.get(
-        IP + '/projects/' + team_id
-      )
-      .then((response) => {
-        console.log(response)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-    }
-    getTeams();
-    teams.map((x) => {
-      getProjects(x.id)
-    })
-  },[])
+  // useEffect(() => {
+  //   const getTeams = () => {
+  //     const get = axios.get(
+  //       IP + '/users/' + window.localStorage.getItem('user_id') + '/team'
+  //     )
+  //     .then((response) => {
+  //       console.log(response)
+  //       setTeams([...response])
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //     })
+  //   }
+  //   const getProjects = (team_id) => {
+  //     const get = axios.get(
+  //       IP + '/projects/' + team_id
+  //     )
+  //     .then((response) => {
+  //       console.log(response)
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //     })
+  //   }
+  //   getTeams();
+  //   teams.map((x) => {
+  //     getProjects(x.id)
+  //   })
+  // },[])
 
   const data = [
     {id: 0, title: '선택 1'},
