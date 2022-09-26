@@ -24,6 +24,7 @@ const Main = () => {
       if(window.location.search.split('?').length > 1){
         const { code } = qs.parse(window.location.search.split('?')[1])
         const { data } = await login(code);
+        console.log(data)
         dispatch(userlogin(data));
          
         navigate('/');      // re-rendering 방지

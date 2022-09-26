@@ -8,8 +8,8 @@ import Scroll from "../../components/common/Scroll/scroll";
 import Project from "./Project.js";
 import ProjectCalendar from "../../components/common/calendar/Calendar";
 import Chat from "../../components/common/chat/Chat";
-import axios from "axios";
-
+import { getTeams } from "../../util/api/team";
+import { getProjects } from "../../util/api/project";
 const CreateTeam = () => {
   const [isPopup, setIsPopup] = useState(false);
   const scroll = Scroll();
@@ -17,38 +17,18 @@ const CreateTeam = () => {
     setIsPopup(!isPopup);
     !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
   } 
-  const [teams, setTeams] = useState([]);
-  const [projects, setProjects] = useState([]);
+
+  const [teams,setTeams] = useState([]);
+  const [projects,setProjects] = useState([]);
 
   let navigate = useNavigate();
 
   // useEffect(() => {
-  //   const getTeams = () => {
-  //     const get = axios.get(
-  //       IP + '/users/' + window.localStorage.getItem('user_id') + '/team'
-  //     )
-  //     .then((response) => {
-  //       console.log(response)
-  //       setTeams([...response])
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //     })
+  //   if (getTeams(window.localStorage.getItem('user_id')) !== '404') {
+  //     setTeams([...getTeams(window.localStorage.getItem('user_id'))])
   //   }
-  //   const getProjects = (team_id) => {
-  //     const get = axios.get(
-  //       IP + '/projects/' + team_id
-  //     )
-  //     .then((response) => {
-  //       console.log(response)
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //     })
-  //   }
-  //   getTeams();
-  //   teams.map((x) => {
-  //     getProjects(x.id)
+  //   teams.map((id,name) => {
+  //     setProjects([...getProjects(id)])
   //   })
   // },[])
 
@@ -63,10 +43,9 @@ const CreateTeam = () => {
     {id:0, name:'zz'},
     {id:1, name:'ㅇㅁ'},
     {id:2, name:'ㅁㅇㄹ'},
-  ]
+  ];
   
   let [box, setBox]=useState(data);
-  let [team, setTeam]=useState(data1);
 
   return (
     <>
@@ -74,7 +53,7 @@ const CreateTeam = () => {
       <Chat/>
       <div className="teamBox">
         {
-          team.map(function(x,y) {
+          data1.map(function(x,y) {
             return(
               <div className="projectBox" key={x.id}>
                 <p className="tName">{x.name}</p>
