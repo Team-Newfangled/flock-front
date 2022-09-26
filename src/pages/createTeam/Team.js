@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import '../../styles/Team.scss'
+import { createTeams } from "../../util/api/team";
 
 const Team = ({teamClick}) => {
 
@@ -26,7 +27,7 @@ const Team = ({teamClick}) => {
           <div className="text">
             <div className="important">*</div>
             <input className="nameBox" type='text' placeholder="팀명 입력" />
-            <button className="createBtn">생성</button>
+            <button className="createBtn" onClick={createTeams(document.getElementsByClassName('nameBox').value)}>생성</button>
           </div>
         </div>
     </>
