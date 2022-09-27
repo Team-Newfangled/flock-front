@@ -3,7 +3,7 @@ import { authAPI } from "../../../lib/API";
 
 export const getTeams = async(user_id) => {
     await authAPI.get(
-        '/users/' + user_id + '/team'
+        `/users/${user_id}/team`
     )
     .then((response) => {
         return response
@@ -30,7 +30,7 @@ export const createTeams = async(team_name) => {
 
 export const deleteTeam = async(team_id,user_id) => {
     await axios.delete(
-        '/teams/' + team_id + '/explusion/' + user_id,
+        `/teams/${team_id}/expulsion/${user_id}`,
         {
             header : {
                 Authorization : `Bearer ${localStorage.getItem('access_token')}`
@@ -42,7 +42,7 @@ export const deleteTeam = async(team_id,user_id) => {
 
 export const getTeamMembers = async(team_id) => {
     await axios.get(
-        '/teams/' + team_id + '/members'
+        `/teams/${team_id}/members`
      )
      .then((response) => {
         return response
@@ -54,7 +54,7 @@ export const getTeamMembers = async(team_id) => {
 
 export const deleteTeamMembers = async(team_id,user_id) => {
     await axios.delete(
-        '/teams/' + team_id + '/explusion/' + user_id,
+        `/teams/${team_id}/expulsion/${user_id}`,
         {
             header : {
                 Authorization : `Bearer ${localStorage.getItem('access_token')}`
