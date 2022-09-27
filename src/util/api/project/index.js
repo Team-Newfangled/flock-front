@@ -18,7 +18,7 @@ export const deleteProject = async(project_id) => {
         '/projects' + project_id,
         {
             header : {
-                Authorization : window.localStorage.getItem('access_token')
+                Authorization : `Bearer ${localStorage.getItem('access_token')}`
             },
             data : {
                 project_id : project_id
@@ -77,7 +77,7 @@ export const deleteTodoItems = async(project_id) => {
         '/todo/' + project_id,
         {
             header : {
-                Authorization : window.localStorage.getItem('access_token')
+                Authorization : `Bearer ${localStorage.getItem('access_token')}`
             }
         }
     )

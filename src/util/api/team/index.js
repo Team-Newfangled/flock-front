@@ -1,7 +1,8 @@
 import axios from "axios";
+import { authAPI } from "../../../lib/API";
 
 export const getTeams = async(user_id) => {
-    await axios.get(
+    await authAPI.get(
         '/users/' + user_id + '/team'
     )
     .then((response) => {
@@ -32,7 +33,7 @@ export const deleteTeam = async(team_id,user_id) => {
         '/teams/' + team_id + '/explusion/' + user_id,
         {
             header : {
-                Authorization : window.localStorage.getItem('access-token')
+                Authorization : `Bearer ${localStorage.getItem('access_token')}`
             }
         }
     )
@@ -56,7 +57,7 @@ export const deleteTeamMembers = async(team_id,user_id) => {
         '/teams/' + team_id + '/explusion/' + user_id,
         {
             header : {
-                Authorization : window.localStorage.getItem('access-token')
+                Authorization : `Bearer ${localStorage.getItem('access_token')}`
             }
         }
     )

@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import '../../../../styles/Teamleader.scss'
+import { getTeamMembers } from "../../../../util/api/team";
 
-function People() {
+function People({info}) {
 
-  
-  useEffect(() => {
     
+
+  useEffect(() => {
+    getTeamMembers(info.params.team_id)
   },[])
 
   const data=[

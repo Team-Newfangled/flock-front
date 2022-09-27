@@ -35,7 +35,7 @@ export const deleteFeed = async(project_id) => {
         '/board/' + project_id,
         {
             header : {
-                Authorization : window.localStorage.getItem('access_token')
+                Authorization : `Bearer ${localStorage.getItem('access_token')}`
             }
         }
     )
@@ -114,7 +114,7 @@ export const deleteComments = async(project_id) => {
         '/comments/' + project_id,
         {
             header : {
-                Authorization : window.localStorage.getItem('access-token')
+                Authorization : `Bearer ${localStorage.getItem('access_token')}`
             }
         }
     )
