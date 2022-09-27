@@ -38,3 +38,26 @@ export const deleteTeam = async(team_id,user_id) => {
     )
 }
 
+
+export const getTeamMembers = async(team_id) => {
+    await axios.get(
+        '/teams/' + team_id + '/members'
+     )
+     .then((response) => {
+        return response
+     })
+     .catch((error) => {
+        return error
+     })
+}
+
+export const deleteTeamMembers = async(team_id,user_id) => {
+    await axios.delete(
+        '/teams/' + team_id + '/explusion/' + user_id,
+        {
+            header : {
+                Authorization : window.localStorage.getItem('access-token')
+            }
+        }
+    )
+}

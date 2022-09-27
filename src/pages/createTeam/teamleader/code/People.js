@@ -4,23 +4,10 @@ import '../../../../styles/Teamleader.scss'
 
 function People() {
 
-  // useEffect(() => {
-  //   const getPeople = () => {
-  //     const get = () => {
-  //       axios.get(
-  //         IP + '/teams/' + window.localStorage.getItem('team-id') + '/mambers'
-  //       )
-  //       .then((response) => {
-  //         console.log(response)
-  //       })
-  //       .catch((error) => {
-  //         console.log(error)
-  //       })
-  //     }
-  //   }
-
+  
+  useEffect(() => {
     
-  // },[])
+  },[])
 
   const data=[
     {id:0, name:'zz'},
