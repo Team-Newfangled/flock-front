@@ -1,8 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../../../../styles/TeamCode.scss'
+import { getTeamMembers } from "../../../../util/api/team";
 
-function People() {
+function People({props}) {
+
+  const [teamMembers,setTeamMembers] = useState([])
+
+  useEffect(() => {
+    setTeamMembers([...getTeamMembers(props.params.team_id)])
+  },[])
 
   const data=[
     {id:0, name:'팀원이름'},
@@ -18,7 +25,6 @@ function People() {
     <>
       <div className="membarBox">
         <div className="king">팀장이름</div>
-
         {
           mer.map(function(a){
             return(

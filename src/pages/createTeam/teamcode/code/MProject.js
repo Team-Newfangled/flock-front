@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../../../../styles/TeamCode.scss'
+import { getProjects } from "../../../../util/api/project";
 
 const pagemove = () =>{
   window.location.href="teamleader"
 }
-function MProject() {
+function MProject({team_id}) {
+
+  const [projects,setProjects] = useState([])
+
+  useEffect(() => {
+    setProjects([...getProjects(team_id)])  
+  },[])
+
 
   const data=[
     {id:1,name:'프로젝트 명'},
