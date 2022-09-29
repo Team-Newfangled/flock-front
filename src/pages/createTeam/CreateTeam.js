@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import TeamHeader from "../../components/header/TeamHeader";
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../../styles/CreateTeam.scss'
 import { NavLink } from "react-router-dom";
 import Scroll from "../../components/common/Scroll/scroll";
@@ -24,14 +24,14 @@ const CreateTeam = () => {
   let navigate = useNavigate();
 
   // 유저의 팀을 받고 팀이 없으면 팀이 존재하지 않습니다 출력해주기, map 사용해서 team마다 project 출력해주기
-  // useEffect(() => {
-  //   if (getTeams(window.localStorage.getItem('user_id')) !== '404') {
-  //     setTeams([...getTeams(window.localStorage.getItem('user_id'))])
-  //   }
-  //   teams.map((id,name) => {
-  //     setProjects([...getProjects(id)])
-  //   })
-  // },[])
+  useEffect(() => {
+    if (getTeams(window.localStorage.getItem('user_id')) !== '404') {
+      setTeams([...getTeams(window.localStorage.getItem('user_id'))])
+    }
+    teams.map((id,name) => {
+      setProjects([...getProjects(id)])
+    })
+  },[])
 
   const data = [
     {id: 0, title: '선택 1'},
@@ -62,10 +62,10 @@ const CreateTeam = () => {
                     {
                       box.map(function(a,i){
                         return(
-                          <div className="p-create" key={a.id}>
+                          <Link to={'/projects/' + a.id + '/deadline'} className="p-create">
                             <p className="p-name">{a.title}</p>
                             <img className="modify_btn" onClick={()=>{navigate('/teamleader')}} src={require('../../images/modify.svg').default} alt="추가아이콘"/>
-                          </div>
+                          </Link>
                         )
                       })
                     }

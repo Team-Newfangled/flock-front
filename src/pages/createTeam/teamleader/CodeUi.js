@@ -7,11 +7,13 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom'
 
 
-  const Teamleader = () =>{
+const Teamleader = () =>{
 
-    let navigate = useNavigate();
-    let [pn, setPn]=useState();
-    let tn=['팀이름']
+  let navigate = useNavigate();
+  let [pn, setPn]=useState();
+  let tn=['팀이름']
+
+
 
 
   return (

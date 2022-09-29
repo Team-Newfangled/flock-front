@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from 'react'
 import '../../../styles/TeamCode.scss'
-import Capy from './code/Capy.js'
+import Capy from './code/Copy.js'
 import People from './code/People.js'
 import MProject from './code/MProject.js'
 import Project from "../Project.js";

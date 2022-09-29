@@ -5,7 +5,7 @@ import { getTeamMembers } from "../../../../util/api/team";
 
 function People({info}) {
 
-    
+
 
   useEffect(() => {
     getTeamMembers(info.params.team_id)
@@ -19,8 +19,6 @@ function People({info}) {
 
   const king=['팀장이름'];
   let [km, setKm]=useState(data);
-
- 
 
   return (
     <>
