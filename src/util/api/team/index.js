@@ -14,7 +14,7 @@ export const getTeams = async(user_id) => {
 }
 
 export const createTeams = async(team_name) => {
-    await axios.post(
+    await authAPI.post(
         '/teams',
         {
             name : team_name
@@ -29,19 +29,14 @@ export const createTeams = async(team_name) => {
 }
 
 export const deleteTeam = async(team_id,user_id) => {
-    await axios.delete(
-        `/teams/${team_id}/expulsion/${user_id}`,
-        {
-            header : {
-                Authorization : `Bearer ${localStorage.getItem('access_token')}`
-            }
-        }
+    await authAPI.delete(
+        `/teams/${team_id}/expulsion/${user_id}`
     )
 }
 
 
 export const getTeamMembers = async(team_id) => {
-    await axios.get(
+    await authAPI.get(
         `/teams/${team_id}/members`
      )
      .then((response) => {
@@ -53,12 +48,7 @@ export const getTeamMembers = async(team_id) => {
 }
 
 export const deleteTeamMembers = async(team_id,user_id) => {
-    await axios.delete(
-        `/teams/${team_id}/expulsion/${user_id}`,
-        {
-            header : {
-                Authorization : `Bearer ${localStorage.getItem('access_token')}`
-            }
-        }
+    await authAPI.delete(
+        `/teams/${team_id}/expulsion/${user_id}`
     )
 }

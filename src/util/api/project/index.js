@@ -1,8 +1,8 @@
-import axios from "axios";
+import { authAPI } from "../../../lib/API";
 
 
 export const getProjects = async(team_id) => {
-    await axios.get(
+    await authAPI.get(
         `/projects/${team_id}`
     )
     .then((response) => {
@@ -14,12 +14,9 @@ export const getProjects = async(team_id) => {
 }
 
 export const deleteProject = async(project_id) => {
-    await axios.post(
+    await authAPI.post(
         `/projects/${project_id}`,
         {
-            header : {
-                Authorization : `Bearer ${localStorage.getItem('access_token')}`
-            },
             data : {
                 project_id : project_id
             }
@@ -28,7 +25,7 @@ export const deleteProject = async(project_id) => {
 }
 
 export const patchProject = async(project_id,project_name) => {
-    await axios.patch( 
+    await authAPI.patch( 
         `/projects/${project_id}`,
         {
             name : project_name
@@ -47,7 +44,7 @@ export const patchProject = async(project_id,project_name) => {
 // todo list
 
 export const getTodoItems = async(project_id) => {
-    await axios.get(
+    await authAPI.get(
         `/projects/${project_id}/deadline`
     )
     .then((response) => {
@@ -59,7 +56,7 @@ export const getTodoItems = async(project_id) => {
 };
 
 export const createTodoItems = async(project_id,todo_name) => {
-    await axios.post(
+    await authAPI.post(
         `/projects/${project_id}/todo`,
         {
             content : todo_name
@@ -74,18 +71,13 @@ export const createTodoItems = async(project_id,todo_name) => {
 }
 
 export const deleteTodoItems = async(project_id) => {
-    await axios.delete(
+    await authAPI.delete(
         `/todo/${project_id}`,
-        {
-            header : {
-                Authorization : `Bearer ${localStorage.getItem('access_token')}`
-            }
-        }
     )
 }
 
 export const putTodoItems = async(project_id,content,end,start) => {
-    await axios.put(
+    await authAPI.put(
         `/todo/${project_id}`,
         {
             content : content,
@@ -102,7 +94,7 @@ export const putTodoItems = async(project_id,content,end,start) => {
 }
 
 export const patchTodoItems = async(project_id,state) => {
-    await axios.patch(
+    await authAPI.patch(
         `/todo/${project_id}`,
         {
             done : state
