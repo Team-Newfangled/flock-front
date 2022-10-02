@@ -7,9 +7,9 @@ function People({props}) {
 
   const [teamMembers,setTeamMembers] = useState([])
 
-  useEffect(() => {
-    setTeamMembers([...getTeamMembers(props.params.team_id)])
-  },[])
+  // useEffect(() => {
+  //   setTeamMembers([...getTeamMembers(props.params.team_id)])
+  // },[])
 
   const data=[
     {id:0, name:'팀원이름'},

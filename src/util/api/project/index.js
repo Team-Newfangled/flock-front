@@ -1,6 +1,16 @@
 import { authAPI } from "../../../lib/API";
 
 
+export const createProjects = async({team_id,project_name}) => {
+    const project_info = await authAPI.post(
+        `/teams/${team_id}/projects`,
+        {
+            name : project_name
+        }
+    )
+    return project_info
+}
+
 export const getProjects = async(team_id) => {
     await authAPI.get(
         `/projects/${team_id}`

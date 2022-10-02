@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import TeamHeader from "../../components/header/TeamHeader";
 import { useState } from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import '../../styles/CreateTeam.scss'
 import { NavLink } from "react-router-dom";
 import Scroll from "../../components/common/Scroll/scroll";
@@ -24,14 +24,18 @@ const CreateTeam = () => {
   let navigate = useNavigate();
 
   // 유저의 팀을 받고 팀이 없으면 팀이 존재하지 않습니다 출력해주기, map 사용해서 team마다 project 출력해주기
-  useEffect(() => {
-    if (getTeams(window.localStorage.getItem('user_id')) !== '404') {
-      setTeams([...getTeams(window.localStorage.getItem('user_id'))])
-    }
-    teams.map((id,name) => {
-      setProjects([...getProjects(id)])
-    })
-  },[])
+  // useEffect(() => {
+  //   if (getTeams(window.localStorage.getItem('user_id')) !== '404') {
+  //     setTeams([...getTeams(window.localStorage.getItem('user_id'))])
+  //   }
+  //   teams.map((id,name) => {
+  //     setProjects([...getProjects(id)])
+  //   })
+  // },[])
+
+  // const location = useLocation();
+  // const team_info = location.state.team_info;
+
 
   const data = [
     {id: 0, title: '선택 1'},
@@ -57,14 +61,14 @@ const CreateTeam = () => {
           data1.map(function(x,y) {
             return(
               <div className="projectBox" key={x.id}>
-                <p className="tName">{x.name}</p>
+                <Link to={`/teamleader`} /* state={{team_info : team_info}} */ className="tName">{x.name}</Link>
                   <div className="wrap">
                     {
                       box.map(function(a,i){
                         return(
-                          <Link to={'/projects/' + a.id + '/deadline'} className="p-create">
+                          <Link to={`/teamleader/${a.id}`} state={{project_info : a,team_info : x}} className="p-create">
                             <p className="p-name">{a.title}</p>
-                            <img className="modify_btn" onClick={()=>{navigate('/teamleader')}} src={require('../../images/modify.svg').default} alt="추가아이콘"/>
+                            <img className="modify_btn" src={require('../../images/modify.svg').default} alt="추가아이콘"/>
                           </Link>
                         )
                       })
@@ -82,7 +86,7 @@ const CreateTeam = () => {
 
       <div className="dateBox">
         <NavLink to='/teamleader'><button id='link'>My Page</button></NavLink>
-        <NavLink to='/TeamCode'><button id='link'>My Team</button></NavLink>
+        <NavLink to='/teamCode'><button id='link'>My Team</button></NavLink>
         <div className="date">데드라인
           <ProjectCalendar />
         </div>

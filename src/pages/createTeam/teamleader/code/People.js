@@ -7,9 +7,9 @@ function People({info}) {
 
 
 
-  useEffect(() => {
-    getTeamMembers(info.params.team_id)
-  },[])
+  // useEffect(() => {
+  //   getTeamMembers(info.params.team_id)
+  // },[])
 
   const data=[
     {id:0, name:'zz'},

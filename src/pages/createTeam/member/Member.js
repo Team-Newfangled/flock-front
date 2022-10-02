@@ -40,6 +40,7 @@ const TeamCode = () => {
   }
 
   const [checkItems, setCheckItems] = useState([]);
+  const [teamName, setTeamName] = useState('');
 
   return (
     <>
@@ -47,7 +48,7 @@ const TeamCode = () => {
 
     <div className='background'>
       <div className='mBox'>
-        <h1>팀 이름</h1>
+        <h1>{teamName}</h1>
         <button className="close" onClick={()=>{ navigate('/TeamCode') }} >
               <img alt="close" src={require('../../../images/Close.svg').default}/>
         </button>

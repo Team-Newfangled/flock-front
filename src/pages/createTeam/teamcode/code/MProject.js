@@ -9,9 +9,9 @@ function MProject({team_id}) {
 
   const [projects,setProjects] = useState([])
 
-  useEffect(() => {
-    setProjects([...getProjects(team_id)])  
-  },[])
+  // useEffect(() => {
+  //   setProjects([...getProjects(team_id)])  
+  // },[])
 
 
   const data=[

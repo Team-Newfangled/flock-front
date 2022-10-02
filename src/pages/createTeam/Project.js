@@ -1,5 +1,6 @@
 import React from "react";
 import '../../styles/Team.scss'
+import { createProjects } from "../../util/api/project";
 
 const Project = ({projectClick}) => {
   return (
@@ -12,7 +13,7 @@ const Project = ({projectClick}) => {
           <div className="text">
             <div className="important">*</div>
             <input className="nameBox" type='text' placeholder="프로젝트명 입력" />
-            <button className="createBtn">생성</button>
+            <button className="createBtn" onClick={createProjects(document.getElementsByClassName('nameBox').value,)}>생성</button>
           </div>
         </div>
     </>

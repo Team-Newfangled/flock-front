@@ -2,6 +2,9 @@ import React from "react";
 import '../../styles/Pen.scss'
 
 const Pen=({penClick})=>{
+
+  
+
   return(
     <>
     <div className="bg" onClick={penClick} />

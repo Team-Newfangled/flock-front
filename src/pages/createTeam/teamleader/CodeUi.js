@@ -3,18 +3,18 @@ import { useState } from 'react'
 import '../../../styles/Teamleader.scss'
 import Copy from './code/Copy.js'
 import People from './code/People.js'
-import axios from "axios";
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { createTeams } from "../../../util/api/team";
 
 
 const Teamleader = () =>{
 
   let navigate = useNavigate();
   let [pn, setPn]=useState();
-  let tn=['팀이름']
 
-
-
+  // const location = useLocation()
+  // const project_info = location.state.project_info;
+  // const team_info = location.state.team_info;
 
   return (
     <>
@@ -23,8 +23,7 @@ const Teamleader = () =>{
     </div>
       <div className="team">
         <div className="TeamBox">
-          <h2 className="tName">{tn}</h2>
-
+          <h2 className="tName">팀이름</h2>
           <div className="sBox">
             <div className="people">
               <h3>팀원 관리</h3>
@@ -41,7 +40,7 @@ const Teamleader = () =>{
                   onChange={(e)=>{setPn(e.target.value)}}></input>
                   <button className='capyBtn'
                   onClick={()=>{
-                    axios.post("",{adsf:pn}).then(()=>{});
+                    // createTeams(pn,team_info.id)
                   }}>수정</button>
                 </div>
                 <h4>대기 중인 팀원</h4>
