@@ -4,7 +4,7 @@
   "private": true,
   "options": {
     "allowedHosts": ["localhost", ".localhost"],
-    "proxy": "https://10.80.162.57:8080/"
+    "proxy": "http://10.80.162.57:8080/"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",

@@ -30,9 +30,9 @@ export const createFeed = async(project_id,contents) => {
 }
 
 
-export const deleteFeed = async(project_id) => {
+export const deleteFeed = async(board_id) => {
     await authAPI.delete(
-        `/board/${project_id}`
+        `/board/${board_id}`
     )
 }
 

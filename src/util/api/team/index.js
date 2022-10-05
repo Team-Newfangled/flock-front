@@ -2,15 +2,10 @@ import axios from "axios";
 import { authAPI } from "../../../lib/API";
 
 export const getTeams = async(user_id) => {
-    await authAPI.get(
+    const res = await authAPI.get(
         `/users/${user_id}/team`
     )
-    .then((response) => {
-        return response
-    })
-    .catch((error) => {
-        return error
-    })
+    return res
 }
 
 export const createTeams = async(team_name) => {
@@ -52,3 +47,5 @@ export const deleteTeamMembers = async(team_id,user_id) => {
         `/teams/${team_id}/expulsion/${user_id}`
     )
 }
+
+

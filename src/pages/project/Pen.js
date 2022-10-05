@@ -1,5 +1,6 @@
 import React from "react";
 import '../../styles/Pen.scss'
+import { createFeed } from "../../util/api/feed";
 
 const Pen=({penClick})=>{
 
@@ -20,7 +21,7 @@ const Pen=({penClick})=>{
           <input type="file" multiple={true} id="fileUploadBtn" />
         </div>
         <button id='fileBtn'
-        
+          onClick={createFeed()}
         >send</button>
       </div>
     </div>
