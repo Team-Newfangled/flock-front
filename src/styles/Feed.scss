@@ -13,7 +13,7 @@
     border-radius: 15px;
     width: 100%;
     margin-bottom: 10px;
-    height: 68%;
+    height: 58vh;
 }
 .feedhead{
     display: flex;
@@ -45,14 +45,14 @@
         border-radius: 10px;
         padding: 15px;
         text-align: center;
-        p:nth-child(1){background-color: #78b2f979;padding: 5px;color: #004DA7; border-radius: 50px;}
+        p:nth-child(1){background-color: #78b2f979;padding: 5px;color: #004DA7; border-radius: 50px;margin-bottom: 5px;}
         p:nth-child(2){color: #E96161;}
     }
     .commentmean{
         width: 84%;
         height: 90px;
         padding: 10px 34px 10px 34px;
-        overflow-y: scroll;
+        overflow:auto;
         font-weight: bold;
     }
 }
@@ -75,11 +75,12 @@
     width: 90%;
     margin: auto;
     margin-top: -1.5%;
+    margin-bottom: 10px;
     padding: 5px;
     border-top: 3px solid #4296f571;
     display: flex;
     justify-content: end;
-    button{border: none; background-color: #4295F5; border-radius: 10px;color: #ffffff; padding: 5px 20px 5px 20px; }
+    button{border: none;margin-top: 10px; background-color: #4295F5; border-radius: 10px;color: #ffffff; padding: 5px 20px 5px 20px; }
 }
 .feedcomments{
     width: 90%;
@@ -107,8 +108,8 @@
     .commentmean{
         height: 100px;
         padding: 10px 34px 10px 34px;
-        overflow-y: scroll;
         margin-right: 30px;
+        overflow:auto;
     }
 }
 .commentmean::-webkit-scrollbar {

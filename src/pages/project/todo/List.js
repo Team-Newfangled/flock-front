@@ -10,9 +10,9 @@ function List() {
 
   const params = useParams();
 
-  useEffect(()=> {
-    setitems([...getTodoItems(params.project_id)])
-  }, [params])
+  // useEffect(()=> {
+  //   setitems([...getTodoItems(params.project_id)])
+  // }, [params])
 
   return(
     <>
