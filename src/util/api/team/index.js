@@ -47,5 +47,3 @@ export const deleteTeamMembers = async(team_id,user_id) => {
         `/teams/${team_id}/expulsion/${user_id}`
     )
 }
-
-
