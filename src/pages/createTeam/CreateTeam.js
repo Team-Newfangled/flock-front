@@ -16,10 +16,12 @@ const CreateTeam = () => {
   const projectClick = () => {
     setIsPopup(!isPopup);
     !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
-  } 
+  }
 
+  
   const [teams,setTeams] = useState([]);
   const [projects,setProjects] = useState([]);
+  const [teamId,setTeamId] = useState('')
 
   let navigate = useNavigate();
 
@@ -27,24 +29,15 @@ const CreateTeam = () => {
   useEffect(() => {
     (async () => {
       const res = await getTeams(localStorage.getItem('user_id'))
-
-      console.log(res['data']['result']['0'])
-      
-      res.map((data,i) => {
-        setTeams([...data['result']['0']])
-      })
+      setTeams([...res.data.result])
     })();
-    
-    teams.map(async (a,i) => {
-      const res = await getProjects(a.id)
-      console.log(res)
+
+    teams.map(async(a,i) => {
+      const res = await getProjects(a['team-id'])
+      setProjects(res)
     })
-
-
+    console.log(projects)
   },[])
-
-  // const location = useLocation();
-  // const team_info = location.state.team_info;
 
 
   const data = [
@@ -52,12 +45,6 @@ const CreateTeam = () => {
     {id: 1, title: '선택 2'},
     {id: 2, title: '선택 3'},
     {id: 3, title: '선택 4'},
-  ];
-
-  const data1=[
-    {id:0, name:'zz'},
-    {id:1, name:'ㅇㅁ'},
-    {id:2, name:'ㅁㅇㄹ'},
   ];
   
   let [box, setBox]=useState(data);
@@ -68,15 +55,15 @@ const CreateTeam = () => {
       <Chat/>
       <div className="teamBox">
         {
-          data.map(function(x,y) {
+          teams.map(function(x,y) {
             return(
-              <div className="projectBox" key={x.id}>
-                <Link to={`/teamleader`} /* state={{team_info : team_info}} */ className="tName">{x.name}</Link>
+              <div className="projectBox" key={x['team-id']}>
+                <Link to={`/teamleader/${x['team-id']}`} className="tName">{x['team-name']}</Link>
                   <div className="wrap">
                     {
-                      box.map(function(a,i){
+                      projects.map(function(a,i){
                         return(
-                          <Link to={`/teamleader/${a.id}`} state={{project_info : a,team_info : x}} className="p-create">
+                          <Link to={`/project/${a.id}`} className="p-create">
                             <p className="p-name">{a.title}</p>
                             <img className="modify_btn" src={require('../../images/modify.svg').default} alt="추가아이콘"/>
                           </Link>
@@ -85,7 +72,9 @@ const CreateTeam = () => {
                     }
 
                     <div className="p-create add-team" onClick={projectClick}>
-                      <img className="add-btn"  src={require('../../images/Add.svg').default} alt="추가아이콘"/>
+                      <img className="add-btn" onClick={() => {
+                        setTeamId(x['team-id'])
+                      }} src={require('../../images/Add.svg').default} alt="추가아이콘"/>
                     </div>
                   </div>
               </div>
@@ -101,7 +90,7 @@ const CreateTeam = () => {
           <ProjectCalendar />
         </div>
       </div>
-      {isPopup ? <Project projectClick={projectClick}/> : ''}
+      {isPopup ? <Project projectClick={projectClick} team_id={teamId}/> : ''}
     </>
   );
 };

@@ -13,7 +13,7 @@ function MProject({team_id}) {
     (async () => {
       const res = await getProjects(team_id)
       console.log(res)
-    })
+    })()
   },[])
 
 

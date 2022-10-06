@@ -13,11 +13,13 @@ const Project = ({projectClick,team_id}) => {
           <div className="text">
             <div className="important">*</div>
             <input className="nameBox" type='text' placeholder="프로젝트명 입력" />
-            <button className="createBtn" /* onClick={
+            <button className="createBtn" onClick={
               ( async () => {
-                await createProjects(document.getElementsByClassName('nameBox').value,team_id)
-              })()
-              } */>생성</button>
+                console.log(team_id)
+                const res = await createProjects(team_id,document.getElementsByClassName('nameBox')['0']['value'])
+                console.log(res)
+              })
+              }>생성</button>
           </div>
         </div>
     </>

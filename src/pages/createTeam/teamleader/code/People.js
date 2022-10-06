@@ -11,8 +11,7 @@ function People({info}) {
     ( async () => {
       const res = await getTeamMembers(info.team_id)
       console.log(res)
-    })
-
+    })()
   },[])
 
   const data=[

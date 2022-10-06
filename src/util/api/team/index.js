@@ -11,7 +11,7 @@ export const createTeams = async(team_name) => {
     const res =  await authAPI.post(
         '/teams',
         {
-            name : team_name
+            "name" : team_name
         }
     )
     return res
