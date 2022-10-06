@@ -24,14 +24,24 @@ const CreateTeam = () => {
   let navigate = useNavigate();
 
   // 유저의 팀을 받고 팀이 없으면 팀이 존재하지 않습니다 출력해주기, map 사용해서 team마다 project 출력해주기
-  // useEffect(() => {
-  //   if (getTeams(window.localStorage.getItem('user_id')) !== '404') {
-  //     setTeams([...getTeams(window.localStorage.getItem('user_id'))])
-  //   }
-  //   teams.map((id,name) => {
-  //     setProjects([...getProjects(id)])
-  //   })
-  // },[])
+  useEffect(() => {
+    (async () => {
+      const res = await getTeams(localStorage.getItem('user_id'))
+
+      console.log(res['data']['result']['0'])
+      
+      res.map((data,i) => {
+        setTeams([...data['result']['0']])
+      })
+    })();
+    
+    teams.map(async (a,i) => {
+      const res = await getProjects(a.id)
+      console.log(res)
+    })
+
+
+  },[])
 
   // const location = useLocation();
   // const team_info = location.state.team_info;
@@ -58,7 +68,7 @@ const CreateTeam = () => {
       <Chat/>
       <div className="teamBox">
         {
-          data1.map(function(x,y) {
+          data.map(function(x,y) {
             return(
               <div className="projectBox" key={x.id}>
                 <Link to={`/teamleader`} /* state={{team_info : team_info}} */ className="tName">{x.name}</Link>
@@ -92,7 +102,7 @@ const CreateTeam = () => {
         </div>
       </div>
       {isPopup ? <Project projectClick={projectClick}/> : ''}
-    </>  
+    </>
   );
 };
 

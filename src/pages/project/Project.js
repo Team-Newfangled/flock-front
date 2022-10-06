@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import TeamHeader from "../../components/header/Header";
 import '../../styles/Project.scss';
 import Head from './todo/Head.js';
@@ -9,21 +9,27 @@ import Todo from "./todo/Todo.js";
 
 const Project = () => {
   
+  const params = useParams();
+
   return (
     <>
       <TeamHeader/>
       <Todo>
         <Head/>
-        <List/>
+        <List project_id={params}/>
       </Todo>
       <div>
-        <div>
+        <Link to={`/progress${params}`}>
           <img className='go' src={require('../../images/go.svg').default} />
-        </div>
+        </Link>
         <div className="iBox">
-          <img className='lineImg' src={require('../../images/lineBox.svg').default}/>
+          <Link to={`/deadline/:${params}`} className='lineImg'>
+            <img src={require('../../images/lineBox.svg').default}/>
+          </Link>
           <div className="space"></div>
-          <img className='feed' src={require('../../images/feed.svg').default} />
+          <Link to={`/feed`}  className='feed'>
+            <img src={require('../../images/feed.svg').default} />
+          </Link>
         </div>
       </div>
     </>
