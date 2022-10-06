@@ -15,7 +15,12 @@ const Feed = () => {
     const [items,setItems] = useState([]);
 
     // useEffect(() => {
-    //     setItems(getFeed(params))
+    //     (
+    //         async() => {
+    //             const res = getFeed(params)
+    //             console.log(res)
+    //         }
+    //     )
     // },[params])
 
     return(

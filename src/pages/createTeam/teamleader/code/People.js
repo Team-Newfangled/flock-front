@@ -7,9 +7,13 @@ function People({info}) {
 
 
 
-  // useEffect(() => {
-  //   getTeamMembers(info.params.team_id)
-  // },[])
+  useEffect(() => {
+    ( async () => {
+      const res = await getTeamMembers(info.team_id)
+      console.log(res)
+    })
+
+  },[])
 
   const data=[
     {id:0, name:'zz'},

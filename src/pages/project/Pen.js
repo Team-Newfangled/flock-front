@@ -2,7 +2,7 @@ import React from "react";
 import '../../styles/Pen.scss'
 import { createFeed } from "../../util/api/feed";
 
-const Pen=({penClick})=>{
+const Pen=({penClick,project_id})=>{
 
   
 
@@ -21,7 +21,13 @@ const Pen=({penClick})=>{
           <input type="file" multiple={true} id="fileUploadBtn" />
         </div>
         <button id='fileBtn'
-          onClick={createFeed()}
+          onClick={
+            (
+              async () => {
+                await createFeed(document.getElementById('feedtext'),project_id)
+              }
+            )
+          }
         >send</button>
       </div>
     </div>

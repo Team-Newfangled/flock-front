@@ -9,9 +9,12 @@ function MProject({team_id}) {
 
   const [projects,setProjects] = useState([])
 
-  // useEffect(() => {
-  //   setProjects([...getProjects(team_id)])  
-  // },[])
+  useEffect(() => {
+    (async () => {
+      const res = await getProjects(team_id)
+      console.log(res)
+    })
+  },[])
 
 
   const data=[

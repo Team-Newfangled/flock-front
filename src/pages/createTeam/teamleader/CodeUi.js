@@ -39,8 +39,8 @@ const Teamleader = () =>{
                   <input className='capyInput' placeholder="프로젝트 명" type="text" 
                   onChange={(e)=>{setPn(e.target.value)}}></input>
                   <button className='capyBtn'
-                  onClick={()=>{
-                    // createTeams(pn,team_info.id)
+                  onClick={async()=>{
+                    // await createTeams(pn,team_info.id)
                   }}>수정</button>
                 </div>
                 <h4>대기 중인 팀원</h4>
