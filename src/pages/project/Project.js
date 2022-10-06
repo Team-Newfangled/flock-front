@@ -11,10 +11,6 @@ const Project = () => {
   
   const params = useParams();
 
-  useEffect(()=> {
-
-  },[params])
-
   return (
     <>
       <TeamHeader/>

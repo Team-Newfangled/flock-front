@@ -27,8 +27,20 @@ const CreateTeam = () => {
   useEffect(() => {
     (async () => {
       const res = await getTeams(localStorage.getItem('user_id'))
-      console.log(res.data.result)
+
+      console.log(res['data']['result']['0'])
+      
+      res.map((data,i) => {
+        setTeams([...data['result']['0']])
+      })
     })();
+    
+    teams.map(async (a,i) => {
+      const res = await getProjects(a.id)
+      console.log(res)
+    })
+
+
   },[])
 
   // const location = useLocation();
@@ -90,7 +102,7 @@ const CreateTeam = () => {
         </div>
       </div>
       {isPopup ? <Project projectClick={projectClick}/> : ''}
-    </>  
+    </>
   );
 };
 
