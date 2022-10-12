@@ -42,7 +42,6 @@ const CreateTeam = () => {
       console.log()
       const res = await getProjects(a['team-id'])
       arr.push(res.data.results)
-
     })
     console.log(arr)
     setProjects(arr)
@@ -62,15 +61,16 @@ const CreateTeam = () => {
                   <div className="wrap">
                     {
                       projects && projects.map((a,i) => {
-                        return(
-                          <Link to={`/project/${a[i].id}`} className="p-create">
-                            <p className="p-name">{a[i].name}</p>
-                            <img className="modify_btn" src={require('../../images/modify.svg').default} alt="추가아이콘"/>
-                          </Link>
-                        )
+                        a.map((a,i) => {
+                          return(
+                            <Link to={`/project/${a.id}`} className="p-create">
+                              <p className="p-name">{a.name}</p>
+                              <img className="modify_btn" src={require('../../images/modify.svg').default} alt="추가아이콘"/>
+                            </Link>
+                          )
+                        })
                       })
                     }
-
                     <div className="p-create add-team" onClick={() => {
                                                                         projectClick(x['team-id'])
                                                                       }}>
