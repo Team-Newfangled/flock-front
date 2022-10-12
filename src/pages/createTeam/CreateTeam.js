@@ -11,17 +11,20 @@ import Chat from "../../components/common/chat/Chat";
 import { getTeams } from "../../util/api/team";
 import { getProjects } from "../../util/api/project";
 const CreateTeam = () => {
+  const [teamId, setTeamId] = useState('');
   const [isPopup, setIsPopup] = useState(false);
   const scroll = Scroll();
-  const projectClick = () => {
+  const projectClick = (team_id) => {
     setIsPopup(!isPopup);
     !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
+    setTeamId(team_id)
   }
 
-  
+
+
   const [teams,setTeams] = useState([]);
   const [projects,setProjects] = useState([]);
-  const [teamId,setTeamId] = useState('')
+  
 
   let navigate = useNavigate();
 
@@ -30,24 +33,21 @@ const CreateTeam = () => {
     (async () => {
       const res = await getTeams(localStorage.getItem('user_id'))
       setTeams([...res.data.result])
-    })();
-
-    teams.map(async(a,i) => {
-      const res = await getProjects(a['team-id'])
-      setProjects(res)
-    })
-    console.log(projects)
+    })();    
   },[])
 
+  useEffect(() => {
+    let arr = []
+    teams.map( async (a,i) => {
+      console.log()
+      const res = await getProjects(a['team-id'])
+      arr.push(res.data.results)
 
-  const data = [
-    {id: 0, title: '선택 1'},
-    {id: 1, title: '선택 2'},
-    {id: 2, title: '선택 3'},
-    {id: 3, title: '선택 4'},
-  ];
-  
-  let [box, setBox]=useState(data);
+    })
+    console.log(arr)
+    setProjects(arr)
+  },[teams])
+
 
   return (
     <>
@@ -61,20 +61,20 @@ const CreateTeam = () => {
                 <Link to={`/teamleader/${x['team-id']}`} className="tName">{x['team-name']}</Link>
                   <div className="wrap">
                     {
-                      projects.map(function(a,i){
+                      projects && projects.map((a,i) => {
                         return(
-                          <Link to={`/project/${a.id}`} className="p-create">
-                            <p className="p-name">{a.title}</p>
+                          <Link to={`/project/${a[i].id}`} className="p-create">
+                            <p className="p-name">{a[i].name}</p>
                             <img className="modify_btn" src={require('../../images/modify.svg').default} alt="추가아이콘"/>
                           </Link>
                         )
                       })
                     }
 
-                    <div className="p-create add-team" onClick={projectClick}>
-                      <img className="add-btn" onClick={() => {
-                        setTeamId(x['team-id'])
-                      }} src={require('../../images/Add.svg').default} alt="추가아이콘"/>
+                    <div className="p-create add-team" onClick={() => {
+                                                                        projectClick(x['team-id'])
+                                                                      }}>
+                      <img className="add-btn" src={require('../../images/Add.svg').default} alt="추가아이콘"/>
                     </div>
                   </div>
               </div>

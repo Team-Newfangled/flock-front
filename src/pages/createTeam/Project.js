@@ -3,6 +3,8 @@ import '../../styles/Team.scss'
 import { createProjects } from "../../util/api/project";
 
 const Project = ({projectClick,team_id}) => {
+  console.log(team_id)
+
   return (
     <>
     <div className="bg" onClick={projectClick}/>
@@ -15,9 +17,8 @@ const Project = ({projectClick,team_id}) => {
             <input className="nameBox" type='text' placeholder="프로젝트명 입력" />
             <button className="createBtn" onClick={
               ( async () => {
-                console.log(team_id)
                 const res = await createProjects(team_id,document.getElementsByClassName('nameBox')['0']['value'])
-                console.log(res)
+                window.location.reload()
               })
               }>생성</button>
           </div>

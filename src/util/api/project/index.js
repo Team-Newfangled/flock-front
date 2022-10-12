@@ -12,15 +12,10 @@ export const createProjects = async(team_id,project_name) => {
 }
 
 export const getProjects = async(team_id) => {
-    await authAPI.get(
-        `/projects/${team_id}`
+    const res = await authAPI.get(
+        `/teams/${team_id}/projects/?page=0`
     )
-    .then((response) => {
-        return response
-    })
-    .catch((error) => {
-        return error
-    })
+    return res
 }
 
 export const deleteProject = async(project_id) => {
@@ -28,7 +23,7 @@ export const deleteProject = async(project_id) => {
         `/projects/${project_id}`,
         {
             data : {
-                project_id : project_id
+                "project_id" : project_id
             }
         }
     )
