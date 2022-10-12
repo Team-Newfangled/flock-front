@@ -9,15 +9,18 @@ import {
   isSameDay,
   parseISO
 } from "date-fns";
+import { useSelector } from "react-redux";
 
 const Cells = ({ currentMonth, nowDate}) => {
+  const deadline = useSelector((state) => state.deadline.result);
   const startMonth = startOfMonth(currentMonth, {weekStartsOn: 1});
   const endMonth = endOfMonth(startMonth, {weekStartsOn: 1});
   const startDate = startOfWeek(startMonth, {weekStartsOn: 1});
   const endDate = endOfWeek(endMonth, {weekStartsOn: 1});
-
-  const scheduleStartDate = parseISO("2022-09-08")
-  const scheduleEndDate = parseISO("2022-09-10")
+  
+  const scheduleStartDate = parseISO(deadline[0]["start-date"])
+  const scheduleEndDate = parseISO(deadline[0]["end-date"])
+  const color = deadline[0].color
 
   let rows = [];
   let days = [];
@@ -62,7 +65,7 @@ const Cells = ({ currentMonth, nowDate}) => {
                             : isEnd
                             ? ' end'
                             : ''
-          }`}></div>
+          }`} style={{backgroundColor: color}}></div>
           : null
           }
         </div>,

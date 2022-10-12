@@ -1,22 +1,34 @@
 import React, { useState } from "react";
 import { ChromePicker } from "react-color";
-import todos from "./data.json";
+import { useSelector } from "react-redux";
 
 const Mark = () => {
-  const [currentColor] = useState('#8DF1CD')
-  const [color, setColor] = useState('#8DF1CD');
+  const todos = useSelector((state) => state.deadline.result);
+  const [currentColor, setCurrentColor] = useState(todos[0].color)
+  const [color, setColor] = useState(todos[0].color);
+  const [startDate, setStartDate] = useState(todos[0]["start-date"]);
+  const [endDate, setEndDate] = useState(todos[0]["end-date"]);
+  const [content, setContent] = useState(todos[0].content);
   const [isPicker, setIsPicker] = useState(false);
 
   const pickerHandler = () => setIsPicker(!isPicker);
 
+  const changePreview = (content, color, start, end) => {
+    console.log(content)
+    setStartDate(start)
+    setEndDate(end)
+    setColor(color)
+    setCurrentColor(color)
+    setContent(content)
+  }
   return(
     <div className="mark">
       <div className="deadline-list">
         {todos.map((todo) => {
         return(
-          <div className="deadline" key={todo.id}>
+          <div className="deadline" key={todo.id} onClick={() => changePreview(todo.content, todo.color, todo["start-date"], todo["end-date"])}>
             <div className="title">
-              <h2>{todo.name}</h2>
+              <h2>{todo.content}</h2>
               <div style={{ width: "20px",
                             height: "20px",
                             borderRadius: "50%",
@@ -28,7 +40,7 @@ const Mark = () => {
         )})}
       </div>
       <div className="change-deadline">
-          <h2>팀원 명</h2>
+          <h2>{content}</h2>
           <div 
               className="preview" 
               onClick={pickerHandler} 
@@ -44,9 +56,9 @@ const Mark = () => {
           <div className="change-date">
             <h4>날짜</h4>
             <div className="day">
-              <input className="date-input" value={"2022/05/04"}/>
+              <input className="date-input" value={startDate}/>
               <span>~</span>
-              <input className="date-input" value={"2022/05/04"}/>
+              <input className="date-input" value={endDate}/>
             </div>
             <button className="change">완료</button>
           </div>
