@@ -49,30 +49,20 @@ export const patchProject = async(project_id,project_name) => {
 // todo list
 
 export const getTodoItems = async(project_id) => {
-    await authAPI.get(
-        `/projects/${project_id}/deadline`
+    const res = await authAPI.get(
+        `/projects/${project_id}/deadline?year=2022&month=10`
     )
-    .then((response) => {
-        return response
-    })
-    .catch((error) => {
-        return error
-    })
+    return res
 };
 
 export const createTodoItems = async(project_id,todo_name) => {
-    await authAPI.post(
+    const res = await authAPI.post(
         `/projects/${project_id}/todo`,
         {
             content : todo_name
         }
     )
-    .then((response) => {
-        return response
-    })
-    .catch((error) => {
-        return error
-    })
+    return res
 }
 
 export const deleteTodoItems = async(project_id) => {
@@ -82,7 +72,7 @@ export const deleteTodoItems = async(project_id) => {
 }
 
 export const putTodoItems = async(project_id,content,end,start) => {
-    await authAPI.put(
+    const res = await authAPI.put(
         `/todo/${project_id}`,
         {
             content : content,
@@ -90,25 +80,15 @@ export const putTodoItems = async(project_id,content,end,start) => {
             start_date : start
         }
     )
-    .then((response) => {
-        return response
-    })
-    .catch((error) => {
-        return error
-    })
+    return res
 }
 
 export const patchTodoItems = async(project_id,state) => {
-    await authAPI.patch(
+    const res = await authAPI.patch(
         `/todo/${project_id}`,
         {
             done : state
         }
     )
-    .then((response) => {
-        return response
-    })
-    .catch((error) => {
-        return error
-    })
+    return res
 }

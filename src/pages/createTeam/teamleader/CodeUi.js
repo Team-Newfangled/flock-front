@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from 'react'
 import '../../../styles/Teamleader.scss'
 import Copy from './code/Copy.js'
 import People from './code/People.js'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { createTeams } from "../../../util/api/team";
 
 
@@ -12,9 +12,8 @@ const Teamleader = () =>{
   let navigate = useNavigate();
   let [pn, setPn]=useState();
 
-  // const location = useLocation()
-  // const project_info = location.state.project_info;
-  // const team_info = location.state.team_info;
+  const params = useParams();
+  
 
   return (
     <>

@@ -22,10 +22,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
       !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
     }
 
-    // 팀 정보를 받아 id를 넘겨주는 코드
-    // const location = useLocation()
-    // const team_id = location.state.team_info.id;
-
 
   return (
     <>

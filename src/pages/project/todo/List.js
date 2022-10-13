@@ -6,13 +6,23 @@ import { useParams } from "react-router-dom";
 
 function List() {
 
-  let [items,setitems] = useState([])
+  const [items,setitems] = useState([]);
 
   const params = useParams();
 
-  // useEffect(()=> {
-  //   setitems([...getTodoItems(params.project_id)])
-  // }, [params])
+  useEffect(()=> {
+    (
+      async () => {
+        await getTodoItems(params.project_id)
+        .then((res) => {
+          let arr = []
+          arr = res.data.results
+          console.log(res)
+          setitems([...arr])
+        })
+      }
+    )();
+  }, [params])
 
   return(
     <>
@@ -20,7 +30,7 @@ function List() {
     {
       items.map((item) => {
         return (
-          <Item text={item.results[0].content} done={item.results[0].completed}/>
+          <Item text={item.content} done={item.completed}/>
         )
       })
     }
