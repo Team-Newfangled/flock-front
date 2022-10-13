@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ChromePicker } from "react-color";
 import { useSelector } from "react-redux";
+import { changeDeadlineColor } from "../../../util/api/deadline";
 
 const Mark = () => {
   const todos = useSelector((state) => state.deadline.result);
@@ -14,13 +15,18 @@ const Mark = () => {
   const pickerHandler = () => setIsPicker(!isPicker);
 
   const changePreview = (content, color, start, end) => {
-    console.log(content)
     setStartDate(start)
     setEndDate(end)
     setColor(color)
     setCurrentColor(color)
     setContent(content)
   }
+
+  const changeMark = async() => {
+    const res = await changeDeadlineColor();
+    console.log(res)
+  }
+
   return(
     <div className="mark">
       <div className="deadline-list">
@@ -60,7 +66,7 @@ const Mark = () => {
               <span>~</span>
               <input className="date-input" value={endDate}/>
             </div>
-            <button className="change">완료</button>
+            <button className="change" onClick={changeMark}>완료</button>
           </div>
       </div>
     </div>

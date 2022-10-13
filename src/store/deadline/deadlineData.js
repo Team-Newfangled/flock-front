@@ -20,12 +20,9 @@ const deadlineData = createSlice({
   reducers: {
     getState: (state, action) => {
       state.value = action.payload
-    },
-    setState: (state, action) => {
-      state.value = action.payload
     }
   }
 })
 
-export const { getState, setState } = deadlineData.actions;
+export const { getState } = deadlineData.actions;
 export default deadlineData.reducer;

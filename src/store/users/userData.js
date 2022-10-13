@@ -30,7 +30,7 @@ const userData = createSlice({
       state.value.userInfo = action.payload
     }
   },
-  extraReducers:  (builder) => {
+  extraReducers: (builder) => {
     builder
       .addCase(editProfile.pending, (state) => {
         state.value.loading = true
