@@ -59,9 +59,9 @@ const CreateTeam = () => {
                             return(
                               <Link to={`/project/${a.id}`} className="p-create">
                                 <p className="p-name">{a.name}</p>
-                                <img className="modify_btn" src={require('../../images/modify.svg').default} onClick = {() => {
-                                  navigate(`/TeamCode${x['team-id']}/${x['team-name']}`)
-                                }} alt="추가아이콘"/>
+                                <Link to={`/TeamCode${x['team-id']}/${x['team-name']}`}>
+                                <img className="modify_btn" src={require('../../images/modify.svg').default}alt="추가아이콘"/>
+                                </Link>
                               </Link>
                         )}))
                       })
