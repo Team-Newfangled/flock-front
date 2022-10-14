@@ -17,14 +17,14 @@ const Calendar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  useEffect(() => {
-    (async () => {
-      const res = await getDeadline(location.pathname.split('/')[2],nowDate.getFullYear(),currentMonth.getMonth());
-      if(res.data.results.length !== 0){
-        dispatch(getState(res.data.results))
-      }
-    })();
-  }, [nowDate, currentMonth])
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await getDeadline(location.pathname.split('/')[2],nowDate.getFullYear(),currentMonth.getMonth());
+  //     if(res.data.results.length !== 0){
+  //       dispatch(getState(res.data.results))
+  //     }
+  //   })();
+  // }, [nowDate, currentMonth])
 
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
