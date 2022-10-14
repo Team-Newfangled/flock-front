@@ -12,7 +12,7 @@ import {
 import { useSelector } from "react-redux";
 
 const Cells = ({ currentMonth, nowDate}) => {
-  const deadline = useSelector((state) => state.deadline.result);
+  const deadline = useSelector((state) => state.deadline.results);
   const startMonth = startOfMonth(currentMonth, {weekStartsOn: 1});
   const endMonth = endOfMonth(startMonth, {weekStartsOn: 1});
   const startDate = startOfWeek(startMonth, {weekStartsOn: 1});
@@ -21,7 +21,7 @@ const Cells = ({ currentMonth, nowDate}) => {
   const scheduleStartDate = parseISO(deadline[0]["start-date"])
   const scheduleEndDate = parseISO(deadline[0]["end-date"])
   const color = deadline[0].color
-
+  
   let rows = [];
   let days = [];
   let day = startDate;
@@ -29,19 +29,21 @@ const Cells = ({ currentMonth, nowDate}) => {
   let isStart = false;
   let isMid = false;
   let isEnd = false;
-  
+
   while (day <= endDate || rows.length < 6){
     for(let i=0; i<7; i++){
-      if(format(scheduleStartDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')){
-        isStart = true;
-        isSchedule = true;
-      }else if (format(scheduleEndDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')) {
-        isStart = false;
-        isMid = false;
-        isEnd = true;
-      }else{
-        isStart = false
-        isMid = true
+      if(!Number.isNaN(new Date(scheduleEndDate).getTime())){
+        if(format(scheduleStartDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')){
+          isStart = true;
+          isSchedule = true;
+        }else if (format(scheduleEndDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')) {
+          isStart = false;
+          isMid = false;
+          isEnd = true;
+        }else{
+          isStart = false
+          isMid = true
+        }
       }
       
       days.push(
@@ -70,7 +72,7 @@ const Cells = ({ currentMonth, nowDate}) => {
           }
         </div>,
       )
-      if(format(scheduleEndDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')){
+      if(!Number.isNaN(new Date(scheduleEndDate).getTime()) && format(scheduleEndDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')){
         isSchedule = false
         isEnd = false
       }

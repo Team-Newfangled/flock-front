@@ -44,7 +44,7 @@ const App = () => {
         <Route path="/TeamCode/:team-id" element={<TeamCode/>}/> {/* 팀 정보, 팀원 수락 제외 완료  */}
         <Route path="/Teamleader/:team-id" element={<Teamleader/>}/>
         <Route path="/Member" element={<Member/>}/> {/* 팀원 신청 */}
-        <Route path="/Deadline/:project_id" element={<Deadline/>}/>
+        <Route path="/deadline/:project_id" element={<Deadline/>}/>
         <Route path="/Project/:project_id" element={<Project/>}/>
         <Route path="/Feed/:project_id" element={<Feed/>}/>
         <Route path="/Progress/:project_id" element={<Progress/>}/>

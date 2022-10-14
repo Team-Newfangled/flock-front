@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  result: [
+  results: [
     {
-      color: "#8173D1",
+      color: "",
       completed: false,
-      content: "하하하",
-      "start-date": "2022-10-08",
-      "end-date": "2022-10-08",
+      content: "",
+      "start-date": "",
+      "end-date": "",
       id: 0,
       "writer_id": 0
     }
@@ -19,7 +19,7 @@ const deadlineData = createSlice({
   initialState,
   reducers: {
     getState: (state, action) => {
-      state.value = action.payload
+      state.results = action.payload
     }
   }
 })

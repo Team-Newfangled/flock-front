@@ -20,7 +20,7 @@ function List() {
           console.log(res)
           setitems([...arr])
         })
-      }
+      } 
     )();
   }, [params])
 
@@ -30,7 +30,7 @@ function List() {
     {
       items.map((item) => {
         return (
-          <Item text={item.content} done={item.completed}/>
+          <Item text={item.content} done={item.completed} id={item.id}/>
         )
       })
     }

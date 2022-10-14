@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { changeDeadlineColor } from "../../../util/api/deadline";
 
 const Mark = () => {
-  const todos = useSelector((state) => state.deadline.result);
+  const todos = useSelector((state) => state.deadline.results);
   const [currentColor, setCurrentColor] = useState(todos[0].color)
   const [color, setColor] = useState(todos[0].color);
   const [startDate, setStartDate] = useState(todos[0]["start-date"]);

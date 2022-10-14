@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
+import { deleteTodoItems } from '../../../util/api/project';
  
 const Remove = styled.div`
     display: flex;
@@ -70,7 +71,13 @@ function Item({ id, done, text }) {
         <TodoItemBlock>
             <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>
             <Text done={done}>{text}</Text>
-            <Remove>
+            <Remove onClick={() => {
+                (
+                    async () => {
+                        await deleteTodoItems(id)
+                    }
+                )()
+            }}>
                 <MdDelete />
             </Remove>
         </TodoItemBlock>
