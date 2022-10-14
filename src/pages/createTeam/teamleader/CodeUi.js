@@ -13,7 +13,8 @@ const Teamleader = () =>{
   let [pn, setPn]=useState();
 
   const params = useParams();
-  
+  const name = params.team_name
+  const id = params.team_id
 
   return (
     <>
@@ -22,12 +23,12 @@ const Teamleader = () =>{
     </div>
       <div className="team">
         <div className="TeamBox">
-          <h2 className="tName">팀이름</h2>
+          <h2 className="tName">{name}</h2>
           <div className="sBox">
             <div className="people">
               <h3>팀원 관리</h3>
               <Copy/>
-              <People/>
+              <People team_id={id}/>
             </div>
             <div className="ssBox">
               <div className="projectbbb">
@@ -37,10 +38,7 @@ const Teamleader = () =>{
                 <div className="projectRname">
                   <input className='capyInput' placeholder="프로젝트 명" type="text" 
                   onChange={(e)=>{setPn(e.target.value)}}></input>
-                  <button className='capyBtn'
-                  onClick={async()=>{
-                    // await createTeams(pn,team_info.id)
-                  }}>수정</button>
+                  <button className='capyBtn'>수정</button>
                 </div>
                 <h4>대기 중인 팀원</h4>
                 <button className="newBtn teamGo" onClick={()=>{ navigate('/Member')}}>팀원 승인하러 가기</button>

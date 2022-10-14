@@ -50,7 +50,7 @@ const CreateTeam = () => {
           teams.map((x,y) => {
             return(
               <div className="projectBox" key={x['team-id']}>
-                <Link to={`/teamleader/${x['team-id']}`} className="tName">{x['team-name']}</Link>
+                <Link to={`/teamleader/${x['team-id']}/${x['team-name']}`} className="tName">{x['team-name']}</Link>
                   <div className="wrap">
                     {
                       projects.map((t,i) => {
@@ -60,7 +60,7 @@ const CreateTeam = () => {
                               <Link to={`/project/${a.id}`} className="p-create">
                                 <p className="p-name">{a.name}</p>
                                 <img className="modify_btn" src={require('../../images/modify.svg').default} onClick = {() => {
-                                  window.location.href = `/teamCode/${a.id}`
+                                  navigate(`/TeamCode${x['team-id']}/${x['team-name']}`)
                                 }} alt="추가아이콘"/>
                               </Link>
                         )}))
@@ -79,8 +79,8 @@ const CreateTeam = () => {
       </div>
 
       <div className="dateBox">
-        <NavLink to='/teamleader'><button id='link'>My Page</button></NavLink>
-        <NavLink to='/teamCode'><button id='link'>My Team</button></NavLink>
+        <NavLink to='/teamleader/1/이름'><button id='link'>My Page</button></NavLink>
+        <NavLink to='/teamCode/1/이름'><button id='link'>My Team</button></NavLink>
         <div className="date">데드라인
           <ProjectCalendar />
         </div>

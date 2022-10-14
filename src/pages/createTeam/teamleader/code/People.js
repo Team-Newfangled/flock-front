@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import '../../../../styles/Teamleader.scss'
 import { getTeamMembers } from "../../../../util/api/team";
 
-function People({info}) {
+function People(team_id) {
 
 
 
   useEffect(() => {
     ( async () => {
-      const res = await getTeamMembers(info.team_id)
+      const res = await getTeamMembers(team_id)
       console.log(res)
     })()
   },[])
