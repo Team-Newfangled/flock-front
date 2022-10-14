@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
   results: [
     {
-      color: "",
+      color: "#8173D1",
       completed: false,
-      content: "",
-      "start-date": "",
-      "end-date": "",
+      content: "공주",
+      "start-date": "2022-10-08",
+      "end-date": "2022-10-08",
       id: 0,
       "writer_id": 0
     }

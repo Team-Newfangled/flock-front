@@ -39,7 +39,7 @@ const CreateTeam = () => {
         })
         setTeams([...res.data.result])
       })
-    })();
+    })()
   },[])
   return (
     <>
