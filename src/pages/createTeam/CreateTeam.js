@@ -50,7 +50,7 @@ const CreateTeam = () => {
           teams.map((x,y) => {
             return(
               <div className="projectBox" key={x['team-id']}>
-                <Link to={`/teamleader/${x['team-id']}/${x['team-name']}`} className="tName">{x['team-name']}</Link>
+                <Link to={`/teamcode/${x['team-id']}/${x['team-name']}`} className="tName">{x['team-name']}</Link>
                   <div className="wrap">
                     {
                       projects.map((t,i) => {
@@ -59,7 +59,7 @@ const CreateTeam = () => {
                             return(
                               <Link to={`/project/${a.id}`} className="p-create">
                                 <p className="p-name">{a.name}</p>
-                                <Link to={`/TeamCode${x['team-id']}/${x['team-name']}`}>
+                                <Link to={`/teamleader/${x['team-id']}/${x['team-name']}`}>
                                 <img className="modify_btn" src={require('../../images/modify.svg').default}alt="추가아이콘"/>
                                 </Link>
                               </Link>

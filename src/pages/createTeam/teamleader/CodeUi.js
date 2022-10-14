@@ -19,7 +19,7 @@ const Teamleader = () =>{
   return (
     <>
     <div className="titleBox">
-          <h1>팀 정보</h1>
+        <h1>프로젝트 정보</h1>
     </div>
       <div className="team">
         <div className="TeamBox">
