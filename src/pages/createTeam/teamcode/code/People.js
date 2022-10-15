@@ -12,11 +12,11 @@ function People({props}) {
   // },[])
 
   const data=[
-    {id:0, name:'팀원이름'},
-    {id:1, name:'팀원이름1'},
-    {id:2, name:'팀원이름2'},
-    {id:3, name:'팀원이름3'},
-    {id:4, name:'팀원이름4'},
+    // {id:0, name:'팀원이름'},
+    // {id:1, name:'팀원이름1'},
+    // {id:2, name:'팀원이름2'},
+    // {id:3, name:'팀원이름3'},
+    // {id:4, name:'팀원이름4'},
   ];
 
   let [mer, setMer]=useState(data)

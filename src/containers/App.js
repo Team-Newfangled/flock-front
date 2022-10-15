@@ -38,7 +38,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Main/>}/>
+        <Route exact path="/*" element={<Main/>}/>
         <Route path="/Profile" element={<Profile/>}/>
         <Route path="/CreateTeam" element={<CreateTeam/>}/>
         <Route path="/teamcode/:team_id/:team_name" element={<TeamCode/>}/> {/* 팀 정보, 팀원 수락 제외 완료  */}
