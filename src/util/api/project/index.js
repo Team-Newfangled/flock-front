@@ -49,25 +49,29 @@ export const patchProject = async(project_id,project_name) => {
 // todo list
 
 export const getTodoItems = async(project_id) => {
+    const date = new Date();
+    const year = date.getUTCFullYear();
+    const month = date.getUTCMonth() + 1;
     const res = await authAPI.get(
-        `/projects/${project_id}/deadline?year=2022&month=10`
+        `/projects/${project_id}/deadline?year=${year}&month=${month}`
     )
     return res
 };
 
 export const createTodoItems = async(project_id,todo_name) => {
+
     const res = await authAPI.post(
         `/projects/${project_id}/todo`,
         {
-            content : todo_name
+            "content" : todo_name
         }
     )
     return res
 }
 
-export const deleteTodoItems = async(project_id) => {
+export const deleteTodoItems = async(todo_id) => {
     await authAPI.delete(
-        `/todo/${project_id}`,
+        `/todo/${todo_id}`
     )
 }
 
@@ -75,9 +79,9 @@ export const putTodoItems = async(project_id,content,end,start) => {
     const res = await authAPI.put(
         `/todo/${project_id}`,
         {
-            content : content,
-            end_date : end,
-            start_date : start
+            "content" : content,
+            "end_date" : end,
+            "start_date" : start
         }
     )
     return res
@@ -87,7 +91,7 @@ export const patchTodoItems = async(project_id,state) => {
     const res = await authAPI.patch(
         `/todo/${project_id}`,
         {
-            done : state
+            "done" : state
         }
     )
     return res
