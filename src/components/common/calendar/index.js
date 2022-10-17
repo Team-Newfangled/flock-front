@@ -4,7 +4,7 @@ import Header from "./Header";
 import Cells from "./Cells";
 import Days from "./Days";
 import "../../../styles/Calendar.scss";
-import { getState } from "../../../store/deadline/deadlineData";
+import { getState, initialState } from "../../../store/deadline/deadlineData";
 import { getDeadline } from "../../../util/api/deadline";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -17,14 +17,16 @@ const Calendar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const res = await getDeadline(location.pathname.split('/')[2],nowDate.getFullYear(),currentMonth.getMonth());
-  //     if(res.data.results.length !== 0){
-  //       dispatch(getState(res.data.results))
-  //     }
-  //   })();
-  // }, [nowDate, currentMonth])
+  useEffect(() => {
+    (async () => {
+      const res = await getDeadline(location.pathname.split('/')[2],nowDate.getFullYear(),currentMonth.getMonth() + 1);
+      if(res.data.results.length !== 0){
+        dispatch(getState(res.data.results))
+      }else {
+        dispatch(getState(initialState.results))
+      }
+    })();
+  }, [nowDate, currentMonth])
 
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));

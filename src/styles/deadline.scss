@@ -1,3 +1,22 @@
+.addContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .deadline-add-box {
+    width: 180px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #EFF2F9;
+    border-radius: 10px;
+    color: #828282;
+  }
+}
+
 .mark{
   position: absolute;
   right:12%;
@@ -13,7 +32,15 @@
     left: 50%;
     transform: translateX(-50%);
 
+    .addDeadline{
+      width: 360px;
+      height: 370px;
+      background: #FFFFFF;
+      border-radius: 20px;
+    }
+
     .deadline{
+      cursor: pointer;
       position: relative;
       width: 360px;
       height: 110px;
