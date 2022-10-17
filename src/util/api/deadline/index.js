@@ -5,8 +5,10 @@ export const getDeadline = async(projectId, year, month) => {
   return res;
 };
 
-export const changeDeadlineColor = async({projectId, todoId, color}) => {
-  await authAPI.patch(`projects/${projectId}/deadline/${todoId}`,{
+export const changeDeadlineColor = async({Id, color, startDate, endDate}) => {
+  await authAPI.put(`/todo/${Id}`,{
     content: color,
+    "end-date": endDate,
+    "start-date": startDate
   });
 };
