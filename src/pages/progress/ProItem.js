@@ -1,6 +1,9 @@
 import React from "react";
 import '../../styles/Progress.scss'
 const ProItem = () => {
+
+  
+
     return(
         <>
            <div className="promain">

@@ -7,7 +7,7 @@ import { deleteFeed, getComments, getFeed } from "../../util/api/feed";
 import Head from '../project/todo/Head.js';
 import List from '../project/todo/List.js';
 import Todo from "../project/todo/Todo.js";
-
+import Pen from '../project/Pen'
 const Feed = () => {
 
     const params = useParams();
@@ -31,7 +31,6 @@ const Feed = () => {
                     })
                     setItems([...res.data.result])
                 })
-                
             }
         )();
     },[params])
@@ -43,6 +42,8 @@ const Feed = () => {
             }
         )()
     }
+
+    console.log(items.comments)
 
 
     return(
@@ -69,7 +70,9 @@ const Feed = () => {
                                     <p className="commentmean"> a.content </p>
                                     <div>
                                         <p onClick={() => {
-                                            
+                                            return (
+                                                <Pen project_id={params.project_id} isPut={true}/>
+                                            )
                                         }}>수정</p>
                                         <p onClick={() => {
                                             Delete(a.id)

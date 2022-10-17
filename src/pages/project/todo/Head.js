@@ -12,7 +12,7 @@ function Head({project_id}) {
         (
           async () => {
             const res = await createTodoItems(project_id,document.getElementsByClassName('plus')['0']['value']);
-            window.location.reload();
+            console.log(res)
           }
         )
       }

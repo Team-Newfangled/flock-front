@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
-import { deleteTodoItems } from '../../../util/api/project';
- 
+import { deleteTodoItems, patchTodoItems } from '../../../util/api/project';
+
 const Remove = styled.div`
     display: flex;
     align-items: center;
@@ -65,23 +65,29 @@ const Text = styled.div`
  
 function Item({ id, done, text }) {
 
-    const [todoId, settodoId] = useState(id)
-
     return (
         <TodoItemBlock>
-            <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>
+            <CheckCircle done={done} onClick={
+            (
+                async () => {
+                    const res = await patchTodoItems(id,!done)
+                    console.log(res)
+                    
+                }
+            )
+            }>{done && <MdDone />}</CheckCircle>
             <Text done={done}>{text}</Text>
-            <Remove onClick={() => {
+            <Remove onClick={
                 (
                     async () => {
-                        await deleteTodoItems(id)
+                        const res = await deleteTodoItems(id)
                     }
-                )()
-            }}>
+                )
+            }>
                 <MdDelete />
             </Remove>
         </TodoItemBlock>
     );
 }
- 
+
 export default Item;

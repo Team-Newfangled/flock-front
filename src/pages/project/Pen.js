@@ -1,8 +1,8 @@
 import React from "react";
 import '../../styles/Pen.scss'
-import { createFeed } from "../../util/api/feed";
+import { createFeed, patchFeed } from "../../util/api/feed";
 
-const Pen=({penClick,project_id})=>{
+const Pen=({isPut,penClick,project_id})=>{
 
   
 
@@ -22,11 +22,26 @@ const Pen=({penClick,project_id})=>{
         </div>
         <button id='fileBtn'
           onClick={
-            (
-              async () => {
-                await createFeed(document.getElementById('feedtext'),project_id)
+            () => {
+              if (isPut){
+                return(
+                  (
+                    async () => {
+                      await patchFeed(document.getElementById('feedtext'),project_id)
+                    }
+                  )
+                )
               }
-            )
+              else {
+                return (
+                  (
+                    async () => {
+                      await createFeed(document.getElementById('feedtext'),project_id)
+                    }
+                  )
+                )
+              }
+            }
           }
         >send</button>
       </div>
