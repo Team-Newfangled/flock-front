@@ -23,15 +23,16 @@ export const deleteTeam = async(team_id,user_id) => {
     )
 }
 
-
-export const getTeamMembers = async(team_id) => {
-    const res = await authAPI.get(
-        `/teams/${team_id}/members`
-     )
-}
-
 export const deleteTeamMembers = async(team_id,user_id) => {
     await authAPI.delete(
         `/teams/${team_id}/expulsion/${user_id}`
     )
 }
+// team member
+export const getTeamMembers = async(team_id) => {
+    const res = await authAPI.get(
+        `/teams/${team_id}/members`
+    )
+    return res
+}
+

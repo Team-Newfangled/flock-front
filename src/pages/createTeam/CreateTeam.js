@@ -47,7 +47,7 @@ const CreateTeam = () => {
       <Chat/>
       <div className="teamBox">
         {
-          teams.map((x,y) => {
+          teams.map((x,y) => { /* x = 팀 */
             return(
               <div className="projectBox" key={x['team-id']}>
                 <Link to={`/teamcode/${x['team-id']}/${x['team-name']}`} className="tName">{x['team-name']}</Link>
@@ -55,7 +55,7 @@ const CreateTeam = () => {
                     {
                       projects.map((t,i) => {
                         return(
-                          Array.isArray(t[x['team-id']]) && t[x['team-id']].map((a,j) => {
+                          Array.isArray(t[x['team-id']]) && t[x['team-id']].map((a,j) => { /* a가 */
                             return(
                               <Link to={`/project/${a.id}`} className="p-create">
                                 <p className="p-name">{a.name}</p>
