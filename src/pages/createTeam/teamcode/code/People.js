@@ -2,14 +2,22 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import '../../../../styles/TeamCode.scss'
-import { deleteTeamMembers, getTeamMembers } from "../../../../util/api/team";
+import { deleteTeamMembers, getTeamMembers, getTeamLeader } from "../../../../util/api/team";
 
 function People() {
 
   const params = useParams();
 
   const [teamMembers,setTeamMembers] = useState([])
-
+  const [teamLeader,setTeamLeader]= useState([])
+  useEffect(() => {
+    (
+      async () => {
+        const res = await getTeamLeader(params.team_id)
+        setTeamLeader([...res.data.results])
+      }
+    )();
+  },[params])
   useEffect(() => {
     (
       async () => {
@@ -18,7 +26,7 @@ function People() {
       }
     )();
   },[params])
-
+  console.log();
   const data=[
     // {id:0, name:'팀원이름'},
     // {id:1, name:'팀원이름1'},
@@ -28,17 +36,22 @@ function People() {
   ];
 
   let [mer, setMer]=useState(data)
-
   return (
     <>
       <div className="membarBox">
-        <div className="king">팀장이름</div>
+        <div className="king">{teamLeader.map( a =>{
+          return (a.name)
+        })}</div>
         {
           teamMembers.map( a => {
-            return(
-              <div className="king membar">{a.name}
-              <img className='trash' src={require('../../../../images/trash.svg').default}/></div>
-            )
+            let check = 0;
+            if(check != 0){
+              return(
+                <div className="king membar">{a.name}
+                <img className='trash' src={require('../../../../images/trash.svg').default}/></div>
+              )
+            }
+            check++;
           })
         }
         

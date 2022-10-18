@@ -35,4 +35,9 @@ export const getTeamMembers = async(team_id) => {
     )
     return res
 }
-
+export const getTeamLeader = async(team_id) => {
+    const res = await authAPI.get(
+        `/teams/${team_id}/members`
+    )
+    return res
+}
