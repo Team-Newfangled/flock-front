@@ -18,6 +18,8 @@ import {
 import { authAPI } from "../lib/API";
 import { getUserInfo} from "../store/users/userData";
 import useLogin from "../hooks/useLogin";
+import NotFound from "../components/common/NotFound";
+import Loding from "../components/common/Loading";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -38,7 +40,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route exact path="/*" element={<Main/>}/>
+        <Route path="/" element={<Main/>}/>
         <Route path="/Profile" element={<Profile/>}/>
         <Route path="/CreateTeam" element={<CreateTeam/>}/>
         <Route path="/teamcode/:team_id/:team_name" element={<TeamCode/>}/> {/* 팀 정보, 팀원 수락 제외 완료  */}
@@ -50,6 +52,8 @@ const App = () => {
         <Route path="/Progress/:project_id" element={<Progress/>}/>
         <Route path="/Pen" element={<Pen/>}/>
         <Route path="/Ongoing" element={<Ongoing/>}/>
+        <Route path="/redirect" element={<Loding />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

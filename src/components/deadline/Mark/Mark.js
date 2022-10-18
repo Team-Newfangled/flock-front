@@ -1,13 +1,14 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { ChromePicker } from "react-color";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { changeDeadlineColor } from "../../../util/api/deadline";
+import { changeDeadlineColor, putTodo } from "../../../util/api/deadline";
 
 const Mark = () => {
   const todos = useSelector((state) => state.deadline.results);
-  console.log(todos[0].color)
-  const [currentColor, setCurrentColor] = useState(todos[0].color)
+  const [todoId, setTodoId] = useState(todos[0].id);
+  const [currentColor, setCurrentColor] = useState(todos[0].color);
   const [color, setColor] = useState(todos[0].color);
   const [startDate, setStartDate] = useState(todos[0]["start-date"]);
   const [endDate, setEndDate] = useState(todos[0]["end-date"]);
@@ -15,19 +16,27 @@ const Mark = () => {
   const [isPicker, setIsPicker] = useState(false);
   const params = useParams()
 
+  const onChangeStartDate = (e) => setStartDate(e.target.value);
+  const onChangeEndDate = (e) => setEndDate(e.target.value);
+
   const pickerHandler = () => setIsPicker(!isPicker);
 
-  const changePreview = (content, color, start, end) => {
-    setStartDate(start)
-    setEndDate(end)
-    setColor(color)
-    setCurrentColor(color)
-    setContent(content)
-  }
+  const changePreview = (id, content, color, start, end) => {
+    setTodoId(id);
+    setStartDate(start);
+    setEndDate(end);
+    setColor(color);
+    setCurrentColor(color);
+    setContent(content);
+  };
 
-  const changeMark = async() => {
-    const res = await changeDeadlineColor(params.project_id, color, endDate, startDate);
-    console.log(res)
+  const changeMark = () => {
+    axios.all([putTodo(params.project_id, todoId, color), changeDeadlineColor(params.project_id, content, endDate, startDate)])
+    .then(axios.spread((res1, res2) => {
+      console.log(res1)
+      console.log(res2)
+    }))
+    .catch((err) => { console.log(err)})
   }
 
   return(
@@ -35,7 +44,7 @@ const Mark = () => {
       <div className="deadline-list">
         {todos[0].color && todos.map((todo, index) => {
         return(
-          <div className="deadline" key={index} onClick={() => changePreview(todo.content, todo.color, todo["start-date"], todo["end-date"])}>
+          <div className="deadline" key={index} onClick={() => changePreview(todo.id, todo.content, todo.color, todo["start-date"], todo["end-date"])}>
             <div className="title">
               <h2>{todo.content}</h2>
               <div style={{ width: "20px",
@@ -79,9 +88,9 @@ const Mark = () => {
           <div className="change-date">
             <h4>날짜</h4>
             <div className="day">
-              <input className="date-input" value={startDate}/>
+              <input className="date-input" value={startDate} onChange={onChangeStartDate}/>
               <span>~</span>
-              <input className="date-input" value={endDate}/>
+              <input className="date-input" value={endDate} onChange={onChangeEndDate}/>
             </div>
             <button className="change" onClick={changeMark}>완료</button>
           </div>

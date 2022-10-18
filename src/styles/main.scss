@@ -22,7 +22,7 @@
     @include size(100%, 100%);
     position: relative;
     background-size: cover;
-    background-image: url('../images/mainImage.svg');
+    background-image: url('../images/mainImage.png');
     background-repeat: no-repeat;
     overflow: hidden;
 
@@ -79,7 +79,7 @@
     }
 
     .startButton2 {
-      @include position(top, right, 58%, 13%);
+      @include position(top, right, 58%, -30%);
       @include size(208px, 78px);
       background-image: url('../images/startButton2.svg');
       background-repeat: no-repeat;

@@ -49,5 +49,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://141.164.59.254:8080/"
+  "allowedHosts" : "all",
+  "proxy" : "http://141.164.59.254:8080/"
 }
