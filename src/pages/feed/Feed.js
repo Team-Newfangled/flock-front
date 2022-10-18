@@ -43,7 +43,6 @@ const Feed = () => {
         )()
     }
 
-    console.log(items.comments)
 
 
     return(
@@ -106,7 +105,6 @@ const Feed = () => {
                                                         </div>
                                                         <p className="commentmean">j.content</p>
                                                     </div>
-
                                                 )
                                             })
                                         )

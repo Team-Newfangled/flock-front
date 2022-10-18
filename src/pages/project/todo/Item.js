@@ -71,8 +71,7 @@ function Item({ id, done, text }) {
             (
                 async () => {
                     const res = await patchTodoItems(id,!done)
-                    console.log(res)
-                    
+                    window.location.reload()
                 }
             )
             }>{done && <MdDone />}</CheckCircle>
@@ -81,6 +80,7 @@ function Item({ id, done, text }) {
                 (
                     async () => {
                         const res = await deleteTodoItems(id)
+                        window.location.reload()
                     }
                 )
             }>

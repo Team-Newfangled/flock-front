@@ -22,9 +22,6 @@ const CreateTeam = () => {
   const [teams,setTeams] = useState([]);
   const [projects, setProjects] = useState([]);
 
-  let navigate = useNavigate();
-
-  // 유저의 팀을 받고 팀이 없으면 팀이 존재하지 않습니다 출력해주기, map 사용해서 team마다 project 출력해주기
   useEffect(() => {
     (async () => {
       await getTeams(localStorage.getItem('user_id'))

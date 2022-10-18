@@ -1,10 +1,9 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import '../../styles/Team.scss'
 import { createProjects } from "../../util/api/project";
 
 const Project = ({projectClick,team_id}) => {
-  console.log(team_id)
-
   return (
     <>
     <div className="bg" onClick={projectClick}/>
@@ -18,7 +17,6 @@ const Project = ({projectClick,team_id}) => {
             <button className="createBtn" onClick={
               ( async () => {
                 const res = await createProjects(team_id,document.getElementsByClassName('nameBox')['0']['value'])
-                window.location.reload()
               })
               }>생성</button>
           </div>
@@ -26,5 +24,4 @@ const Project = ({projectClick,team_id}) => {
     </>
   );
 };
-
 export default Project;
