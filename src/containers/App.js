@@ -41,13 +41,13 @@ const App = () => {
         <Route exact path="/*" element={<Main/>}/>
         <Route path="/Profile" element={<Profile/>}/>
         <Route path="/CreateTeam" element={<CreateTeam/>}/>
-        <Route path="/TeamCode" element={<TeamCode/>}/> {/* 팀 정보, 팀원 수락 제외 완료  */}
-        <Route path="/Teamleader" element={<Teamleader/>}/>
+        <Route path="/teamcode/:team_id/:team_name" element={<TeamCode/>}/> {/* 팀 정보, 팀원 수락 제외 완료  */}
+        <Route path="/teamleader/:team_id/:team_name" element={<Teamleader/>}/>
         <Route path="/Member" element={<Member/>}/> {/* 팀원 신청 */}
-        <Route path="/Deadline" element={<Deadline/>}/>
-        <Route path="/Project" element={<Project/>}/>
-        <Route path="/Feed" element={<Feed/>}/>
-        <Route path="/Progress" element={<Progress/>}/>
+        <Route path="/deadline/:project_id" element={<Deadline/>}/>
+        <Route path="/Project/:project_id" element={<Project/>}/>
+        <Route path="/Feed/:project_id" element={<Feed/>}/>
+        <Route path="/Progress/:project_id" element={<Progress/>}/>
         <Route path="/Pen" element={<Pen/>}/>
         <Route path="/Ongoing" element={<Ongoing/>}/>
       </Routes>

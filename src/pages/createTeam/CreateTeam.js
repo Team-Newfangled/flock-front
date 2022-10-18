@@ -4,88 +4,69 @@ import { useState } from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import '../../styles/CreateTeam.scss'
 import { NavLink } from "react-router-dom";
-import Scroll from "../../components/common/Scroll/scroll";
 import Project from "./Project.js";
 import ProjectCalendar from "../../components/common/calendar/Calendar";
 import Chat from "../../components/common/chat/Chat";
 import { getTeams } from "../../util/api/team";
 import { getProjects } from "../../util/api/project";
+
 const CreateTeam = () => {
+  const [teamId, setTeamId] = useState('');
   const [isPopup, setIsPopup] = useState(false);
-  const scroll = Scroll();
-  const projectClick = () => {
+  const projectClick = (team_id) => {
     setIsPopup(!isPopup);
     !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
-  } 
+    setTeamId(team_id)
+  }
 
   const [teams,setTeams] = useState([]);
-  const [projects,setProjects] = useState([]);
+  const [projects, setProjects] = useState([]);
 
-  let navigate = useNavigate();
-
-  // 유저의 팀을 받고 팀이 없으면 팀이 존재하지 않습니다 출력해주기, map 사용해서 team마다 project 출력해주기
   useEffect(() => {
     (async () => {
-      const res = await getTeams(localStorage.getItem('user_id'))
-
-      console.log(res['data']['result']['0'])
-      
-      res.map((data,i) => {
-        setTeams([...data['result']['0']])
+      await getTeams(localStorage.getItem('user_id'))
+      .then((res) => {
+        let arr = {}
+        res.data.result.map(async(a,i) => {
+          await getProjects(a['team-id'])
+          .then((res) => {
+            arr[a['team-id']] = res.data.results
+          })
+          setProjects([arr])
+        })
+        setTeams([...res.data.result])
       })
-    })();
-    
-    teams.map(async (a,i) => {
-      const res = await getProjects(a.id)
-      console.log(res)
-    })
-
-
+    })()
   },[])
-
-  // const location = useLocation();
-  // const team_info = location.state.team_info;
-
-
-  const data = [
-    {id: 0, title: '선택 1'},
-    {id: 1, title: '선택 2'},
-    {id: 2, title: '선택 3'},
-    {id: 3, title: '선택 4'},
-  ];
-
-  const data1=[
-    {id:0, name:'zz'},
-    {id:1, name:'ㅇㅁ'},
-    {id:2, name:'ㅁㅇㄹ'},
-  ];
-  
-  let [box, setBox]=useState(data);
-
   return (
     <>
       <TeamHeader/>
       <Chat/>
       <div className="teamBox">
         {
-          data.map(function(x,y) {
+          teams.map((x,y) => { /* x = 팀 */
             return(
-              <div className="projectBox" key={x.id}>
-                <Link to={`/teamleader`} /* state={{team_info : team_info}} */ className="tName">{x.name}</Link>
+              <div className="projectBox" key={x['team-id']}>
+                <Link to={`/teamcode/${x['team-id']}/${x['team-name']}`} className="tName">{x['team-name']}</Link>
                   <div className="wrap">
                     {
-                      box.map(function(a,i){
+                      projects.map((t,i) => {
                         return(
-                          <Link to={`/teamleader/${a.id}`} state={{project_info : a,team_info : x}} className="p-create">
-                            <p className="p-name">{a.title}</p>
-                            <img className="modify_btn" src={require('../../images/modify.svg').default} alt="추가아이콘"/>
-                          </Link>
-                        )
+                          Array.isArray(t[x['team-id']]) && t[x['team-id']].map((a,j) => { /* a가 */
+                            return(
+                              <Link to={`/project/${a.id}`} className="p-create">
+                                <p className="p-name">{a.name}</p>
+                                <Link to={`/teamleader/${x['team-id']}/${x['team-name']}`}>
+                                <img className="modify_btn" src={require('../../images/modify.svg').default}alt="추가아이콘"/>
+                                </Link>
+                              </Link>
+                        )}))
                       })
                     }
-
-                    <div className="p-create add-team" onClick={projectClick}>
-                      <img className="add-btn"  src={require('../../images/Add.svg').default} alt="추가아이콘"/>
+                    <div className="p-create add-team" onClick={() => {
+                                                                        projectClick(x['team-id'])
+                                                                      }}>
+                      <img className="add-btn" src={require('../../images/Add.svg').default} alt="추가아이콘"/>
                     </div>
                   </div>
               </div>
@@ -95,13 +76,13 @@ const CreateTeam = () => {
       </div>
 
       <div className="dateBox">
-        <NavLink to='/teamleader'><button id='link'>My Page</button></NavLink>
-        <NavLink to='/teamCode'><button id='link'>My Team</button></NavLink>
+        <NavLink to='/teamleader/1/이름'><button id='link'>My Page</button></NavLink>
+        <NavLink to='/teamCode/1/이름'><button id='link'>My Team</button></NavLink>
         <div className="date">데드라인
           <ProjectCalendar />
         </div>
       </div>
-      {isPopup ? <Project projectClick={projectClick}/> : ''}
+      {isPopup ? <Project projectClick={projectClick} team_id={teamId}/> : ''}
     </>
   );
 };

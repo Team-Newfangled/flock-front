@@ -1,5 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { authAPI } from "../../lib/API";
 import { 
   changeCompany, 
   changeFile, 

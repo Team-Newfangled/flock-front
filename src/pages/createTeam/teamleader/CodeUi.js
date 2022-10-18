@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from 'react'
 import '../../../styles/Teamleader.scss'
 import Copy from './code/Copy.js'
 import People from './code/People.js'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { createTeams } from "../../../util/api/team";
 
 
@@ -12,23 +12,23 @@ const Teamleader = () =>{
   let navigate = useNavigate();
   let [pn, setPn]=useState();
 
-  // const location = useLocation()
-  // const project_info = location.state.project_info;
-  // const team_info = location.state.team_info;
+  const params = useParams();
+  const name = params.team_name
+  const id = params.team_id
 
   return (
     <>
     <div className="titleBox">
-          <h1>팀 정보</h1>
+        <h1>프로젝트 정보</h1>
     </div>
       <div className="team">
         <div className="TeamBox">
-          <h2 className="tName">팀이름</h2>
+          <h2 className="tName">{name}</h2>
           <div className="sBox">
             <div className="people">
               <h3>팀원 관리</h3>
               <Copy/>
-              <People/>
+              <People team_id={id}/>
             </div>
             <div className="ssBox">
               <div className="projectbbb">
@@ -38,10 +38,7 @@ const Teamleader = () =>{
                 <div className="projectRname">
                   <input className='capyInput' placeholder="프로젝트 명" type="text" 
                   onChange={(e)=>{setPn(e.target.value)}}></input>
-                  <button className='capyBtn'
-                  onClick={()=>{
-                    // createTeams(pn,team_info.id)
-                  }}>수정</button>
+                  <button className='capyBtn'>수정</button>
                 </div>
                 <h4>대기 중인 팀원</h4>
                 <button className="newBtn teamGo" onClick={()=>{ navigate('/Member')}}>팀원 승인하러 가기</button>

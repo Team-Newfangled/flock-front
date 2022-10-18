@@ -1,21 +1,9 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import '../../styles/Team.scss'
 import { createTeams } from "../../util/api/team";
 
 const Team = ({teamClick}) => {
-
-  // const createTeam = () => {
-  //   axios.post(IP + '/teams',{
-  //     name : document.getElementsByClassName('nameBox').value
-  //   })
-  //   .then((response) => {
-  //     console.log(response)
-  //   })
-  //   .catch((error) => {
-  //     console.log(error)
-  //   })
-  // }
 
   return (
     <>
@@ -27,7 +15,14 @@ const Team = ({teamClick}) => {
           <div className="text">
             <div className="important">*</div>
             <input className="nameBox" type='text' placeholder="팀명 입력" />
-            <button className="createBtn" onClick={createTeams(document.getElementsByClassName('nameBox').value)}>생성</button>
+            <button className="createBtn" onClick={
+              (
+                async () => {
+                  await createTeams(document.getElementsByClassName('nameBox')['0']['value'])
+                  window.location.reload()
+                }
+              )
+            }>생성</button>
           </div>
         </div>
     </>

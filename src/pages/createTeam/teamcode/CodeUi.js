@@ -5,26 +5,25 @@ import Capy from './code/Copy.js'
 import People from './code/People.js'
 import MProject from './code/MProject.js'
 import Project from "../Project.js";
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 
 
   const TeamCode = () =>{
 
+    let params = useParams();
+
     let navigate = useNavigate();
 
-    const [isPopup, setIsPopup] = useState(false);
-    let tn=['팀이름']
 
+    const [isPopup, setIsPopup] = useState(false);
+    let tn = params.team_name
+    let id = params.team_id
 
     const projectClick = () => {
       setIsPopup(!isPopup);
       !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
     }
-
-    // 팀 정보를 받아 id를 넘겨주는 코드
-    // const location = useLocation()
-    // const team_id = location.state.team_info.id;
 
 
   return (
@@ -40,12 +39,12 @@ import { useLocation, useNavigate } from 'react-router-dom'
             <div className="people">
               <h3>팀원 관리</h3>
               <Capy/>
-              <People/>
+              <People team_id={id}/>
             </div>
             <div className="ssBox">
             <div className="project">
               <h3>프로젝트 관리</h3>
-              <MProject /*team_id = {team_id}*/></MProject>
+              <MProject team_id={id}></MProject>
               <button className="newBtn" onClick={projectClick}>새 프로젝트 생성</button>
             </div>
 

@@ -11,23 +11,27 @@ const Project = () => {
   
   const params = useParams();
 
+  useEffect(() => {
+    console.log(params)
+  },[])
+
   return (
     <>
       <TeamHeader/>
       <Todo>
-        <Head/>
-        <List project_id={params}/>
+        <Head project_id={params.project_id}/>
+        <List project_id={params.project_id}/>
       </Todo>
       <div>
-        <Link to={`/progress${params}`}>
+        <Link to={`/progress/${params.project_id}`}>
           <img className='go' src={require('../../images/go.svg').default} />
         </Link>
         <div className="iBox">
-          <Link to={`/deadline/:${params}`} className='lineImg'>
+          <Link to={`/deadline/${params.project_id}`} className='lineImg'>
             <img src={require('../../images/lineBox.svg').default}/>
           </Link>
           <div className="space"></div>
-          <Link to={`/feed`}  className='feed'>
+          <Link to={`/feed/${params.project_id}`}  className='feed'>
             <img src={require('../../images/feed.svg').default} />
           </Link>
         </div>

@@ -2,17 +2,24 @@ import React, { useEffect, useState } from "react";
 import Item from "./Item.js";
 import '../../../styles/Todo.scss'
 import { getTodoItems } from "../../../util/api/project/index.js";
-import { useParams } from "react-router-dom";
 
-function List() {
+function List({project_id}) {
 
-  let [items,setitems] = useState([])
+  const [items,setitems] = useState([]);
 
-  const params = useParams();
 
-  // useEffect(()=> {
-  //   setitems([...getTodoItems(params.project_id)])
-  // }, [params])
+  useEffect(()=> {
+    (
+      async () => {
+        await getTodoItems(project_id)
+        .then((res) => {
+          let arr = []
+          arr = res.data.results
+          setitems([...arr])
+        })
+      }
+    )();
+  }, [])
 
   return(
     <>
@@ -20,7 +27,7 @@ function List() {
     {
       items.map((item) => {
         return (
-          <Item text={item.results[0].content} done={item.results[0].completed}/>
+          <Item text={item.content} done={item.completed} id={item.id}/>
         )
       })
     }

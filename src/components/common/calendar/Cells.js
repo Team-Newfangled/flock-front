@@ -9,15 +9,18 @@ import {
   isSameDay,
   parseISO
 } from "date-fns";
+import { useSelector } from "react-redux";
 
 const Cells = ({ currentMonth, nowDate}) => {
+  const deadline = useSelector((state) => state.deadline.results);
   const startMonth = startOfMonth(currentMonth, {weekStartsOn: 1});
   const endMonth = endOfMonth(startMonth, {weekStartsOn: 1});
   const startDate = startOfWeek(startMonth, {weekStartsOn: 1});
   const endDate = endOfWeek(endMonth, {weekStartsOn: 1});
-
-  const scheduleStartDate = parseISO("2022-09-08")
-  const scheduleEndDate = parseISO("2022-09-10")
+  
+  let scheduleStartDate = "";
+  let scheduleEndDate = "";
+  let color = "";
 
   let rows = [];
   let days = [];
@@ -26,20 +29,30 @@ const Cells = ({ currentMonth, nowDate}) => {
   let isStart = false;
   let isMid = false;
   let isEnd = false;
-  
+
   while (day <= endDate || rows.length < 6){
     for(let i=0; i<7; i++){
-      if(format(scheduleStartDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')){
-        isStart = true;
-        isSchedule = true;
-      }else if (format(scheduleEndDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')) {
-        isStart = false;
-        isMid = false;
-        isEnd = true;
-      }else{
-        isStart = false
-        isMid = true
+      for(let j=0; j<deadline.length; j++){
+        scheduleStartDate = parseISO(deadline[j]["start-date"])
+        scheduleEndDate = parseISO(deadline[j]["end-date"])
+        color = deadline[j].color
+        if(!Number.isNaN(new Date(scheduleEndDate).getTime())){
+          if(format(scheduleStartDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')){
+            isStart = true;
+            isSchedule = true;
+            break;
+          }else if (format(scheduleEndDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')) {
+            isStart = false;
+            isMid = false;
+            isEnd = true;
+            break;
+          }else{
+            isStart = false
+            isMid = true
+          }
+        }
       }
+      
       
       days.push(
         <div key={day} className={`cell${
@@ -62,17 +75,18 @@ const Cells = ({ currentMonth, nowDate}) => {
                             : isEnd
                             ? ' end'
                             : ''
-          }`}></div>
+          }`} style={{backgroundColor: color}}></div>
           : null
           }
         </div>,
       )
-      if(format(scheduleEndDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')){
+      if(!Number.isNaN(new Date(scheduleEndDate).getTime()) && format(scheduleEndDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')){
         isSchedule = false
         isEnd = false
       }
-      day = addDays(day, 1);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-    }
+      
+      day = addDays(day, 1); 
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
     rows.push(
       <div className="row" key={day}>
         {days}

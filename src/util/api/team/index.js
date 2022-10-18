@@ -11,7 +11,7 @@ export const createTeams = async(team_name) => {
     const res =  await authAPI.post(
         '/teams',
         {
-            name : team_name
+            "name" : team_name
         }
     )
     return res
@@ -23,15 +23,21 @@ export const deleteTeam = async(team_id,user_id) => {
     )
 }
 
-
-export const getTeamMembers = async(team_id) => {
-    const res = await authAPI.get(
-        `/teams/${team_id}/members`
-     )
-}
-
 export const deleteTeamMembers = async(team_id,user_id) => {
     await authAPI.delete(
         `/teams/${team_id}/expulsion/${user_id}`
     )
+}
+// team member
+export const getTeamMembers = async(team_id) => {
+    const res = await authAPI.get(
+        `/teams/${team_id}/members`
+    )
+    return res
+}
+export const getTeamLeader = async(team_id) => {
+    const res = await authAPI.get(
+        `/teams/${team_id}/members`
+    )
+    return res
 }

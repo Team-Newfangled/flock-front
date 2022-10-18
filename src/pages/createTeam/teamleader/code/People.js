@@ -3,13 +3,16 @@ import React, { useEffect, useState } from "react";
 import '../../../../styles/Teamleader.scss'
 import { getTeamMembers } from "../../../../util/api/team";
 
-function People({info}) {
+function People(team_id) {
 
 
 
-  // useEffect(() => {
-  //   getTeamMembers(info.params.team_id)
-  // },[])
+  useEffect(() => {
+    ( async () => {
+      const res = await getTeamMembers(team_id)
+      console.log(res)
+    })()
+  },[])
 
   const data=[
     {id:0, name:'zz'},
