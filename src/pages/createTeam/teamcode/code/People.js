@@ -54,9 +54,7 @@ function People() {
             check++;
           })
         }
-        
-     
-      
+              
       </div>
       
     </>

@@ -15,16 +15,19 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
     let navigate = useNavigate();
 
-
     const [isPopup, setIsPopup] = useState(false);
     let tn = params.team_name
     let id = params.team_id
+    const [teamId, setTeamId] = useState('');
 
-    const projectClick = () => {
+
+    const projectClick = (id) => {
       setIsPopup(!isPopup);
       !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
-    }
+      console.log(id);
+      setTeamId(id);
 
+    }
 
   return (
     <>
@@ -45,7 +48,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
             <div className="project">
               <h3>프로젝트 관리</h3>
               <MProject team_id={id}></MProject>
-              <button className="newBtn" onClick={projectClick}>새 프로젝트 생성</button>
+              <button className="newBtn" onClick={() => {projectClick(id)}}>새 프로젝트 생성</button>
             </div>
 
             <div className="accept">
@@ -60,7 +63,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
           </div>
         </div>
       </div>
-      {isPopup ? <Project projectClick={projectClick} /*teamId = {team_id}*//> : ''}
+      {isPopup ? <Project projectClick={projectClick} team_id = {teamId}/*teamId = {team_id}*//> : ''}
     </>
   );
 };

@@ -19,14 +19,10 @@ export const getProjects = async(team_id) => {
 }
 
 export const deleteProject = async(project_id) => {
-    await authAPI.post(
-        `/projects/${project_id}`,
-        {
-            data : {
-                "project_id" : project_id
-            }
-        }
+    const res = await authAPI.delete(
+        `/projects/${project_id}`
     )
+    return res
 }
 
 export const patchProject = async(project_id,project_name) => {
