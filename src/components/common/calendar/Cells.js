@@ -75,7 +75,7 @@ const Cells = ({ currentMonth, nowDate}) => {
                             : isEnd
                             ? ' end'
                             : ''
-          }`} style={{backgroundColor: color}}></div>
+          }`} style={{backgroundColor: `#${color}`}}></div>
           : null
           }
         </div>,

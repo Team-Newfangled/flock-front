@@ -1,21 +1,31 @@
+import { id } from "date-fns/locale";
 import React, { useEffect, useState } from "react";
-import '../../../../styles/TeamCode.scss'
-import { getProjects } from "../../../../util/api/project";
+import { useParams,Link } from "react-router-dom";
+import '../../../../styles/TeamCode.scss';
+import { getProjects, deleteProject } from "../../../../util/api/project";
 
-const pagemove = () =>{
-  window.location.href="teamleader"
-}
+
 function MProject({team_id}) {
 
-  const [projects,setProjects] = useState([])
-
+  const [projects,setProjects] = useState([]);
+ 
+  const params = useParams();
+  const projectdelete = async (id)=>{
+      await deleteProject(id)
+      .then((res)=>{
+        console.log(res);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    }
   useEffect(() => {
     (async () => {
       const res = await getProjects(team_id)
-      console.log(res)
+      setProjects([...res.data.results])
+      // console.log(res)
     })()
-  },[])
-
+  },[params])
 
   const data=[
     // {id:1,name:'프로젝트 명'},
@@ -24,19 +34,23 @@ function MProject({team_id}) {
     // {id:4,name:'프로젝트 명3'},
   ];
 
-  let [mp, setMp]=useState(data);
+  // let [mp, setMp]=useState(data);
 
   return (
     <>
-    <div className="membarBox proBox">
+    <div className="membarBox">
     {
-      mp.map(function(a){
-        
+      projects.map(function(a){
         return(
-          
-            <div className="king pro" onClick={pagemove}>{a.name}
-            <img className='trash' src={require('../../../../images/trash.svg').default}/>
-            </div>
+          <div className="projectBlock">    
+            <Link to={`/teamleader/${a.id}/${a.name}`}> 
+              <div className="kingpro" >{a.name}
+              </div>
+            </Link>
+            <img className='trash' src={require('../../../../images/trash.svg').default} onClick={()=>{
+                projectdelete(a.id);
+              }} />
+          </div>
         )
       })
     }

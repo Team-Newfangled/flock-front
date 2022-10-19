@@ -15,16 +15,17 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
     let navigate = useNavigate();
 
-
     const [isPopup, setIsPopup] = useState(false);
     let tn = params.team_name
     let id = params.team_id
+    const [teamId, setTeamId] = useState('');
 
-    const projectClick = () => {
+    const projectClick = (id) => {
       setIsPopup(!isPopup);
       !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
+      console.log(id);
+      setTeamId(id);
     }
-
 
   return (
     <>
@@ -38,29 +39,20 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
           <div className="sBox">
             <div className="people">
               <h3>팀원 관리</h3>
-              <Capy/>
+              <Capy team_id={id}/>
               <People team_id={id}/>
             </div>
             <div className="ssBox">
             <div className="project">
               <h3>프로젝트 관리</h3>
               <MProject team_id={id}></MProject>
-              <button className="newBtn" onClick={projectClick}>새 프로젝트 생성</button>
-            </div>
-
-            <div className="accept">
-              <h3>팀원 수락</h3>
-              <div className="wait">
-                <img className="waitBtn" src={require("../../../images/accept.svg").default}/>
-                승인 대기 목록
-              </div>
-              <button className="newBtn" onClick={()=>{ navigate('/Member')}}>팀원 승인</button>
+              <button className="newBtn" onClick={() => {projectClick(id)}}>새 프로젝트 생성</button>
             </div>
             </div>
           </div>
         </div>
       </div>
-      {isPopup ? <Project projectClick={projectClick} /*teamId = {team_id}*//> : ''}
+      {isPopup ? <Project projectClick={projectClick} team_id = {teamId}/*teamId = {team_id}*//> : ''}
     </>
   );
 };
