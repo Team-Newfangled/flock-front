@@ -38,7 +38,7 @@ function MProject({team_id}) {
 
   return (
     <>
-    <div className="membarBox">
+    <div className="membarBox proBox">
     {
       projects.map(function(a){
         return(

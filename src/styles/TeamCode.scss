@@ -69,11 +69,18 @@ h3{
 
 .project{
   width: 100%;
-  height: 100%;
+  height: 56%;
   border-radius: 16px;
   border: 5px solid #EFF2F9;
 }
 
+.accept{
+  margin-top: 7%;
+  width: 100%;
+  height: 40%;
+  border-radius: 16px;
+  border: 5px solid #EFF2F9;
+}
 
 .capyBox{
   display: flex;
@@ -82,6 +89,9 @@ h3{
   margin: 0px 10px;
 }
 
+.proBox{
+  height: 40%;
+}
 
 .capyBtn{
   background-color: #4295F5;
@@ -178,6 +188,7 @@ h3{
   height: 50px;
   position: relative;
 }
+
 .trash{
   position: absolute;
   top : 12%;
@@ -190,7 +201,7 @@ h3{
   position: relative;
   width: 80%;
   height: 66px;
-  top:4%;
+  top:8%;
   left: 50%;
   transform: translate(-50%);
   border-radius: 15px;

@@ -53,10 +53,11 @@ const CreateTeam = () => {
                       projects.map((t,i) => {
                         return(
                           Array.isArray(t[x['team-id']]) && t[x['team-id']].map((a,j) => { /* a가 */
+                          console.log(a,"추카추카");
                             return(
                               <Link to={`/project/${a.id}`} className="p-create">
                                 <p className="p-name">{a.name}</p>
-                                <Link to={`/teamleader/${x['team-id']}/${x['team-name']}`}>
+                                <Link to={`/teamleader/${a.id}/${a.name}`}>
                                 <img className="modify_btn" src={require('../../images/modify.svg').default}alt="추가아이콘"/>
                                 </Link>
                               </Link>
