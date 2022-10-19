@@ -65,13 +65,17 @@ const Text = styled.div`
  
 function Item({ id, done, text }) {
 
+    const [ren,setRen] = useState(1)
+
     return (
         <TodoItemBlock>
             <CheckCircle done={done} onClick={
             (
                 async () => {
                     const res = await patchTodoItems(id,!done)
-                    window.location.reload()
+                    console.log(res)
+                    let temp = ren
+                    setRen(temp+1)
                 }
             )
             }>{done && <MdDone />}</CheckCircle>
@@ -80,7 +84,9 @@ function Item({ id, done, text }) {
                 (
                     async () => {
                         const res = await deleteTodoItems(id)
-                        window.location.reload()
+                        console.log(res)
+                        let temp = ren
+                        setRen(temp+1)
                     }
                 )
             }>

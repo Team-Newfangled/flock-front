@@ -8,61 +8,71 @@ import List from '../project/todo/List.js';
 import Todo from "../project/todo/Todo.js";
 import Pen from '../project/Pen'
 import Write from "../../components/common/Write/Write";
+import { getUserInfo } from "../../util/api/user";
 const Feed = () => {
 
     const [feedId,setFeedId] = useState(0)
     const [isPopup,setIsPopup] = useState(false)
+
     const [content,setContent] = useState('')
+    
     const [isComment, setIsComment] = useState(false)
     const [isPut,setIsPut] = useState(false)
-
-
+    
+    
     const penClick = () => {
         setIsPopup(!isPopup)
         !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
         setIsComment(false)
         setIsPut(false)
     }
-
+    
     const putClick = (content,id) => {
         penClick()
         setContent(content)
         setIsPut(!isPut)
         setFeedId(id)
     }
-
+    
     const commentClick = (id) => {
         penClick()
         setIsComment(!isComment)
         setFeedId(id)
     }
-
+    
     const params = useParams();
-
+    
     const [items,setItems] = useState([]);
     const [comments,setComments] = useState([]);
-
-
+    const [username,setUsername] = useState([]);
+    
+    
     useEffect(() => {
         (
             async() => {
                 await getFeed(params.project_id)
                 .then((res) => {
+                    let feed = res.data.results
                     let arr = {}
-                    res.data.results.map(async a => {
+                    let names = {}
+                    feed.map(async a => {
+                        await getUserInfo(a['writer-id'])
+                        .then( res => {
+                            a["name"] = res.data.nickname
+                        })
                         await getComments(a.id)
                         .then((res) => {
                             arr[a.id] = res.data.results
                         })
                         setComments([arr])
                     })
-                    setItems([...res.data.results])
+                    setItems([...feed])
                 })
             }
         )();
     },[params])
 
-
+console.log(items)
 
     return(
         <>
@@ -80,7 +90,7 @@ const Feed = () => {
                                 <div className="feedhead">
                                     <div>
                                         <img alt="user" src={require('../../images/userimg.svg').default}/>
-                                        <p>팀원이름</p>
+                                        <p>{a.name}</p>
                                     </div>
                                     <img alt="user" src={require('../../images/addlook.svg').default}/>
                                 </div>
@@ -94,7 +104,6 @@ const Feed = () => {
                                             (
                                                 async () => {
                                                     await deleteFeed(a.id)
-                                                    window.location.reload()
                                                 }
                                             )()
                                         }}>삭제</p>
@@ -114,7 +123,6 @@ const Feed = () => {
                                 </div>
                                 {
                                     comments.map(t => {
-                                        console.log(t)
                                         return(
                                             Array.isArray(t[a.id]) && t[a.id].map(j => {
                                                 return (

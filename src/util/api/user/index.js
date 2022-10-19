@@ -41,3 +41,8 @@ export const changeCompany = async(company) => {
   })
   return res;
 };
+
+export const getUserInfo = async(user_id) => {
+  const res = await authAPI.get(`/users/${user_id}`)
+  return res
+}

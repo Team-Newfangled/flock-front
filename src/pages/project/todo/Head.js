@@ -11,9 +11,7 @@ function Head({project_id}) {
       <button className="plusBtn" onClick = {
         (
           async () => {
-            const res = await createTodoItems(project_id,document.getElementsByClassName('plus')['0']['value']);
-            console.log(res)
-            window.location.reload()
+            await createTodoItems(project_id,document.getElementsByClassName('plus')['0']['value']);
           }
         )
       }

@@ -49,14 +49,14 @@ export const fileFeed = async(project_id,link) => {
 
 export const getComments = async(project_id) => {
     const res = await authAPI.get(
-        `/board/${project_id}/comments`
+        `/boards/${project_id}/comments`
     )
     return res
 }
 
 export const createComments = async(feedId,contents) => {
     const res = await authAPI.post(
-        `/board/${feedId}/comments`,
+        `/boards/${feedId}/comments`,
         {
             content : contents
         }
@@ -73,8 +73,8 @@ export const patchComments = async(feedId,contents) => {
     )
 }
 
-export const deleteComments = async(project_id) => {
+export const deleteComments = async(feed_id) => {
     await authAPI.delete(
-        `/comments/${project_id}`,
+        `/comments/${feed_id}`
     )
 }
