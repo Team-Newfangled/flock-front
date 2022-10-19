@@ -65,25 +65,15 @@ h3{
   border-radius: 16px;
   border: 5px solid #EFF2F9;
 
-  
 }
 
 .project{
   width: 100%;
-  height: 56%;
-  border-radius: 16px;
-  border: 5px solid #EFF2F9;
-
-
-}
-
-.accept{
-  margin-top: 7%;
-  width: 100%;
-  height: 40%;
+  height: 100%;
   border-radius: 16px;
   border: 5px solid #EFF2F9;
 }
+
 
 .capyBox{
   display: flex;
@@ -147,9 +137,6 @@ h3{
   border-radius: 10px;
 }
 
-.proBox{
-  height: 40%;
-}
 
 .king{
   display: flex;
@@ -157,7 +144,7 @@ h3{
   justify-content: space-between;
   width: 90%;
   height: 14%;
-  padding: 10px;
+  padding: 20px;
   border-radius: 15px;
   background-color: #EFF2F9;
   margin-bottom: 20px;
@@ -165,6 +152,7 @@ h3{
   font-weight: 700;
   font-size: 18px;
 }
+
 .kingpro{
   display: flex;
   align-items: center;
@@ -202,7 +190,7 @@ h3{
   position: relative;
   width: 80%;
   height: 66px;
-  top:8%;
+  top:4%;
   left: 50%;
   transform: translate(-50%);
   border-radius: 15px;
