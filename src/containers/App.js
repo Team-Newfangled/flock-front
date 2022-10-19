@@ -24,10 +24,14 @@ import Loding from "../components/common/Loading";
 const App = () => {
   const dispatch = useDispatch();
   const isLogin = useLogin();
+
   const getUser = useCallback(async(data) => {
-    await authAPI.get(`users/${data}`)
-    .then(res => {
+    await authAPI.get(`/users/${data}`)
+    .then((res) => {
       dispatch(getUserInfo(res.data));
+    })
+    .catch((err) => {
+      console.log(err)
     })
   }, [dispatch])
   

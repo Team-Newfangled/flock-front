@@ -4,7 +4,7 @@ import qs from "qs";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../../util/api/user";
 import { userlogin } from "../../../store/users/userData";
-import Img from "../../../images/404.png";
+import Img from "../../../images/Loading.png";
 
 const Loding = () => {
   const navigate = useNavigate();

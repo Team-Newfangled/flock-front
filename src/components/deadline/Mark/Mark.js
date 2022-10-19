@@ -1,9 +1,9 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { ChromePicker } from "react-color";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { changeDeadlineColor, putTodo } from "../../../util/api/deadline";
+import axios from "axios";
 
 const Mark = () => {
   const todos = useSelector((state) => state.deadline.results);
@@ -17,6 +17,7 @@ const Mark = () => {
   const params = useParams()
 
   const onChangeStartDate = (e) => setStartDate(e.target.value);
+
   const onChangeEndDate = (e) => setEndDate(e.target.value);
 
   const pickerHandler = () => setIsPicker(!isPicker);
@@ -30,13 +31,15 @@ const Mark = () => {
     setContent(content);
   };
 
-  const changeMark = () => {
-    axios.all([putTodo(params.project_id, todoId, color), changeDeadlineColor(params.project_id, content, endDate, startDate)])
-    .then(axios.spread((res1, res2) => {
-      console.log(res1)
-      console.log(res2)
-    }))
-    .catch((err) => { console.log(err)})
+  const changeMark = async() => {
+    const res = await putTodo(params.project_id, startDate, endDate)
+    console.log(res)
+    // axios.all([changeDeadlineColor(params.project_id, todoId, color), putTodo(params.project_id, startDate, endDate)])
+    // .then(axios.spread((res1, res2) => {
+    //   console.log(res1)
+    //   console.log(res2)
+    // }))
+    // .catch((err) => { console.log(err)})
   }
 
   return(
