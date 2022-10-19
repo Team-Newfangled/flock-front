@@ -48,15 +48,6 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
               <MProject team_id={id}></MProject>
               <button className="newBtn" onClick={() => {projectClick(id)}}>새 프로젝트 생성</button>
             </div>
-
-            <div className="accept">
-              <h3>팀원 수락</h3>
-              <div className="wait">
-                <img className="waitBtn" src={require("../../../images/accept.svg").default}/>
-                승인 대기 목록
-              </div>
-              <button className="newBtn" onClick={()=>{ navigate('/Member')}}>팀원 승인</button>
-            </div>
             </div>
           </div>
         </div>

@@ -40,8 +40,6 @@ const Teamleader = () =>{
                   onChange={(e)=>{setPn(e.target.value)}}></input>
                   <button className='capyBtn'>수정</button>
                 </div>
-                <h4>대기 중인 팀원</h4>
-                <button className="newBtn teamGo" onClick={()=>{ navigate('/Member')}}>팀원 승인하러 가기</button>
               </div>
             </div>
           </div>

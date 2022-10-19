@@ -62,7 +62,7 @@
     color: #0067E0;
     padding: 10px;
     margin-left: 8%;
-    margin-top: 10px;
+    margin-top: 30px;
   }
   .people{
     width: 46%;
@@ -152,13 +152,11 @@
   .proBox{
     height: 40%;
   }
-  .teamGo{
-    top:1% !important;
-  }
+
   .manager{
     width: 20%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
   .membar{
     color: #4295F5;
