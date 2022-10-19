@@ -3,16 +3,8 @@ import { authAPI } from "../../../lib/API";
 
 const user_id = localStorage.getItem('user_id');
 
-export const login = async(code) => {
-    return await axios.get(`auth/oauth?code=${code}`)
-      .then((res) => {
-        if(res.data){
-          localStorage.setItem('access_token', res.data.access_token);
-          localStorage.setItem('refresh_token', res.data.refresh_token);
-          localStorage.setItem('user_id', res.data.user_id);
-        }
-        return res
-      })
+export const login = (code) => {
+    return axios.get(`auth/oauth?code=${code}`)
 };
 
 export const changeFile = async(file) => {

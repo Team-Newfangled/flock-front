@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { 
   Main, 
@@ -23,19 +23,27 @@ import Loding from "../components/common/Loading";
 
 const App = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
   const isLogin = useLogin();
+
   const getUser = useCallback(async(data) => {
-    await authAPI.get(`users/${data}`)
-    .then(res => {
+    await authAPI.get(`/users/${data}`)
+    .then((res) => {
+      console.log(res.data)
       dispatch(getUserInfo(res.data));
+    })
+    .catch((err) => {
+      console.log(err)
     })
   }, [dispatch])
   
   useEffect(() =>{
-    if(isLogin){
+    console.log('2')
+    if(isLogin || user.access_token){
+      console.log('1')
       getUser(localStorage.getItem('user_id'));
     }
-  }, [getUser, isLogin])
+  }, [getUser, isLogin, user.access_token])
 
   return (
     <Router>
