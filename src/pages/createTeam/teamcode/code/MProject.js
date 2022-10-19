@@ -1,12 +1,9 @@
 import { id } from "date-fns/locale";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import '../../../../styles/TeamCode.scss'
+import { useParams,Link } from "react-router-dom";
+import '../../../../styles/TeamCode.scss';
 import { getProjects, deleteProject } from "../../../../util/api/project";
 
-const pagemove = () =>{
-  window.location.href="teamleader"
-}
 
 function MProject({team_id}) {
 
@@ -45,9 +42,11 @@ function MProject({team_id}) {
     {
       projects.map(function(a){
         return(
-          <div className="projectBlock">          
-            <div className="kingpro" onClick={pagemove}>{a.name}
-            </div>
+          <div className="projectBlock">    
+            <Link to={`/teamleader/${a.id}/${a.name}`}> 
+              <div className="kingpro" >{a.name}
+              </div>
+            </Link>
             <img className='trash' src={require('../../../../images/trash.svg').default} onClick={()=>{
                 projectdelete(a.id);
               }} />
