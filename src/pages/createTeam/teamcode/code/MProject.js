@@ -26,7 +26,7 @@ function MProject({team_id}) {
     (async () => {
       const res = await getProjects(team_id)
       setProjects([...res.data.results])
-      console.log(res)
+      // console.log(res)
     })()
   },[params])
 

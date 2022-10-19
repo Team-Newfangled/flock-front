@@ -20,13 +20,11 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
     let id = params.team_id
     const [teamId, setTeamId] = useState('');
 
-
     const projectClick = (id) => {
       setIsPopup(!isPopup);
       !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
       console.log(id);
       setTeamId(id);
-
     }
 
   return (
@@ -41,7 +39,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
           <div className="sBox">
             <div className="people">
               <h3>팀원 관리</h3>
-              <Capy/>
+              <Capy team_id={id}/>
               <People team_id={id}/>
             </div>
             <div className="ssBox">

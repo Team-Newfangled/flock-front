@@ -10,18 +10,19 @@ function People() {
 
   const [teamMembers,setTeamMembers] = useState([])
   const [teamLeader,setTeamLeader]= useState([])
-  useEffect(() => {
-    (
-      async () => {
-        const res = await getTeamLeader(params.team_id)
-        setTeamLeader([...res.data.results])
-      }
-    )();
-  },[params])
+  // useEffect(() => {
+  //   (
+  //     async () => {
+  //       const res = await getTeamLeader(params.team_id)
+  //       setTeamLeader([...res.data.results])
+  //     }
+  //   )();
+  // },[params])
   useEffect(() => {
     (
       async () => {
         const res = await getTeamMembers(params.team_id)
+        //  console.log(res);
         setTeamMembers([...res.data.results])
       }
     )();
@@ -39,7 +40,7 @@ function People() {
   return (
     <>
       <div className="membarBox">
-        <div className="king">{teamLeader.map( a =>{
+        <div className="king">{teamMembers.map( a =>{
           return (a.name)
         })}</div>
         {
