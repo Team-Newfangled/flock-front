@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Item from "./Item.js";
 import '../../../styles/Todo.scss'
-import { getTodoItems } from "../../../util/api/project/index.js";
+import { getTodoItems, putTodoItems } from "../../../util/api/project/index.js";
 
 function List({project_id}) {
 
@@ -17,9 +17,15 @@ function List({project_id}) {
           arr = res.data.results
           setitems([...arr])
         })
+
+        await putTodoItems()
       }
     )();
+
+
   }, [setitems])
+
+  console.log(items)
 
   return(
     <>

@@ -65,9 +65,9 @@ export const deleteTodoItems = async(todo_id) => {
     )
 }
 
-export const putTodoItems = async(project_id,content,end,start) => {
+export const putTodoItems = async(todo_id,content,end,start) => {
     const res = await authAPI.put(
-        `/todo/${project_id}`,
+        `/todo/${todo_id}`,
         {
             "content" : content,
             "end_date" : end,
@@ -77,11 +77,11 @@ export const putTodoItems = async(project_id,content,end,start) => {
     return res
 }
 
-export const patchTodoItems = async(project_id,state) => {
+export const patchTodoItems = async(todo_id,state) => {
     const res = await authAPI.patch(
-        `/todo/${project_id}`,
+        `/todo/${todo_id}`,
         {
-            "done" : state
+            "complete" : state
         }
     )
     return res
