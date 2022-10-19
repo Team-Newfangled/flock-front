@@ -3,34 +3,37 @@ import { authAPI } from "../../../lib/API";
 // feed 추가, 삭제, 수정, 가져오기
 export const getFeed = async(project_id) => {
     const res = await authAPI.get(
-        `/board/${project_id}`
+        `/projects/${project_id}/boards`
     )
+    return res
 }
 
 
 export const createFeed = async(project_id,contents) => {
     const res = await authAPI.post(
-        `/board/${project_id}`,
+        `/projects/${project_id}/boards`,
         {
             content : contents
         }
     )
+    return res
 }
 
 
 export const deleteFeed = async(board_id) => {
     await authAPI.delete(
-        `/board/${board_id}`
+        `/boards/${board_id}`
     )
 }
 
-export const patchFeed = async(project_id,content) => {
+export const patchFeed = async(feedId,content) => {
     const res = await authAPI.patch(
-        `/board/${project_id}`,
+        `/boards/${feedId}`,
         {
             content : content
         }
     )
+    return res
 }
 
 export const fileFeed = async(project_id,link) => {
@@ -46,22 +49,24 @@ export const fileFeed = async(project_id,link) => {
 
 export const getComments = async(project_id) => {
     const res = await authAPI.get(
-        `/boards/${project_id}/comments`
+        `/board/${project_id}/comments`
     )
+    return res
 }
 
-export const createComments = async(project_id,contents) => {
+export const createComments = async(feedId,contents) => {
     const res = await authAPI.post(
-        `/boards/${project_id}/comments`,
+        `/board/${feedId}/comments`,
         {
             content : contents
         }
     )
+    return res
 }
 
-export const patchComments = async(project_id,contents) => {
+export const patchComments = async(feedId,contents) => {
     await authAPI.patch(
-        `/boards/${project_id}/comments`,
+        `/boards/${feedId}/comments`,
         {
             content : contents
         }

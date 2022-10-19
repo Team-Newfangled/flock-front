@@ -1,5 +1,4 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import '../../styles/Team.scss'
 import { createProjects } from "../../util/api/project";
 
@@ -16,7 +15,7 @@ const Project = ({projectClick,team_id}) => {
             <input className="nameBox" type='text' placeholder="프로젝트명 입력" />
             <button className="createBtn" onClick={
               ( async () => {
-                const res = await createProjects(team_id,document.getElementsByClassName('nameBox')['0']['value'])
+                await createProjects(team_id,document.getElementsByClassName('nameBox')['0']['value'])
               })
               }>생성</button>
           </div>

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import '../../styles/Pen.scss'
-import { createFeed, patchFeed } from "../../util/api/feed";
+import { createComments, createFeed, patchFeed } from "../../util/api/feed";
 
-const Pen=({isPut,penClick,project_id,content})=>{
+const Pen=({isPut,isComment,penClick,content,feedId})=>{
   
+  const params = useParams()
+
+
   return(
     <>
     <div className="bg" onClick={penClick} />
@@ -14,7 +18,7 @@ const Pen=({isPut,penClick,project_id,content})=>{
       <div className="textDiv">
         <div className='writeDiv'>글쓰기</div>
         <textarea id='feedtext' type='text' placeholder='내용을 입력해주세요'>
-          content
+          {content}
         </textarea>
         <div className='writeDiv fileplus'>파일 추가</div>
         <div id='fileuplode'>
@@ -23,23 +27,31 @@ const Pen=({isPut,penClick,project_id,content})=>{
         <button id='fileBtn'
           onClick={
             () => {
-              if (isPut){
-                return(
-                  (
-                    async () => {
-                      await patchFeed(document.getElementById('feedtext'),project_id)
-                    }
-                  )
-                )
+              if (isComment) {
+                (
+                  async () => {
+                    const res = await createComments(feedId,document.getElementById('feedtext').value)
+                    console.log(res)
+                    // window.location.reload()
+                  }
+                )()
+              }
+              else if (isPut){
+                (
+                  async () => {
+                    const res = await patchFeed(feedId,document.getElementById('feedtext').value)
+                    console.log(res)
+                    window.location.reload()
+                  }
+                )()
               }
               else {
-                return (
-                  (
-                    async () => {
-                      await createFeed(document.getElementById('feedtext'),project_id)
-                    }
-                  )
-                )
+                (
+                  async () => {
+                    await createFeed(params.project_id,document.getElementById('feedtext').value)
+                    window.location.reload()
+                  }
+                )()
               }
             }
           }

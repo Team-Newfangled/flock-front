@@ -2,13 +2,13 @@ import { authAPI } from "../../../lib/API";
 
 
 export const createProjects = async(team_id,project_name) => {
-    const project_info = await authAPI.post(
+    const res = await authAPI.post(
         `/teams/${team_id}/projects`,
         {
             "name" : project_name
         }
     )
-    return project_info
+    return res
 }
 
 export const getProjects = async(team_id) => {
@@ -30,18 +30,12 @@ export const deleteProject = async(project_id) => {
 }
 
 export const patchProject = async(project_id,project_name) => {
-    await authAPI.patch( 
+    const res = await authAPI.patch( 
         `/projects/${project_id}`,
         {
             name : project_name
         }
     )
-    .then((response) => {
-        return response.name
-    })
-    .catch((error) => {
-        return error
-    })
 }
 
 // project 사진 추가 필요

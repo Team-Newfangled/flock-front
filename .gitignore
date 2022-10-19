@@ -24,6 +24,6 @@ yarn-error.log*
 
 # API KEY
 .env
-.json
+package.json
 
 setupProxy.js
