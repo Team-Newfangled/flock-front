@@ -1,11 +1,28 @@
 import '../../../styles/Member.scss'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useState } from 'react';
 import Header from "../../../components/header/Header";
 import axios from 'axios';
+import { getWating } from "../../../util/api/team";
+
 
 const TeamCode = () => {
   let navigate = useNavigate();
+  let params = useParams();
+  let id = params.team_id;
+
+  const [waitings,setWating]= useState([]);
+  
+  useEffect(() => {
+    (
+      async () => {
+        const res = await getWating(id)
+        console.log(res.data.results)
+        setWating([...res.data.results])
+      }
+    )();
+  },[params])
+
 
   const data = [
     {id: 0, title: '선택 1', comment:'대구소프트웨어'},

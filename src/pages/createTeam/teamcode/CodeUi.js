@@ -54,7 +54,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
                 <img className="waitBtn" src={require("../../../images/accept.svg").default}/>
                 승인 대기 목록
               </div>
-              <button className="newBtn" onClick={()=>{ navigate('/Member')}}>팀원 승인</button>
+              <button className="newBtn" onClick={()=>{ navigate(`/Member/${id}`)}}>팀원 승인</button>
             </div>
             </div>
           </div>
