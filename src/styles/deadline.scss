@@ -31,6 +31,9 @@
     top: 3%;
     left: 50%;
     transform: translateX(-50%);
+    height: 370px;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     .addDeadline{
       width: 360px;
