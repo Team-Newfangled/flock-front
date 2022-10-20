@@ -35,16 +35,17 @@ const Cells = ({ currentMonth, nowDate}) => {
       for(let j=0; j<deadline.length; j++){
         scheduleStartDate = parseISO(deadline[j]["start-date"])
         scheduleEndDate = parseISO(deadline[j]["end-date"])
-        color = deadline[j].color
         if(!Number.isNaN(new Date(scheduleEndDate).getTime())){
           if(format(scheduleStartDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')){
             isStart = true;
             isSchedule = true;
+            color = deadline[j].color
             break;
           }else if (format(scheduleEndDate, 'yyyy/MM/dd') === format(day, 'yyyy/MM/dd')) {
             isStart = false;
             isMid = false;
             isEnd = true;
+            color = deadline[j].color
             break;
           }else{
             isStart = false
