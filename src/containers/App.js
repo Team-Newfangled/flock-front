@@ -29,7 +29,6 @@ const App = () => {
   const getUser = useCallback(async(data) => {
     await authAPI.get(`/users/${data}`)
     .then((res) => {
-      console.log(res.data)
       dispatch(getUserInfo(res.data));
     })
     .catch((err) => {
@@ -38,9 +37,7 @@ const App = () => {
   }, [dispatch])
   
   useEffect(() =>{
-    console.log('2')
     if(isLogin || user.access_token){
-      console.log('1')
       getUser(localStorage.getItem('user_id'));
     }
   }, [getUser, isLogin, user.access_token])

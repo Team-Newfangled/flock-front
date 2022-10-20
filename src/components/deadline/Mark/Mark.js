@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { ChromePicker } from "react-color";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { changeDeadlineColor, putTodo } from "../../../util/api/deadline";
 import axios from "axios";
+import { setState } from "../../../store/deadline/deadlineData";
 
 const Mark = () => {
   const todos = useSelector((state) => state.deadline.results);
@@ -15,6 +16,7 @@ const Mark = () => {
   const [content, setContent] = useState(todos[0].content);
   const [isPicker, setIsPicker] = useState(false);
   const params = useParams()
+  const dispatch = useDispatch();
 
   const onChangeStartDate = (e) => setStartDate(e.target.value);
 
@@ -32,14 +34,19 @@ const Mark = () => {
   };
 
   const changeMark = async() => {
-    const res = await putTodo(params.project_id, startDate, endDate)
-    console.log(res)
-    // axios.all([changeDeadlineColor(params.project_id, todoId, color), putTodo(params.project_id, startDate, endDate)])
-    // .then(axios.spread((res1, res2) => {
-    //   console.log(res1)
-    //   console.log(res2)
-    // }))
-    // .catch((err) => { console.log(err)})
+    axios.all([changeDeadlineColor(params.project_id, todoId, color), putTodo(todoId, startDate, endDate)])
+    .then(axios.spread((res1, res2) => {
+      const temp = todos.filter(({id}) => id === todoId)[0]
+      const tempcopy = {...temp}
+      tempcopy.color = color
+      tempcopy['start-date'] = startDate
+      tempcopy['end-date'] = endDate
+      setCurrentColor(color)
+      dispatch(setState([...todos.filter(({id}) => id !== todoId), tempcopy]))
+      console.log(res1.data.message)
+      console.log(res2.data.message)
+    }))
+    .catch((err) => { console.log(err)})
   }
 
   return(

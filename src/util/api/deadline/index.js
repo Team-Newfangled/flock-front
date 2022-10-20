@@ -6,17 +6,16 @@ export const getDeadline = (projectId, year, month) => {
 };
 
 export const changeDeadlineColor = (projectId, todoId, color) => {
-  const res = authAPI.put(`/projects/${projectId}/deadline/${todoId}`,{
+  const res = authAPI.patch(`/projects/${projectId}/deadline/${todoId}`,{
     content: color,
   });
   return res; 
 };
 
 export const putTodo = (Id, startDate, endDate) => {
-  console.log(Id, startDate, endDate)
-  const res = authAPI.put(`/todo/${Id}`,{
-    "end-date": endDate,
-    "start-date": startDate
+  const res = authAPI.patch(`/todo//${Id}`,{
+    "end_date": endDate,
+    "start_date": startDate
   });
   return res;
 };
