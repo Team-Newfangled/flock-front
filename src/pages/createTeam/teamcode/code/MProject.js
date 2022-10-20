@@ -11,14 +11,14 @@ function MProject({team_id}) {
  
   const params = useParams();
   const projectdelete = async (id)=>{
-      await deleteProject(id)
-      .then((res)=>{
-        console.log(res);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
-    }
+    await deleteProject(id)
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
   useEffect(() => {
     (async () => {
       const res = await getProjects(team_id)
@@ -26,15 +26,6 @@ function MProject({team_id}) {
       // console.log(res)
     })()
   },[params])
-
-  const data=[
-    // {id:1,name:'프로젝트 명'},
-    // {id:2,name:'프로젝트 명1'},
-    // {id:3,name:'프로젝트 명2'},
-    // {id:4,name:'프로젝트 명3'},
-  ];
-
-  // let [mp, setMp]=useState(data);
 
   return (
     <>

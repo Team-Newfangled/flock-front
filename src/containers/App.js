@@ -53,7 +53,7 @@ const App = () => {
         <Route path="/CreateTeam" element={<CreateTeam/>}/>
         <Route path="/teamcode/:team_id/:team_name" element={<TeamCode/>}/> {/* 팀 정보, 팀원 수락 제외 완료  */}
         <Route path="/teamleader/:team_id/:team_name" element={<Teamleader/>}/>
-        <Route path="/Member/:team_id" element={<Member/>}/> {/* 팀원 신청 */}
+        <Route path="/Member/:team_id/:team_name" element={<Member/>}/> {/* 팀원 신청 */}
         <Route path="/deadline/:project_id" element={<Deadline/>}/>
         <Route path="/Project/:project_id" element={<Project/>}/>
         <Route path="/Feed/:project_id" element={<Feed/>}/>

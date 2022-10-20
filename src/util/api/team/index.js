@@ -22,11 +22,19 @@ export const deleteTeam = async(team_id,user_id) => {
         `/teams/${team_id}/expulsion/${user_id}`
     )
 }
-
 export const deleteTeamMembers = async(team_id,user_id) => {
     await authAPI.delete(
         `/teams/${team_id}/expulsion/${user_id}`
     )
+}
+export const patchRecognize = async(team_id,user_id) => {
+    const res = await authAPI.patch(
+        `/teams/${team_id}/join`,
+        {
+            "member_id" : user_id
+        }
+    )
+    return res
 }
 // team member
 export const getTeamMembers = async(team_id) => {

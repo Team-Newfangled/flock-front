@@ -26,16 +26,25 @@ function People() {
       }
     )();
   },[params])
-
+  const memberdelete = async (team_id,id)=>{
+    await deleteTeamMembers(team_id,id)
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
   return (
     <>
       <div className="membarBox">
         <div className="king">{teamMembers.filter((member) => member.role == "Leader").map((member) => member.name)}</div>
         {teamMembers.filter((member) => member.role == "Member").map((member) => (
           <div className="king membar">{member.name}
-          <img className='peopletrash' src={require('../../../../images/trash.svg').default}/></div>
+          <img className='peopletrash' src={require('../../../../images/trash.svg').default} onClick={()=>{
+                memberdelete(params.team_id,member.id);
+              }} /></div>
         ))}
-              
       </div>
       
     </>
