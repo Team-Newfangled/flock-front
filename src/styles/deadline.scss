@@ -26,6 +26,20 @@
   background-color: #EFF2F9;
   border-radius: 20px;
 
+  .deadline-list::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  .deadline-list::-webkit-scrollbar-thumb {
+    background-color: #004DA780;
+    border-radius: 10px;
+  }
+
+  .deadline-list::-webkit-scrollbar-track {
+    background-color: #EFF2F9;
+    border-radius: 10px;
+  }
+
   .deadline-list{
     position: absolute;
     top: 3%;
