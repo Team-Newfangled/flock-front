@@ -41,7 +41,7 @@ const Pen=({isPut,isComment,penClick,content,feedId})=>{
                   async () => {
                     const res = await patchFeed(feedId,document.getElementById('feedtext').value)
                     console.log(res)
-                    window.location.reload()
+                    // window.location.reload()
                   }
                 )()
               }
@@ -49,7 +49,7 @@ const Pen=({isPut,isComment,penClick,content,feedId})=>{
                 (
                   async () => {
                     await createFeed(params.project_id,document.getElementById('feedtext').value)
-                    window.location.reload()
+                    // window.location.reload()
                   }
                 )()
               }

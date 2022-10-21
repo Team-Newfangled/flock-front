@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Item from "./Item.js";
 import '../../../styles/Todo.scss'
-import { getTodoItems, putTodoItems } from "../../../util/api/project/index.js";
+import { getTodoItems } from "../../../util/api/project/index.js";
 
 function List({project_id}) {
 
@@ -17,23 +17,20 @@ function List({project_id}) {
           arr = res.data.results
           setitems([...arr])
         })
-
-        await putTodoItems()
       }
     )();
 
 
   }, [setitems])
 
-  console.log(items)
 
   return(
     <>
     <div className='TodoList'>
     {
-      items.map((item) => {
+      items.map((item, i) => {
         return (
-          <Item text={item.content} done={item.completed} id={item.id}/>
+          <Item text={item.content} done={item.completed} id={item.id} key={i}/>
         )
       })
     }

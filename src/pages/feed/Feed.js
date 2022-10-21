@@ -44,7 +44,6 @@ const Feed = () => {
     
     const [items,setItems] = useState([]);
     const [comments,setComments] = useState([]);
-    const [username,setUsername] = useState([]);
     
     
     useEffect(() => {
@@ -54,14 +53,20 @@ const Feed = () => {
                 .then((res) => {
                     let feed = res.data.results
                     let arr = {}
-                    let names = {}
                     feed.map(async a => {
+
                         await getUserInfo(a['writer-id'])
                         .then( res => {
                             a["name"] = res.data.nickname
                         })
+
                         await getComments(a.id)
                         .then((res) => {
+                            
+                            res.data.results.map( async temp => {
+                                const req = await getUserInfo(temp['writer-id'])
+                                temp["name"] = req.data.nickname
+                            })
                             arr[a.id] = res.data.results
                         })
                         setComments([arr])
@@ -84,9 +89,9 @@ console.log(items)
             </Todo>
             <div className="feedmain">
             {
-                items.map( a => {
+                items.map( (a,i) => {
                     return(
-                            <div className="feediteam">
+                            <div className="feediteam" key={i}>
                                 <div className="feedhead">
                                     <div>
                                         <img alt="user" src={require('../../images/userimg.svg').default}/>
@@ -122,15 +127,16 @@ console.log(items)
                                     }}>댓글쓰기</button>
                                 </div>
                                 {
-                                    comments.map(t => {
+                                    comments.map((t, j) => {
                                         return(
-                                            Array.isArray(t[a.id]) && t[a.id].map(j => {
+                                            Array.isArray(t[a.id]) && t[a.id].map((j, k) => {
+                                                console.log(j['name'])
                                                 return (
-                                                    <div className="feedcomments">
+                                                    <div className="feedcomments" key={k}>
                                                         <div>
                                                             <div>
                                                                 <img alt="user" src={require('../../images/userimg.svg').default}/>
-                                                                <p>팀원이름</p>
+                                                                <p>{j.name}</p>
                                                             </div>
                                                             <img alt="user" src={require('../../images/detail.svg').default}/>
                                                         </div>

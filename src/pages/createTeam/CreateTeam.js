@@ -15,7 +15,6 @@ const CreateTeam = () => {
   const [isPopup, setIsPopup] = useState(false);
   const projectClick = (team_id) => {
     setIsPopup(!isPopup);
-    !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
     setTeamId(team_id)
   }
 
@@ -32,12 +31,15 @@ const CreateTeam = () => {
           .then((res) => {
             arr[a['team-id']] = res.data.results
           })
-          setProjects([arr])
+          const temp = [arr]
+          setProjects(temp)
         })
-        setTeams([...res.data.result])
+        const temp = [...res.data.result]
+        setTeams(temp)
       })
     })()
   },[])
+  
   return (
     <>
       <TeamHeader/>
@@ -53,15 +55,15 @@ const CreateTeam = () => {
                       projects.map((t,i) => {
                         return(
                           Array.isArray(t[x['team-id']]) && t[x['team-id']].map((a,j) => { /* a가 */
-                          console.log(a,"추카추카");
                             return(
-                              <Link to={`/project/${a.id}`} className="p-create">
+                              <Link to={`/project/${a.id}`} className="p-create" key={j}>
                                 <p className="p-name">{a.name}</p>
                                 <Link to={`/teamleader/${a.id}/${a.name}`}>
                                 <img className="modify_btn" src={require('../../images/modify.svg').default}alt="추가아이콘"/>
                                 </Link>
                               </Link>
-                        )}))
+                          )}
+                        ))
                       })
                     }
                     <div className="p-create add-team" onClick={() => {
@@ -83,7 +85,12 @@ const CreateTeam = () => {
           <ProjectCalendar />
         </div>
       </div>
-      {isPopup ? <Project projectClick={projectClick} team_id={teamId}/> : ''}
+      {isPopup ? <Project 
+                    projectClick={projectClick} 
+                    team_id={teamId} 
+                    projects={projects} 
+                    setProjects={setProjects}
+                  /> : ''}
     </>
   );
 };

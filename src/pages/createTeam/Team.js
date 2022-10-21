@@ -19,7 +19,6 @@ const Team = ({teamClick}) => {
               (
                 async () => {
                   await createTeams(document.getElementsByClassName('nameBox')['0']['value'])
-                  window.location.reload()
                 }
               )
             }>생성</button>
