@@ -1,29 +1,33 @@
 import React from "react";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../../../styles/TeamCode.scss'
 import Capy from './code/Copy.js'
 import People from './code/People.js'
 import MProject from './code/MProject.js'
 import Project from "../Project.js";
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
-
-
+import { useNavigate, useParams } from 'react-router-dom'
+import { getProjects } from "../../../util/api/project";
 
   const TeamCode = () =>{
-
+    const [projects,setProjects] = useState([]);
+    const [isPopup, setIsPopup] = useState(false);
     let params = useParams();
-
     let navigate = useNavigate();
 
-    const [isPopup, setIsPopup] = useState(false);
     let tn = params.team_name
     let id = params.team_id
-    const [teamId, setTeamId] = useState('');
 
     const projectClick = (id) => {
       setIsPopup(!isPopup);
-      setTeamId(id);
     }
+
+    useEffect(() => {
+      (async () => {
+        const res = await getProjects(id)
+        setProjects([...res.data.results])
+        // console.log(res)
+      })()
+    },[params])
 
   return (
     <>
@@ -43,7 +47,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
             <div className="ssBox">
             <div className="project">
               <h3>프로젝트 관리</h3>
-              <MProject team_id={id}></MProject>
+              <MProject projects={projects} setProjects={setProjects}></MProject>
               <button className="newBtn" onClick={() => {projectClick(id)}}>새 프로젝트 생성</button>
             </div>
             <div className="accept">
@@ -58,7 +62,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
           </div>
         </div>
       </div>
-      {isPopup ? <Project projectClick={projectClick} team_id = {teamId}/*teamId = {team_id}*//> : ''}
+      {isPopup ? <Project isOne={true} projectClick={projectClick} team_id = {id} projects={projects} setProjects={setProjects}/> : ''}
     </>
   );
 };

@@ -16,6 +16,7 @@ const TeamCode = () => {
   let name = params.team_name;
 
   const [waitings,setWating]= useState([]);
+
   // 일단 company 불러오기
   // const [userinfo, setUserinfo]=useState([]);
 
@@ -110,14 +111,23 @@ const TeamCode = () => {
       </div>
       <div className='mBtn'>
         <button className='cBtn' onClick={()=>{
+          const temp = [...waitings];
+          let tempcopy = [];
           checkItems.map(function(a){
+            tempcopy.push(a);
             memberdelete(id,a);
           })
+          console.log(temp.filter((value) => value));
+          setWating([temp])
         }}>선택 삭제</button>
         <button className='cBtn'onClick={()=>{
+          const temp = [...waitings];
+          let tempcopy = [];
           checkItems.map(function(a){
+            tempcopy.push(a);
             memberRecognize(id,a);
           })
+          setWating([temp])
         }}>선택 승인</button>
       </div>
     </div>

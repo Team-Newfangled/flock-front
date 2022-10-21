@@ -1,31 +1,23 @@
-import { id } from "date-fns/locale";
-import React, { useEffect, useState } from "react";
-import { useParams,Link } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import '../../../../styles/TeamCode.scss';
-import { getProjects, deleteProject } from "../../../../util/api/project";
+import { deleteProject } from "../../../../util/api/project";
 
 
-function MProject({team_id}) {
-
-  const [projects,setProjects] = useState([]);
- 
-  const params = useParams();
+function MProject({ projects, setProjects }) { 
   const projectdelete = async (id)=>{
     await deleteProject(id)
     .then((res)=>{
+      const temp = [...projects.filter((value) => value.id !== id)]
+      console.log(temp)
+      setProjects([...temp])
       console.log(res);
     })
     .catch((err)=>{
       console.log(err);
     })
   }
-  useEffect(() => {
-    (async () => {
-      const res = await getProjects(team_id)
-      setProjects([...res.data.results])
-      // console.log(res)
-    })()
-  },[params])
+  
 
   return (
     <>

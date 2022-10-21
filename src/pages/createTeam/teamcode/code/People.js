@@ -26,9 +26,13 @@ function People() {
       }
     )();
   },[params])
+
   const memberdelete = async (team_id,id)=>{
     await deleteTeamMembers(team_id,id)
     .then((res)=>{
+      const temp = [...teamMembers.filter((value) => value.id !== id)]
+      console.log(temp)
+      setTeamMembers([...temp])
       console.log(res);
     })
     .catch((err)=>{

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import '../../styles/Team.scss'
 import { createProjects } from "../../util/api/project";
 
-const Project = ({projectClick, team_id, projects, setProjects}) => {
+const Project = ({isOne, projectClick, team_id, projects, setProjects}) => {
   const [name, setName] = useState("");
 
   const func = async(e) => {
@@ -10,9 +10,16 @@ const Project = ({projectClick, team_id, projects, setProjects}) => {
 
     await createProjects(team_id, name)
     .then((res) => {
-      const temp = {...projects.map((value) => value)[0]}
-      temp[team_id].push(res.data)
-      setProjects([temp])
+      let temp = "";
+      if(isOne){
+        temp = [...projects.map((value) => value)];
+        temp.unshift(res.data)
+        setProjects([...temp])
+      }else {
+        temp = {...projects.map((value) => value)[0]}
+        temp[team_id].unshift(res.data)
+        setProjects([temp])
+      }
       projectClick()
     })
   };
