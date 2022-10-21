@@ -22,8 +22,6 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
     const projectClick = (id) => {
       setIsPopup(!isPopup);
-      !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
-      console.log(id);
       setTeamId(id);
     }
 
