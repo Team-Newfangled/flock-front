@@ -16,6 +16,12 @@ export const getProjects = async(team_id) => {
     )
     return res
 }
+export const getProjectsteam = async(project_id) => {
+    const res = await authAPI.get(
+        `/projects/${project_id}`
+    )
+    return res
+}
 
 export const deleteProject = async(project_id) => {
     const res = await authAPI.delete(
@@ -28,9 +34,10 @@ export const patchProject = async(project_id,project_name) => {
     const res = await authAPI.patch( 
         `/projects/${project_id}`,
         {
-            name : project_name
+            "name" : project_name
         }
     )
+    return res
 }
 
 // project 사진 추가 필요

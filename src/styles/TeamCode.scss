@@ -185,7 +185,7 @@ h3{
 .projectBlock{
   margin-bottom: 20px;
   width: 90%;
-  height: 50px;
+  height: 48px;
   position: relative;
 }
 
@@ -193,8 +193,13 @@ h3{
   position: absolute;
   top : 12%;
   right: 5%;
-  width: 18px;
-  margin: 10px;
+  width: 30px;
+  margin-top: 3px;
+  padding: 5px;
+}
+.trash:hover{
+  background-color:#2a77ce73;
+  border-radius: 5px;
 }
 
 .newBtn{
