@@ -2,10 +2,54 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import '../../styles/Pen.scss'
 import { createComments, createFeed, patchFeed } from "../../util/api/feed";
+import { getUserInfo } from "../../util/api/user";
 
-const Pen=({isPut,isComment,penClick,content,feedId})=>{
+const Pen=({isPut,isComment,penClick,content,feedId,feeds,setfeeds,comments,setcomments})=>{
   
   const params = useParams()
+
+  const [newContent,setNewContent] = useState('');
+
+
+  const func = async(e) => {
+    e.preventDefault();
+    
+    let temp = []
+
+    if (isComment) {
+      console.log(feedId)
+      temp = comments[0];
+      console.log(temp.feedId)
+      // const res = await createComments(feedId,newContent)
+      // .then((res) => {
+      //   console.log(res.data)
+      //   getUserInfo(res.data['writer-id'])
+      //   .then((t) => {
+      //     res.data['name'] = t.data.nickname
+      //   })
+      //   temp.push(res.data)
+      //   setcomments()
+      // })
+    }
+    else if (isPut){
+      temp = feeds
+      await patchFeed(feedId,newContent)
+      setfeeds([...temp])
+    }
+    else {
+      temp = feeds
+      await createFeed(params.project_id,document.getElementById('feedtext').value)
+      .then((res) => {
+        getUserInfo(res.data['writer-id'])
+        .then((t) => {
+          res.data['name'] = t.data.nickname
+        })
+        temp.push(res.data)
+        setfeeds([...temp])
+      })
+    }
+  }
+
 
 
   return(
@@ -17,7 +61,9 @@ const Pen=({isPut,isComment,penClick,content,feedId})=>{
       </button>
       <div className="textDiv">
         <div className='writeDiv'>글쓰기</div>
-        <textarea id='feedtext' type='text' placeholder='내용을 입력해주세요'>
+        <textarea id='feedtext' type='text' placeholder='내용을 입력해주세요'
+        onChange={(e) => setNewContent(e.target.value)}
+        >
           {content}
         </textarea>
         <div className='writeDiv fileplus'>파일 추가</div>
@@ -25,36 +71,7 @@ const Pen=({isPut,isComment,penClick,content,feedId})=>{
           <input type="file" multiple={true} id="fileUploadBtn" />
         </div>
         <button id='fileBtn'
-          onClick={
-            () => {
-              if (isComment) {
-                (
-                  async () => {
-                    const res = await createComments(feedId,document.getElementById('feedtext').value)
-                    console.log(res)
-                    // window.location.reload()
-                  }
-                )()
-              }
-              else if (isPut){
-                (
-                  async () => {
-                    const res = await patchFeed(feedId,document.getElementById('feedtext').value)
-                    console.log(res)
-                    // window.location.reload()
-                  }
-                )()
-              }
-              else {
-                (
-                  async () => {
-                    await createFeed(params.project_id,document.getElementById('feedtext').value)
-                    // window.location.reload()
-                  }
-                )()
-              }
-            }
-          }
+        onClick={func}
         >send</button>
       </div>
     </div>

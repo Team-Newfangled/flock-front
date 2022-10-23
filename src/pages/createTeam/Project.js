@@ -35,10 +35,10 @@ const Project = ({isOne, projectClick, team_id, projects, setProjects}) => {
           <div className="important">*</div>
           <input 
             className="nameBox" 
-            value={name} 
+            value={name}
             onChange={(e) => setName(e.target.value)} 
-            type='text' 
-            placeholder="프로젝트명 입력" 
+            type='text'
+            placeholder="프로젝트명 입력"
           />
           <button className="createBtn" type="submit">생성</button>
         </form>
