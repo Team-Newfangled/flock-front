@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
-import { deleteTodoItems, patchTodoItems } from '../../../util/api/project';
+import { deleteTodoItems, getTodoItems, patchTodoItems } from '../../../util/api/project';
 
 const Remove = styled.div`
     display: flex;
@@ -67,6 +67,14 @@ function Item({ id, done, text }) {
 
     const [ren,setRen] = useState(1)
 
+    const func = async(e) => {
+        e.preventDefault()
+
+        await getTodoItems()
+
+    }
+
+
     return (
         <TodoItemBlock>
             <CheckCircle done={done} onClick={
@@ -74,8 +82,6 @@ function Item({ id, done, text }) {
                 async () => {
                     const res = await patchTodoItems(id,!done)
                     console.log(res)
-                    let temp = ren
-                    setRen(temp+1)
                 }
             )
             }>{done && <MdDone />}</CheckCircle>
@@ -85,8 +91,6 @@ function Item({ id, done, text }) {
                     async () => {
                         const res = await deleteTodoItems(id)
                         console.log(res)
-                        let temp = ren
-                        setRen(temp+1)
                     }
                 )
             }>
