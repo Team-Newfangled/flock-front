@@ -30,23 +30,26 @@ const Pen=({isPut,isComment,penClick,content,feedId,feeds,setfeeds,comments,setc
       //   temp.push(res.data)
       //   setcomments()
       // })
+      penClick()
     }
     else if (isPut){
       temp = feeds
       await patchFeed(feedId,newContent)
       setfeeds([...temp])
+      penClick()
     }
     else {
       temp = feeds
-      await createFeed(params.project_id,document.getElementById('feedtext').value)
+      await createFeed(params.project_id,newContent)
       .then((res) => {
         getUserInfo(res.data['writer-id'])
         .then((t) => {
           res.data['name'] = t.data.nickname
         })
-        temp.push(res.data)
+        temp.unshift(res.data)
         setfeeds([...temp])
       })
+      penClick()
     }
   }
 

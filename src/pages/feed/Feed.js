@@ -22,7 +22,6 @@ const Feed = () => {
     
     const penClick = () => {
         setIsPopup(!isPopup)
-        !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
         setIsComment(false)
         setIsPut(false)
     }
