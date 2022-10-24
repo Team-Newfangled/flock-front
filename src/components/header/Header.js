@@ -39,9 +39,6 @@ const Header = () => {
           <div className="nav-link">
             <NavLink to='/CreateTeam'>프로젝트</NavLink>
           </div>
-          <div className="nav-link">
-            <NavLink to='/'>SNS</NavLink>
-          </div>
           <span className="line"/>
           <div className="nav-link">
             {isLogin ?  
@@ -55,7 +52,6 @@ const Header = () => {
             <div className="my-nav-form">
               <div className="aa">
                 <button className="nav-btn" onClick={() => navigate('/Profile')}>내 프로필</button>
-                <button className="nav-btn" onClick={() => navigate('/')}>나의 팀</button>
                 <button className="nav-btn" onClick={logout}>로그아웃</button>
               </div>
             </div>
