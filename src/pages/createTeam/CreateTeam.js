@@ -89,7 +89,7 @@ const CreateTeam = () => {
                     projectClick={projectClick} 
                     team_id={teamId} 
                     projects={projects} 
-                    setProjects={setProjects}
+                    setProjects={setProjects} 
                   /> : ''}
     </>
   );

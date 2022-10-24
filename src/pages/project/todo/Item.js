@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
-import { deleteTodoItems, patchTodoItems } from '../../../util/api/project';
+import { deleteTodoItems, getTodoItems, patchTodoItems } from '../../../util/api/project';
 
 const Remove = styled.div`
     display: flex;
@@ -63,32 +63,37 @@ const Text = styled.div`
         `}
 `;
  
-function Item({ id, done, text }) {
+function Item({ id, done, text, todos, setTodos}) {
 
-    const [ren,setRen] = useState(1)
+    const [isDelete,setIsDelete] = useState(false)
+    const [isPatch,setIsPatch] = useState(false)
+
+    const func = async(e) => {
+        e.preventDefault()
+
+        const temp = todos.slice()
+
+        if (isDelete) {
+            await deleteTodoItems(id)
+            setTodos(temp)
+            setIsDelete(false)
+        }
+        else if (isPatch) {
+            const res = await patchTodoItems(id,!done)
+            setTodos(temp)
+            setIsPatch(false)
+        }
+    }
+
 
     return (
         <TodoItemBlock>
             <CheckCircle done={done} onClick={
-            (
-                async () => {
-                    const res = await patchTodoItems(id,!done)
-                    console.log(res)
-                    let temp = ren
-                    setRen(temp+1)
-                }
-            )
+                setIsPatch(true)
             }>{done && <MdDone />}</CheckCircle>
             <Text done={done}>{text}</Text>
             <Remove onClick={
-                (
-                    async () => {
-                        const res = await deleteTodoItems(id)
-                        console.log(res)
-                        let temp = ren
-                        setRen(temp+1)
-                    }
-                )
+                setIsPatch(true)
             }>
                 <MdDelete />
             </Remove>

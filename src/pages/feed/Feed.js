@@ -22,7 +22,6 @@ const Feed = () => {
     
     const penClick = () => {
         setIsPopup(!isPopup)
-        !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
         setIsComment(false)
         setIsPut(false)
     }
@@ -77,7 +76,6 @@ const Feed = () => {
         )();
     },[params])
 
-console.log(items)
 
     return(
         <>
@@ -130,7 +128,7 @@ console.log(items)
                                     comments.map((t, j) => {
                                         return(
                                             Array.isArray(t[a.id]) && t[a.id].map((j, k) => {
-                                                console.log(j['name'])
+                                                console.log(j)
                                                 return (
                                                     <div className="feedcomments" key={k}>
                                                         <div>
@@ -152,7 +150,17 @@ console.log(items)
                 })
             }
             </div>
-            {isPopup ? <Pen penclick={penClick} content={content} isComment={isComment} isPut={isPut} feedId={feedId}/> : ''}
+            {isPopup ? <Pen 
+            penclick={penClick} 
+            content={content} 
+            isComment={isComment} 
+            isPut={isPut} 
+            feedId={feedId}
+            feeds={items}
+            setfeeds={setItems}
+            comments={comments}
+            setComments={setComments}
+            /> : ''}
         </>
     );
   };

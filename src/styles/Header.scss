@@ -60,9 +60,11 @@ header {
       top: 80%;
       right: 14.44444%;
       width: 144px;
-      height: 140px;
+      height: 120px;
       background-image: url('../images/myModal.svg');
-      background-size: cover;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
 
       .my-nav-form{
         position: absolute;
@@ -72,7 +74,7 @@ header {
 
         .aa{
           position: absolute;
-          top: 50%;
+          top: 72%;
           left: 50%;
           transform: translate(-50%, -50%);
           height: 96px;
@@ -81,7 +83,7 @@ header {
             color: black;
             font-weight: 400;
             font-size: 15px;
-            width: 124px;
+            width: 102px;
             height: 30px;
           }
 
