@@ -3,31 +3,14 @@ import Item from "./Item.js";
 import '../../../styles/Todo.scss'
 import { getTodoItems } from "../../../util/api/project/index.js";
 
-function List({project_id}) {
-
-  const [items,setitems] = useState([]);
-
-
-  useEffect(()=> {
-    (
-      async () => {
-        await getTodoItems(project_id)
-        .then((res) => {
-          let arr = []
-          arr = res.data.results
-          setitems([...arr])
-        })
-      }
-    )();
-  }, [])
-
+function List({todos, setTodos}) {
   return(
     <>
     <div className='TodoList'>
     {
-      items.map((item, i) => {
+      todos.map((item, i) => {
         return (
-          <Item text={item.content} done={item.completed} id={item.id} key={i}/>
+          <Item text={item.content} done={item.completed} id={item.id} todos={todos} setTodos={setTodos} key={i}/>
         )
       })
     }

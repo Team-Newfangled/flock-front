@@ -5,7 +5,7 @@ import Team from "../../pages/createTeam/Team.js";
 import { ReactComponent as Logo } from '../../images/Logo.svg';
 import '../../styles/Header.scss';
 
-const Header = () => {
+const Header = ({teams,setTeams}) => {
   const [isPopup, setIsPopup] = useState(false);
   const navigate = useNavigate();
   const scroll = Scroll();
@@ -22,7 +22,7 @@ const Header = () => {
       <div className="navButton">
         <button className="teamBtn" onClick={teamClick}>팀만들기</button>
       </div>
-      {isPopup ? <Team teamClick={teamClick}/> : ''}
+      {isPopup ? <Team teamClick={teamClick} teams={teams} setTeams={setTeams}/> : ''}
     </header>
   )
 }

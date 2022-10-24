@@ -42,7 +42,7 @@ const CreateTeam = () => {
   
   return (
     <>
-      <TeamHeader/>
+      <TeamHeader teams={teams} setTeams={setTeams}/>
       <Chat/>
       <div className="teamBox">
         {

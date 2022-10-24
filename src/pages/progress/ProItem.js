@@ -4,31 +4,10 @@ import '../../styles/Progress.scss'
 import { getTodoItems } from "../../util/api/project";
 import { getUserInfo } from "../../util/api/user";
 
-const ProItem = () => {
+const ProItem = ({items,setItems}) => {
 
   const params = useParams()
-
-  const [items, setItems] = useState([])
-
-  useEffect (() => {
-    (
-      async () => {
-        const res = await getTodoItems(params.project_id)
-        let arr = res.data.results
-        arr.map(a => {
-          (
-            async () => {
-             const res =  await getUserInfo(a['writer_id'])
-             a["name"] = res.data.nickname
-            }
-          )()
-        })
-        setItems([...arr])
-      }
-    )();
-  },[])
   
-
   return(
       <>
         <div className="promain">

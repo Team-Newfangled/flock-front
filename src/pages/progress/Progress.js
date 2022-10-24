@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TeamHeader from "../../components/header/Header";
+import { getTodoItems } from "../../util/api/project";
+import { getUserInfo } from "../../util/api/user";
 import Head from '../project/todo/Head.js';
 import List from '../project/todo/List.js';
 import Todo from "../project/todo/Todo.js";
@@ -9,14 +11,34 @@ const Progress = () => {
 
     const params = useParams()
 
+    const [items, setItems] = useState([])
+
+    useEffect (() => {
+      (
+        async () => {
+          const res = await getTodoItems(params.project_id)
+          let arr = res.data.results
+          arr.map(a => {
+            (
+              async () => {
+               const res =  await getUserInfo(a['writer_id'])
+               a["name"] = res.data.nickname
+              }
+            )()
+          })
+          setItems([...arr])
+        }
+      )();
+    },[])
+
     return(
         <>
             <TeamHeader/>
             <Todo>
-                <Head project_id={params.project_id}/>
-                <List project_id={params.project_id}/>
+                <Head project_id={params.project_id} todos={items} setTodos={setItems}/>
+                <List project_id={params.project_id} todos={items} setTodos={setItems}/>
             </Todo>
-            <ProItem/>
+            <ProItem items={items} setItems={setItems}/>
         </>
     )}
 

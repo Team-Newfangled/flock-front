@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import TeamHeader from "../../components/header/Header";
 import '../../styles/Project.scss';
+import { getTodoItems } from "../../util/api/project";
 import Head from './todo/Head.js';
 import List from './todo/List.js';
 import Todo from "./todo/Todo.js";
@@ -11,12 +12,27 @@ const Project = () => {
   
   const params = useParams();
 
+  const [todos,setTodos] = useState([])
+  useEffect(() => {
+  (
+      async () => {
+        await getTodoItems(params.project_id)
+        .then((res) => {
+          let arr = []
+          arr = res.data.results
+          setTodos([...arr])
+        })
+      }
+  )()
+  },[])
+
+
   return (
     <>
       <TeamHeader/>
       <Todo>
-        <Head project_id={params.project_id}/>
-        <List project_id={params.project_id}/>
+        <Head project_id={params.project_id} todos={todos} setTodos={setTodos}/>
+        <List project_id={params.project_id} todos={todos} setTodos={setTodos}/>
       </Todo>
       <div>
         <Link to={`/progress/${params.project_id}`}>

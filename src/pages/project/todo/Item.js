@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
 import { deleteTodoItems, getTodoItems, patchTodoItems } from '../../../util/api/project';
+import { useParams } from 'react-router-dom';
 
 const Remove = styled.div`
     display: flex;
@@ -65,35 +66,43 @@ const Text = styled.div`
  
 function Item({ id, done, text, todos, setTodos}) {
 
-    const [isDelete,setIsDelete] = useState(false)
-    const [isPatch,setIsPatch] = useState(false)
+    const params = useParams()
 
-    const func = async(e) => {
+    const patch = async(e) => {
+        e.preventDefault()
+        
+        await patchTodoItems(id,!done)
+        await getTodoItems(params.project_id)
+        .then((res) => {
+            console.log(res.data.results)
+            let arr = []
+            arr = res.data.results
+            setTodos([...arr])
+        })
+    }
+
+    const del = async(e) => {
         e.preventDefault()
 
-        const temp = todos.slice()
-
-        if (isDelete) {
-            await deleteTodoItems(id)
-            setTodos(temp)
-            setIsDelete(false)
-        }
-        else if (isPatch) {
-            const res = await patchTodoItems(id,!done)
-            setTodos(temp)
-            setIsPatch(false)
-        }
+        await deleteTodoItems(id)
+        await getTodoItems(params.project_id)
+        .then((res) => {
+            console.log(res.data.results)
+            let arr = []
+            arr = res.data.results
+            setTodos([...arr])
+        })
     }
 
 
     return (
         <TodoItemBlock>
             <CheckCircle done={done} onClick={
-                setIsPatch(true)
+                patch
             }>{done && <MdDone />}</CheckCircle>
             <Text done={done}>{text}</Text>
             <Remove onClick={
-                setIsPatch(true)
+                del
             }>
                 <MdDelete />
             </Remove>

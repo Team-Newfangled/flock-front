@@ -9,9 +9,10 @@ import Todo from "../project/todo/Todo.js";
 import Pen from '../project/Pen'
 import Write from "../../components/common/Write/Write";
 import { getUserInfo } from "../../util/api/user";
+import { getTodoItems } from "../../util/api/project";
 const Feed = () => {
 
-    const [feedId,setFeedId] = useState(0)
+    const [feedId,setFeedId] = useState('')
     const [isPopup,setIsPopup] = useState(false)
 
     const [content,setContent] = useState('')
@@ -44,46 +45,64 @@ const Feed = () => {
     const [items,setItems] = useState([]);
     const [comments,setComments] = useState([]);
     
-    
-    useEffect(() => {
-        (
-            async() => {
-                await getFeed(params.project_id)
-                .then((res) => {
-                    let feed = res.data.results
-                    let arr = {}
-                    feed.map(async a => {
+    const [todos,setTodos] = useState([])
 
-                        await getUserInfo(a['writer-id'])
-                        .then( res => {
-                            a["name"] = res.data.nickname
-                        })
+    const getTodo = async() => {
+        await getTodoItems(params.project_id)
+        .then((res) => {
+        let arr = []
+        arr = res.data.results
+        setTodos([...arr])
+        })
+    }
 
-                        await getComments(a.id)
-                        .then((res) => {
-                            
-                            res.data.results.map( async temp => {
-                                const req = await getUserInfo(temp['writer-id'])
-                                temp["name"] = req.data.nickname
-                            })
-                            arr[a.id] = res.data.results
-                        })
-                        setComments([arr])
-                    })
-                    setItems([...feed])
+    const getItems = async() => {
+        await getFeed(params.project_id)
+        .then((res) => {
+            let feed = res.data.results
+            feed.map( async a => {
+                await getUserInfo(a['writer-id'])
+                .then( res => {
+                    a['name'] = res.data.nickname
                 })
-            }
-        )();
-    },[params])
+            })
+            let arr = {}
+            feed.map(async a => {
+                await getComments(a.id)
+                .then((res) => {
+                    res.data.results.map( async item => {
+                        const req =  await getUserInfo(item['writer-id'])
+                        item['name'] = req.data.nickname
+                    })
+                    arr[a.id] = res.data.results
+                })
+                setComments([arr])
+            })
+            setItems([...feed])
+        })
+    }
 
+    const del = async(e) => {
+        e.preventDefault();
+
+        await deleteFeed(feedId)
+        getItems()
+    }
+
+    useEffect(() => {
+        getItems()
+        getTodo()
+    },[])
+
+    console.log(items)
 
     return(
         <>
             <TeamHeader/>
-            <Write/>
+            <Write feeds={items} setfeeds={setItems} comments={comments} setcomments={setComments}/>
             <Todo>
-                <Head project_id={params.project_id}/>
-                <List project_id={params.project_id}/>
+                <Head project_id={params.project_id} todos={todos} setTodos={setTodos}/>
+                <List project_id={params.project_id} todos={todos} setTodos={setTodos}/>
             </Todo>
             <div className="feedmain">
             {
@@ -103,12 +122,9 @@ const Feed = () => {
                                         <p onClick={() => {
                                             putClick(a.content,a.id)
                                         }}>수정</p>
-                                        <p onClick={() => {
-                                            (
-                                                async () => {
-                                                    await deleteFeed(a.id)
-                                                }
-                                            )()
+                                        <p onClick={async () => {
+                                            setFeedId(a.id)
+                                            await del()
                                         }}>삭제</p>
                                     </div>
                                 </div>
@@ -128,7 +144,6 @@ const Feed = () => {
                                     comments.map((t, j) => {
                                         return(
                                             Array.isArray(t[a.id]) && t[a.id].map((j, k) => {
-                                                console.log(j)
                                                 return (
                                                     <div className="feedcomments" key={k}>
                                                         <div>
@@ -150,16 +165,17 @@ const Feed = () => {
                 })
             }
             </div>
-            {isPopup ? <Pen 
-            penclick={penClick} 
+            {isPopup ? <Pen  
+            key={feedId}   
+            penClick={penClick} 
             content={content} 
             isComment={isComment} 
             isPut={isPut} 
-            feedId={feedId}
-            feeds={items}
-            setfeeds={setItems}
-            comments={comments}
-            setComments={setComments}
+            feedId={feedId} 
+            feeds={items} 
+            setfeeds={setItems} 
+            comments={comments} 
+            setComments={setComments} 
             /> : ''}
         </>
     );

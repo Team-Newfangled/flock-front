@@ -1,4 +1,5 @@
 import { authAPI } from "../../../lib/API";
+import { getUserInfo } from "../user";
 
 // feed 추가, 삭제, 수정, 가져오기
 export const getFeed = async(project_id) => {
