@@ -34,7 +34,7 @@ const Project = ({isOne, projectClick, team_id, projects, setProjects}) => {
         <form className="text" onSubmit={func}>
           <div className="important">*</div>
           <input 
-            className="nameBox" 
+            className="nameBox"
             value={name}
             onChange={(e) => setName(e.target.value)} 
             type='text'

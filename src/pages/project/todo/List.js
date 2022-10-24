@@ -19,10 +19,7 @@ function List({project_id}) {
         })
       }
     )();
-
-
-  }, [setitems])
-
+  }, [])
 
   return(
     <>

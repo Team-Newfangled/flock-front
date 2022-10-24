@@ -63,36 +63,37 @@ const Text = styled.div`
         `}
 `;
  
-function Item({ id, done, text }) {
+function Item({ id, done, text, todos, setTodos}) {
 
-    const [ren,setRen] = useState(1)
+    const [isDelete,setIsDelete] = useState(false)
+    const [isPatch,setIsPatch] = useState(false)
 
     const func = async(e) => {
         e.preventDefault()
 
-        await getTodoItems()
+        const temp = todos.slice()
 
+        if (isDelete) {
+            await deleteTodoItems(id)
+            setTodos(temp)
+            setIsDelete(false)
+        }
+        else if (isPatch) {
+            const res = await patchTodoItems(id,!done)
+            setTodos(temp)
+            setIsPatch(false)
+        }
     }
 
 
     return (
         <TodoItemBlock>
             <CheckCircle done={done} onClick={
-            (
-                async () => {
-                    const res = await patchTodoItems(id,!done)
-                    console.log(res)
-                }
-            )
+                setIsPatch(true)
             }>{done && <MdDone />}</CheckCircle>
             <Text done={done}>{text}</Text>
             <Remove onClick={
-                (
-                    async () => {
-                        const res = await deleteTodoItems(id)
-                        console.log(res)
-                    }
-                )
+                setIsPatch(true)
             }>
                 <MdDelete />
             </Remove>
