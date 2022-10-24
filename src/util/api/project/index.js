@@ -41,7 +41,15 @@ export const patchProject = async(project_id,project_name) => {
 }
 
 // project 사진 추가 필요
-
+export const patchProjectImg = async(project_id,content) => {
+    const res = await authAPI.patch( 
+        `/projects/${project_id}/image`,
+        {
+            "content" : content
+        }
+    )
+    return res
+}
 // todo list
 
 export const getTodoItems = async(project_id) => {
