@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
 import Login from "../login/Login";
@@ -7,18 +7,23 @@ import Scroll from "../common/Scroll/scroll";
 import { ReactComponent as Logo } from '../../images/Logo.svg';
 import { userlogout } from "../../store/users/userData";
 import '../../styles/Header.scss';
+import { dropModal, showModal } from "../../store/modal/modalData";
 
 const Header = () => {
   const isLogin = useLogin();
-  const [isPopup, setIsPopup] = useState(false);
   const [isMyModal, setIsMyModal] = useState(false);
+  const isModal = useSelector((state) => state.modal.show);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const scroll = Scroll();
 
   const loginClick = () => {
-    setIsPopup(!isPopup);
-    !isPopup ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
+    if(isModal){
+      dispatch(dropModal());
+    }else {
+      dispatch(showModal());
+    }
+    !isModal ? document.body.style.overflow = "hidden": document.body.style.overflow = "unset";
   } 
 
   const logout = () => {
@@ -59,7 +64,7 @@ const Header = () => {
           : null
         }
         </div>
-      {isPopup ? <Login loginClick={loginClick}/> : null}
+      {isModal && <Login loginClick={loginClick}/>}
     </header>
   )
 }
