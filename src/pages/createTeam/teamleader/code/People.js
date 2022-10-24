@@ -6,7 +6,6 @@ import { getTeamMembers } from "../../../../util/api/team";
 function People(team_id) {
 
 
-
   useEffect(() => {
     ( async () => {
       const res = await getTeamMembers(team_id)
@@ -33,10 +32,6 @@ function People(team_id) {
               axios.post("",{}).then(()=>{});
             }}
             src={require('../../../../images/Pmanager.svg').default}/>
-            <img className='trash' onClick={()=>{
-              axios.post("",{}).then(()=>{});
-            }}
-            src={require('../../../../images/trash.svg').default}/>
           </div>
         </div>
 
@@ -50,10 +45,7 @@ function People(team_id) {
                   onClick={()=>{
                     axios.post("",{}).then(()=>{});
                   }}/>
-                  <img className='trash' src={require('../../../../images/trash.svg').default}
-                  onClick={()=>{
-                    axios.post("",{}).then(()=>{});
-                  }}/>
+
                 </div>
               </div>
             )
