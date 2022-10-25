@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Pen } from "../../../pages/Pagelist";
 import "../../../styles/chat.scss";
 
-const Write  = ({feeds,setfeeds,comments,setcomments}) => {
+const Write  = ({feeds,setfeeds,comments,setcomments,getItems}) => {
   const [isPopup, setIsPopup] = useState(false);
 
   const penClick = () => {
@@ -23,6 +23,7 @@ const Write  = ({feeds,setfeeds,comments,setcomments}) => {
         setfeeds={setfeeds} 
         comments={comments} 
         setcomments={setcomments}
+        getItems={getItems}
         /> : ''}
     </div>
   );

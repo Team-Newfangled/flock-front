@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import '../../../styles/Todo.scss';
-import { createTodoItems } from "../../../util/api/project";
+import { createTodoItems, getTodoItems } from "../../../util/api/project";
 
 function Head({project_id,todos,setTodos}) {
 
@@ -10,11 +10,6 @@ function Head({project_id,todos,setTodos}) {
     e.preventDefault();
 
     await createTodoItems(project_id,todo)
-    .then((res) => {
-      const temp = [...todos]
-      temp.push(res)
-      setTodos(temp)
-    })
   }
 
 
@@ -25,6 +20,7 @@ function Head({project_id,todos,setTodos}) {
       <form onSubmit={func}>
         <input className="plus" type='text' placeholder='할 일을 적어주세요'
         onChange={(e) => setTodo(e.target.value)}
+        defaultValue={''}
         />
         <button className="plusBtn" type='submit'>
           <img src={require('../../../images/Add.svg').default}/>

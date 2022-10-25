@@ -2,8 +2,8 @@
     position: absolute;
     border-radius: 10px;
     top: 14%;
-    left: 37%;
-    width: 50%;
+    left: 40vw;
+    width: 50vw;
     height: 80vh;
     overflow-y: scroll;
 }
@@ -15,7 +15,9 @@
     width: 100%;
     margin-bottom: 10px;
     height: 58vh;
+    overflow-y: scroll;
 }
+
 .feedhead{
     display: flex;
     width: 90%;
@@ -89,6 +91,7 @@
     background-color: #ffffff;
     border-radius: 10px;
     padding: 10px;
+    margin-bottom: 5px;
     div{
         display: flex;
         justify-content: space-between;

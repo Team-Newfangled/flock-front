@@ -13,8 +13,6 @@ const ProItem = ({items,setItems}) => {
         <div className="promain">
           {
             items.map( (res, i ) => {
-              document.getElementsByClassName('color').style = res.color
-              console.log(document.getElementsByClassName('color').style)
               return (
                       <div className="proiteam" key={i}>
                         <div className="probox">

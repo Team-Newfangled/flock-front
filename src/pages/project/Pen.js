@@ -2,56 +2,30 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import '../../styles/Pen.scss'
 import { createComments, createFeed, getFeed, patchFeed } from "../../util/api/feed";
-import { getUserInfo } from "../../util/api/user";
 
-const Pen=({isPut,isComment,penClick,content,feedId,feeds,setfeeds,comments,setcomments})=>{
+const Pen=({isPut,isComment,penClick,content,feedId,getItems})=>{
   
   const params = useParams()
 
   const [newContent,setNewContent] = useState('');
 
-
   const func = async(e) => {
     e.preventDefault();
-    
-
-    let temp = []
 
     if (isComment) {
-      temp = [...comments];
-      console.log(temp)
       await createComments(feedId,newContent)
-      .then((res) => { 
-        getUserInfo(res.data['writer-id']) 
-        .then((t) => { 
-          res.data['name'] = t.data.nickname 
-        }) 
-        temp[feedId].push(temp) 
-        setcomments([temp]) 
-      })
+      getItems()
     }
-    else if (isPut){
-      temp = [...feeds]
-      await patchFeed(feedId,newContent)
-      setfeeds([temp])
-    }
-    else {
-      temp = [...feeds]
-      await createFeed(params.project_id,newContent)
-      .then((res) => {
-        temp = []
-        getUserInfo(res.data['writer-id'])
-        .then((t) => {
-          res.data['name'] = t.data.nickname
-        })
-        console.log(res.data)
-        temp.push(res.data)
-        setfeeds(temp)
-      })
-    }
-    penClick()
-  }
-
+    else if (isPut){ 
+      await patchFeed(feedId,newContent) 
+      getItems() 
+    } 
+    else { 
+      await createFeed(params.project_id,newContent) 
+      getItems() 
+    } 
+    penClick() 
+  } 
 
   return(
     <>
@@ -64,8 +38,9 @@ const Pen=({isPut,isComment,penClick,content,feedId,feeds,setfeeds,comments,setc
           <div className='writeDiv'>글쓰기</div> 
           <textarea id='feedtext' type='text' placeholder='내용을 입력해주세요' 
           onChange={(e) => setNewContent(e.target.value)} 
+          defaultValue={content}
           >
-            {content}
+            
           </textarea>
           <div className='writeDiv fileplus'>파일 추가</div>
           <div id='fileuplode'>

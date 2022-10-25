@@ -23,6 +23,7 @@ const Feed = () => {
     
     const penClick = () => {
         setIsPopup(!isPopup)
+        setContent('')
         setIsComment(false)
         setIsPut(false)
     }
@@ -39,6 +40,11 @@ const Feed = () => {
         setIsComment(!isComment)
         setFeedId(id)
     }
+
+    const del = async(feed_id) => {
+        await deleteFeed(feed_id)
+        getItems()
+    }
     
     const params = useParams();
     
@@ -50,9 +56,9 @@ const Feed = () => {
     const getTodo = async() => {
         await getTodoItems(params.project_id)
         .then((res) => {
-        let arr = []
-        arr = res.data.results
-        setTodos([...arr])
+            let arr = []
+            arr = res.data.results
+            setTodos([...arr])
         })
     }
 
@@ -61,45 +67,31 @@ const Feed = () => {
         .then((res) => {
             let feed = res.data.results
             feed.map( async a => {
-                await getUserInfo(a['writer-id'])
-                .then( res => {
-                    a['name'] = res.data.nickname
-                })
-            })
-            let arr = {}
-            feed.map(async a => {
+                let temp = [...comments]
+                let arr = {}
                 await getComments(a.id)
                 .then((res) => {
-                    res.data.results.map( async item => {
-                        const req =  await getUserInfo(item['writer-id'])
-                        item['name'] = req.data.nickname
-                    })
                     arr[a.id] = res.data.results
                 })
-                setComments([arr])
+                temp.push(arr)
+                setComments(temp)
             })
             setItems([...feed])
         })
     }
 
-    const del = async(e) => {
-        e.preventDefault();
-
-        await deleteFeed(feedId)
-        getItems()
-    }
 
     useEffect(() => {
         getItems()
         getTodo()
     },[])
 
-    console.log(items)
+    console.log(comments)   
 
     return(
         <>
             <TeamHeader/>
-            <Write feeds={items} setfeeds={setItems} comments={comments} setcomments={setComments}/>
+            <Write feeds={items} setfeeds={setItems} comments={comments} setcomments={setComments} getItems={getItems}/>
             <Todo>
                 <Head project_id={params.project_id} todos={todos} setTodos={setTodos}/>
                 <List project_id={params.project_id} todos={todos} setTodos={setTodos}/>
@@ -112,7 +104,7 @@ const Feed = () => {
                                 <div className="feedhead">
                                     <div>
                                         <img alt="user" src={require('../../images/userimg.svg').default}/>
-                                        <p>{a.name}</p>
+                                        <p>{a['name']}</p>
                                     </div>
                                     <img alt="user" src={require('../../images/addlook.svg').default}/>
                                 </div>
@@ -122,10 +114,10 @@ const Feed = () => {
                                         <p onClick={() => {
                                             putClick(a.content,a.id)
                                         }}>수정</p>
-                                        <p onClick={async () => {
-                                            setFeedId(a.id)
-                                            await del()
-                                        }}>삭제</p>
+                                        <p onClick={() => {
+                                            del(a.id)
+                                        }
+                                        }>삭제</p>
                                     </div>
                                 </div>
                                 <div className="addadress">
@@ -176,6 +168,7 @@ const Feed = () => {
             setfeeds={setItems} 
             comments={comments} 
             setComments={setComments} 
+            getItems = {getItems}
             /> : ''}
         </>
     );
