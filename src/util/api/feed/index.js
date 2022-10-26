@@ -56,10 +56,10 @@ export const getComments = async(project_id) => {
     const res = await authAPI.get(
         `/boards/${project_id}/comments`
     )
-    res.data.results.map( async item => {
-        const req =  await getUserInfo(item['writer-id'])
-        item['name'] = req.data.nickname
-    })
+    // res.data.results.map( async item => {
+    //     const req =  await getUserInfo(item['writer-id'])
+    //     item['name'] = req.data.nickname
+    // })
     return res
 }
 

@@ -93,7 +93,7 @@ export const putTodoItems = async(todo_id,content,end,start) => {
 
 export const patchTodoItems = async(todo_id,state) => {
     const res = await authAPI.patch(
-        `/todo/${todo_id}`,
+        `/todo/complete/${todo_id}`,
         {
             "complete" : state
         }

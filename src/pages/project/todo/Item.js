@@ -72,6 +72,8 @@ function Item({ id, done, text, todos, setTodos}) {
         e.preventDefault()
         
         await patchTodoItems(id,!done)
+        .then((res) => {
+        })
         await getTodoItems(params.project_id)
         .then((res) => {
             let arr = []
@@ -86,7 +88,6 @@ function Item({ id, done, text, todos, setTodos}) {
         await deleteTodoItems(id)
         await getTodoItems(params.project_id)
         .then((res) => {
-            console.log(res.data.results)
             let arr = []
             arr = res.data.results
             setTodos([...arr])

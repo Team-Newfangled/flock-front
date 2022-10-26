@@ -85,7 +85,6 @@ const Feed = () => {
         })
     }
 
-
     useEffect(() => {
         getItems()
         getTodo()
@@ -136,28 +135,27 @@ const Feed = () => {
                                     }}>댓글쓰기</button>
                                 </div>
                                 {
-                                    comments.map((t, j) => {
-                                        return(
-                                            Array.isArray(t[a.id]) && t[a.id].map((j, k) => {
-                                                return (
-                                                    <div className="feedcomments" key={k}>
+                                    comments.map((t, j) => (
+                                        Array.isArray(t[a.id]) && t[a.id].map(({id, comment, name}) => {
+                                            console.log(id, name, comment)
+                                            return (
+                                                <div className="feedcomments" key={id}>
+                                                    <div>
                                                         <div>
-                                                            <div>
-                                                                <img alt="user" src={require('../../images/userimg.svg').default}/>
-                                                                <p>{j.name}</p>
-                                                            </div>
-                                                            <p onClick={
-                                                                () => {
-                                                                    delcomments(j.id)
-                                                                }
-                                                            }>삭제</p>
+                                                            <img alt="user" src={require('../../images/userimg.svg').default}/>
+                                                            <p>{name}</p>
                                                         </div>
-                                                        <p className="commentmean">{j.comment}</p>
+                                                        <p onClick={
+                                                            () => {
+                                                                delcomments(id)
+                                                            }
+                                                        }>삭제</p>
                                                     </div>
-                                                )
-                                            })
-                                        )
-                                    })
+                                                    <p className="commentmean">{comment}</p>
+                                                </div>
+                                            )
+                                        }))
+                                    )
                                 }
                             </div>
                     )
