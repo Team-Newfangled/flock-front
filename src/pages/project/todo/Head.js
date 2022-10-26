@@ -8,7 +8,6 @@ function Head({project_id,todos,setTodos}) {
 
   const func = async(e) => {
     e.preventDefault();
-
     await createTodoItems(project_id,todo)
   }
 

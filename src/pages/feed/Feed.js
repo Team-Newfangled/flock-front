@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TeamHeader from "../../components/header/Header";
 import '../../styles/Feed.scss';
-import { deleteFeed, getComments, getFeed } from "../../util/api/feed";
+import { deleteComments, deleteFeed, getComments, getFeed } from "../../util/api/feed";
 import Head from '../project/todo/Head.js';
 import List from '../project/todo/List.js';
 import Todo from "../project/todo/Todo.js";
@@ -45,6 +45,11 @@ const Feed = () => {
         await deleteFeed(feed_id)
         getItems()
     }
+
+    const delcomments = async(comment_id) => {
+        await deleteComments(comment_id)
+        getItems()
+    }
     
     const params = useParams();
     
@@ -67,14 +72,14 @@ const Feed = () => {
         .then((res) => {
             let feed = res.data.results
             feed.map( async a => {
-                let temp = [...comments]
+                let temp = []
                 let arr = {}
                 await getComments(a.id)
                 .then((res) => {
                     arr[a.id] = res.data.results
+                    temp.unshift(arr)
                 })
-                temp.push(arr)
-                setComments(temp)
+                setComments([...temp])
             })
             setItems([...feed])
         })
@@ -85,8 +90,6 @@ const Feed = () => {
         getItems()
         getTodo()
     },[])
-
-    console.log(comments)   
 
     return(
         <>
@@ -143,7 +146,11 @@ const Feed = () => {
                                                                 <img alt="user" src={require('../../images/userimg.svg').default}/>
                                                                 <p>{j.name}</p>
                                                             </div>
-                                                            <img alt="user" src={require('../../images/detail.svg').default}/>
+                                                            <p onClick={
+                                                                () => {
+                                                                    delcomments(j.id)
+                                                                }
+                                                            }>삭제</p>
                                                         </div>
                                                         <p className="commentmean">{j.comment}</p>
                                                     </div>
