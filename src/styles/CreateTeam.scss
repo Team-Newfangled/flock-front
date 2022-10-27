@@ -34,6 +34,7 @@
 }
 
 .wrap{
+  display: flex;
   width: 100%;
   height: 230px;
   overflow-x:auto;
@@ -59,7 +60,6 @@
   height: 200px;
   background-color: #EFF2F9;
   border-radius:20px;
-  margin-left:10px;
   position: relative;
 }
 .p-name{

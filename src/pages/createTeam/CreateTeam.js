@@ -47,6 +47,7 @@ const CreateTeam = () => {
       <div className="teamBox">
         {
           teams.map((x,y) => { /* x = 팀 */
+            console.log(x)
             return(
               <div className="projectBox" key={x['team-id']}>
                 <Link to={`/teamcode/${x['team-id']}/${x['team-name']}`} className="tName">{x['team-name']}</Link>
@@ -56,12 +57,14 @@ const CreateTeam = () => {
                         return(
                           Array.isArray(t[x['team-id']]) && t[x['team-id']].map((a,j) => { /* a가 */
                             return(
-                              <Link to={`/project/${a.id}`} className="p-create" key={j}>
-                                <p className="p-name">{a.name}</p>
-                                <Link to={`/teamleader/${a.id}/${a.name}`}>
-                                <img className="modify_btn" src={require('../../images/modify.svg').default}alt="추가아이콘"/>
+                              <div key={a.id} style={{ position: "relative", width: "180px", height: "200px", marginRight: "10px"}}>
+                                <Link to={`/project/${a.id}`} className="p-create">
+                                  <p className="p-name">{a.name}</p>
                                 </Link>
-                              </Link>
+                                <Link to={`/teamleader/${a.id}/${a.name}`} className="modify_btn">
+                                  <img src={require('../../images/modify.svg').default}alt="추가아이콘"/>
+                                </Link>
+                              </div>
                           )}
                         ))
                       })
