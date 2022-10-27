@@ -71,11 +71,11 @@ const Feed = () => {
         await getFeed(params.project_id)
         .then((res) => {
             let feed = res.data.results
+            let temp = []
             feed.map( async a => {
-                let temp = []
-                let arr = {}
                 await getComments(a.id)
                 .then((res) => {
+                    let arr = {}
                     arr[a.id] = res.data.results
                     temp.unshift(arr)
                 })
@@ -89,6 +89,7 @@ const Feed = () => {
         getItems()
         getTodo()
     },[])
+
 
     return(
         <>
@@ -106,7 +107,7 @@ const Feed = () => {
                                 <div className="feedhead">
                                     <div>
                                         <img alt="user" src={require('../../images/userimg.svg').default}/>
-                                        <p>{a['name']}</p>
+                                        <p>{a['writer']}</p>
                                     </div>
                                     <img alt="user" src={require('../../images/addlook.svg').default}/>
                                 </div>
@@ -136,14 +137,13 @@ const Feed = () => {
                                 </div>
                                 {
                                     comments.map((t, j) => (
-                                        Array.isArray(t[a.id]) && t[a.id].map(({id, comment, name}) => {
-                                            console.log(id, name, comment)
+                                        Array.isArray(t[a.id]) && t[a.id].map(({id, comment, writer}) => {
                                             return (
                                                 <div className="feedcomments" key={id}>
                                                     <div>
                                                         <div>
                                                             <img alt="user" src={require('../../images/userimg.svg').default}/>
-                                                            <p>{name}</p>
+                                                            <p>{writer}</p>
                                                         </div>
                                                         <p onClick={
                                                             () => {
