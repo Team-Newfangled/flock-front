@@ -8,15 +8,12 @@ import List from '../project/todo/List.js';
 import Todo from "../project/todo/Todo.js";
 import Pen from '../project/Pen'
 import Write from "../../components/common/Write/Write";
-import { getUserInfo } from "../../util/api/user";
 import { getTodoItems } from "../../util/api/project";
 const Feed = () => {
-
     const [feedId,setFeedId] = useState('')
-    const [isPopup,setIsPopup] = useState(false)
-
     const [content,setContent] = useState('')
-    
+    const [select, setSelect] = useState([])
+    const [isPopup,setIsPopup] = useState(false)
     const [isComment, setIsComment] = useState(false)
     const [isPut,setIsPut] = useState(false)
     
@@ -90,7 +87,6 @@ const Feed = () => {
         getTodo()
     },[])
 
-
     return(
         <>
             <TeamHeader/>
@@ -101,7 +97,7 @@ const Feed = () => {
             </Todo>
             <div className="feedmain">
             {
-                items.map( (a,i) => {
+                items.map((a,i) => {
                     return(
                             <div className="feediteam" key={i}>
                                 <div className="feedhead">
@@ -109,19 +105,23 @@ const Feed = () => {
                                         <img alt="user" src={require('../../images/userimg.svg').default}/>
                                         <p>{a['writer']}</p>
                                     </div>
-                                    <img alt="user" src={require('../../images/addlook.svg').default}/>
+                                    <button onClick={() => !select.includes(a.id) ? setSelect((prev) => [...prev, a.id]) : setSelect(select.filter((value) => value !== a.id))}>
+                                        <img alt="user" src={require('../../images/addlook.svg').default}/>
+                                    </button>
                                 </div>
                                 <div className="feedmean">
                                     <p className="commentmean"> {a.content} </p>
-                                    <div>
-                                        <p onClick={() => {
-                                            putClick(a.content,a.id)
-                                        }}>수정</p>
-                                        <p onClick={() => {
-                                            del(a.id)
-                                        }
-                                        }>삭제</p>
-                                    </div>
+                                    {select.includes(a.id) && 
+                                        <div>
+                                            <p onClick={() => {
+                                                putClick(a.content,a.id)
+                                            }}>수정</p>
+                                            <p onClick={() => {
+                                                del(a.id)
+                                            }
+                                            }>삭제</p>
+                                        </div>
+                                    }
                                 </div>
                                 <div className="addadress">
                                     <img alt="user" src={require('../../images/addadress.svg').default}/>
