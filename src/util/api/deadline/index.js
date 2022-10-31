@@ -1,6 +1,7 @@
 import { authAPI } from "../../../lib/API";
 
 export const getDeadline = (projectId, year, month) => {
+  console.log(year, month)
   const res = authAPI.get(`/projects/${projectId}/deadline?year=${year}&month=${month}`)
   return res;
 };

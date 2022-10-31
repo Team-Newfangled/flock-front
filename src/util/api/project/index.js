@@ -53,11 +53,8 @@ export const patchProjectImg = async(project_id,content) => {
 // todo list
 
 export const getTodoItems = async(project_id) => {
-    const date = new Date();
-    const year = date.getUTCFullYear();
-    const month = date.getUTCMonth() + 1;
     const res = await authAPI.get(
-        `/projects/${project_id}/deadline?year=${year}&month=${month}`
+        `/projects/${project_id}/todos`
     )
     return res
 };

@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Item from "./Item.js";
 import '../../../styles/Todo.scss'
-import { getTodoItems } from "../../../util/api/project/index.js";
 
 function List({todos, setTodos}) {
   return(
-    <>
     <div className='TodoList'>
     {
       todos.map((item, i) => {
@@ -15,7 +13,6 @@ function List({todos, setTodos}) {
       })
     }
     </div>
-    </>
   )
 }
 

@@ -73,6 +73,7 @@ function Item({ id, done, text, todos, setTodos}) {
         
         await patchTodoItems(id,!done)
         .then((res) => {
+            console.log(res)
         })
         await getTodoItems(params.project_id)
         .then((res) => {
@@ -97,13 +98,11 @@ function Item({ id, done, text, todos, setTodos}) {
 
     return (
         <TodoItemBlock>
-            <CheckCircle done={done} onClick={
-                patch
-            }>{done && <MdDone />}</CheckCircle>
+            <CheckCircle done={done} onClick={patch}>
+                {done && <MdDone />}
+            </CheckCircle>
             <Text done={done}>{text}</Text>
-            <Remove onClick={
-                del
-            }>
+            <Remove onClick={del}>
                 <MdDelete />
             </Remove>
         </TodoItemBlock>

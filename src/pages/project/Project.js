@@ -15,14 +15,15 @@ const Project = () => {
   const [todos,setTodos] = useState([])
   useEffect(() => {
   (
-      async () => {
-        await getTodoItems(params.project_id)
-        .then((res) => {
-          let arr = []
-          arr = res.data.results
-          setTodos([...arr])
-        })
-      }
+    async () => {
+      await getTodoItems(params.project_id)
+      .then((res) => {
+        console.log(res)
+        let arr = []
+        arr = res.data.results
+        setTodos([...arr])
+      })
+    }
   )()
   },[])
 

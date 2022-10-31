@@ -5,7 +5,7 @@ import { createTodoItems, getTodoItems } from "../../../util/api/project";
 function Head({project_id,todos,setTodos}) {
 
   const [todo,setTodo] = useState('')
-
+  
   const func = async(e) => {
     e.preventDefault();
     await createTodoItems(project_id,todo)
@@ -14,6 +14,7 @@ function Head({project_id,todos,setTodos}) {
       temp.unshift(res.data)
       setTodos([...temp])
     })
+    setTodo('')
   }
 
 
@@ -24,7 +25,7 @@ function Head({project_id,todos,setTodos}) {
       <form onSubmit={func}>
         <input className="plus" type='text' placeholder='할 일을 적어주세요'
         onChange={(e) => setTodo(e.target.value)}
-        defaultValue={''}
+        value={todo}
         />
         <button className="plusBtn" type='submit'>
           <img src={require('../../../images/Add.svg').default}/>
