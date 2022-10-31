@@ -36,6 +36,8 @@ const Mark = () => {
   const changeMark = async() => {
     axios.all([changeDeadlineColor(params.project_id, todoId, color), putTodo(todoId, startDate, endDate)])
     .then(axios.spread((res1, res2) => {
+      console.log(res1.data.message)
+      console.log(res2.data.message)
       const temp = todos.filter(({id}) => id === todoId)[0]
       const tempcopy = {...temp}
       tempcopy.color = color
@@ -43,8 +45,6 @@ const Mark = () => {
       tempcopy['end-date'] = endDate
       setCurrentColor(color)
       dispatch(setState([...todos.filter(({id}) => id !== todoId), tempcopy]))
-      console.log(res1.data.message)
-      console.log(res2.data.message)
     }))
     .catch((err) => { console.log(err)})
   }

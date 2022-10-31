@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import '../../styles/Progress.scss'
-import { getTodoItems } from "../../util/api/project";
-import { getUserInfo } from "../../util/api/user";
 
 const ProItem = ({items,setItems}) => {
 
   const params = useParams()
-  
+  const navigate = useNavigate()
+
   return(
       <>
         <div className="promain">
           {
             items.map( (res, i ) => {
               return (
-                      <div className="proiteam" key={i}>
+                      <div className="proiteam" key={i} onClick={() => navigate('/ongoing')}>
                         <div className="probox">
                           <div className="proName">{res.content}</div>
                           <div className="color"/>

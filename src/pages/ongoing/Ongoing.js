@@ -10,9 +10,7 @@ const Ongoing = () => {
     const [value, setValue] = useState([0, 0, 0])
     const [members, setMembers] = useState(["이윤성", "김건호", "이원준"])
     const [isRender, setRender] = useState(false);
-    const handleClick = () => {
-      setValue(0);
-    };
+
     const displayvalue = (idx, event) => {
         const temp = value
         temp[idx] = parseInt(event[0])
@@ -26,23 +24,6 @@ const Ongoing = () => {
             <Chat/>
 
             <div className="Ongoningiteam">
-                {/* <div className="Ongoning myOngoning">
-                    <img alt="user" src={require('../../images/userimg.svg').default}/>
-                    <div className="nouislider">
-                        <p className="nouislider-p">나</p>
-                        <div className="nouislider-1">
-                            <Nouislider
-                                start={value[0]}
-                                    range={{
-                                    min: 0,
-                                    max: 100
-                                }}
-                                connect onChange={displayvalue} 
-                            />
-                            <p className="nouislider-2">진행도 : {value[0]}%</p>
-                        </div>  
-                    </div>
-                </div> */}
                 {
                     members.map((member,idx) => {
                         return (
