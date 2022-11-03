@@ -22,7 +22,7 @@ const CreateTeam = () => {
 
   const projectClick = (team_id) => {
     setIsPopup(!isPopup);
-    setTeamId(team_id)
+    setTeamId(team_id);
   }
 
   const getNowDateTodo = async() => {
@@ -56,7 +56,7 @@ const CreateTeam = () => {
     })()
     getNowDateTodo();
   },[])
-  
+
   return (
     <>
       <TeamHeader teams={teams} setTeams={setTeams}/>
@@ -119,17 +119,17 @@ const CreateTeam = () => {
                 <span>{year}-{month}-{day}</span>
               </div>
             ))}
-          </div>
-        </div>
-      </div>
+          </div> 
+        </div> 
+      </div> 
       {isPopup ? <Project 
                     projectClick={projectClick} 
                     team_id={teamId} 
                     projects={projects} 
                     setProjects={setProjects} 
                   /> : ''}
-    </>
-  );
-};
+    </> 
+  ); 
+}; 
 
 export default CreateTeam;

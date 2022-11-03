@@ -8,6 +8,11 @@ const Project = ({isOne, projectClick, team_id, projects, setProjects}) => {
   const func = async(e) => {
     e.preventDefault();
 
+    if (name.length < 1){
+      alert('프로젝트 명을 입력해주세요!')
+      return
+    }
+
     await createProjects(team_id, name)
     .then((res) => {
       let temp = "";
@@ -20,8 +25,9 @@ const Project = ({isOne, projectClick, team_id, projects, setProjects}) => {
         temp[team_id].unshift(res.data)
         setProjects([temp])
       }
-      projectClick()
     })
+    
+    projectClick()
   };
 
   return (

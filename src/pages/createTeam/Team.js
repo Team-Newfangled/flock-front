@@ -11,6 +11,11 @@ const Team = ({teamClick, teams, setTeams}) => {
     
     e.preventDefault();
 
+    if(teamName.length < 1){
+      alert('팀명을 입력해주세요!!')
+      return
+    } 
+
     await createTeams(teamName)
     .then((res) => {
       const temp = [...teams]

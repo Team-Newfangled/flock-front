@@ -8,6 +8,12 @@ function Head({project_id,todos,setTodos}) {
   
   const func = async(e) => {
     e.preventDefault();
+
+    if (todo.length < 1){
+      alert('할 일을 입력해주세요!')
+      return
+    }
+
     await createTodoItems(project_id,todo)
     .then((res) => {
       let temp = [...todos]

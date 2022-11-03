@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import '../../styles/Pen.scss'
-import { createComments, createFeed, getFeed, patchFeed } from "../../util/api/feed";
+import { createComments, createFeed, patchFeed } from "../../util/api/feed";
 
 const Pen=({isPut,isComment,penClick,content,feedId,getItems})=>{
   
@@ -12,15 +12,27 @@ const Pen=({isPut,isComment,penClick,content,feedId,getItems})=>{
   const func = async(e) => {
     e.preventDefault();
 
-    if (isComment) {
-      await createComments(feedId,newContent)
-      getItems()
-    }
+    if (isComment) { 
+      if(newContent.length < 1) { 
+        alert('내용을 입력해주세요!') 
+        return 
+      } 
+      await createComments(feedId,newContent) 
+      getItems() 
+    } 
     else if (isPut){ 
       await patchFeed(feedId,newContent) 
+      if(newContent.length < 1){ 
+        alert('내용을 입력해주세요!') 
+        return 
+      } 
       getItems() 
     } 
     else { 
+      if(newContent.length < 1) { 
+        alert('내용을 입력해주세요!') 
+        return 
+      } 
       await createFeed(params.project_id,newContent) 
       getItems() 
     } 
