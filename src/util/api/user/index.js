@@ -38,3 +38,7 @@ export const getUserInfo = async(user_id) => {
   const res = await authAPI.get(`/users/${user_id}`)
   return res
 }
+
+export const getNowTodo = (user_id, year, month, day) => {
+  return authAPI.get(`/users/${user_id}/todo?year=${year}&month=${month}&day=${day}`)
+}

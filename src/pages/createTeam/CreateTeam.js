@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import TeamHeader from "../../components/header/TeamHeader";
 import { useState } from 'react'
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../../styles/CreateTeam.scss'
 import { NavLink } from "react-router-dom";
 import Project from "./Project.js";
@@ -9,9 +9,11 @@ import ProjectCalendar from "../../components/common/calendar/Calendar";
 import Chat from "../../components/common/chat/Chat";
 import { getTeams } from "../../util/api/team";
 import { getProjects } from "../../util/api/project";
+import { getNowTodo } from "../../util/api/user";
 
 const CreateTeam = () => {
   const [teamId, setTeamId] = useState('');
+  const [nowTodo, setNowTodo] = useState([]);
   const [isPopup, setIsPopup] = useState(false);
   const date = new Date();
   const year = date.getFullYear();
@@ -22,6 +24,15 @@ const CreateTeam = () => {
     setIsPopup(!isPopup);
     setTeamId(team_id)
   }
+
+  const getNowDateTodo = async() => {
+    await getNowTodo(localStorage.getItem('user_id'), year, month, day)
+    .then((res) => {
+      setNowTodo(res.data.results)
+    }).catch((err) => {
+      console.log(err);
+    })
+  };
 
   const [teams,setTeams] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -43,6 +54,7 @@ const CreateTeam = () => {
         setTeams(temp)
       })
     })()
+    getNowDateTodo();
   },[])
   
   return (
@@ -61,7 +73,6 @@ const CreateTeam = () => {
                       projects.map((t,i) => {
                         return(
                           Array.isArray(t[x['team-id']]) && t[x['team-id']].map((a,j) => { /* a가 */
-                            console.log(a)
                             let img = a.cover_image;
                             return(
                               <div key={a.id} style={{ position: "relative", width: "180px", height: "200px", marginRight: "10px"}}>
@@ -97,13 +108,17 @@ const CreateTeam = () => {
         <div className="now-todo">
           <h2>오늘 할 일</h2>
           <div className="now-todo-list">
-            {/* <div className="not-todo">
-              <div className="todo-text">오늘의 할 일이 없습니다</div>
-            </div> */}
-            <div className="now-todo-item">
-              <h4>하이하이</h4>
-              <span>{year}-{month}-{day}</span>
-            </div>
+            {nowTodo.length === 0 ? 
+              <div className="not-todo">
+                <div className="todo-text">오늘의 할 일이 없습니다</div>
+              </div>
+            :
+            nowTodo.map(({todo_content}) => (
+              <div className="now-todo-item">
+                <h4>{todo_content}</h4>
+                <span>{year}-{month}-{day}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
