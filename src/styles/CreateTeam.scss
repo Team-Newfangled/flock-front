@@ -1,7 +1,20 @@
 *{
   user-select: none;
 }
-
+.coverimg{
+  position: absolute;width: 100%;height: 100%;
+  border-radius: 10px;
+}
+.p-name{
+  color: #ffffff;
+  font-weight: bold ;
+  background-color: #0000004f;
+  border-radius: 5px;
+  z-index: 1;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
 .teamBox{
   position: absolute;
   left: 13%;
@@ -62,11 +75,7 @@
   border-radius:20px;
   position: relative;
 }
-.p-name{
-  position: absolute;
-  top: 2%;
-  left: 2%;
-}
+
 .modify_btn{
   position: absolute;
   bottom: 2%;

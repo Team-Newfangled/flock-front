@@ -14,9 +14,6 @@ const Teamleader = () =>{
     (
       async ()=>{
         const res = await getProjectsteam(id)
-        console.log(" 이게뭐야",res)
-        
-        console.log(res.data.cover_image, "qwewqewqewqe")
         setProjectMembers(...[res.data.cover_image])
       }
     )();
@@ -29,8 +26,13 @@ const Teamleader = () =>{
   const [pn, setPn]=useState(name);
   const [prn, setPrn]=useState();
   const [pim, setpim] = useState();
-  console.log(projectMembers, "!!")
 
+  const changeCoverErro = (length) =>{
+    console.log(length)
+    if(length >= 250){
+      alert("url 허용 범위를 넘었습니다.");
+    }
+  }
 
   const changename = async (id, project_name)=> {
     await patchProject(id, project_name)
@@ -72,10 +74,10 @@ const Teamleader = () =>{
                 <h3>프로젝트 관리</h3>
                 <img className="changecover" src={projectMembers || require('../../../images/changecover.svg').default} alt="커버 변경하기"/>
                 <div className="projectRname">
-                  <input className='capyInput' placeholder={projectMembers} type="text" value={pim}
-                  onChange={(e)=>{setpim(e.target.value)}}></input>
+                  <input className='capyInput' maxlength='253' placeholder={projectMembers} type="text" value={pim}
+                    onChange={(e)=>(setpim(e.target.value), changeCoverErro(e.target.value.length))}>
+                  </input>
                   <button className='capyBtn' onClick={()=>{
-                    console.log("프로젝트 사진 바꾸기 : ", pim)
                     changeimg(id,pim);
                   }}>수정</button>
                 </div>
@@ -84,7 +86,6 @@ const Teamleader = () =>{
                   <input className='capyInput' placeholder={pn} type="text" value={prn}
                   onChange={(e)=>{setPrn(e.target.value)}}></input>
                   <button className='capyBtn' onClick={()=>{
-                    console.log("프로젝트 이름 바꾸기 : ", prn)
                     changename(id,prn);
                   }}>수정</button>
                 </div>
