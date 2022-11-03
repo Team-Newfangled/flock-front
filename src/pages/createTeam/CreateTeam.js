@@ -13,6 +13,11 @@ import { getProjects } from "../../util/api/project";
 const CreateTeam = () => {
   const [teamId, setTeamId] = useState('');
   const [isPopup, setIsPopup] = useState(false);
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = ("0" + (1 + date.getMonth())).slice(-2);
+  const day = ("0" + date.getDate()).slice(-2);
+
   const projectClick = (team_id) => {
     setIsPopup(!isPopup);
     setTeamId(team_id)
@@ -85,10 +90,21 @@ const CreateTeam = () => {
       </div>
 
       <div className="dateBox">
-        <NavLink to='/teamleader/1/이름'><button id='link'>My Page</button></NavLink>
-        <NavLink to='/teamCode/1/이름'><button id='link'>My Team</button></NavLink>
-        <div className="date">데드라인
+      <NavLink to='/Profile'><button id='link'>My Page</button></NavLink>
+        <div className="date">
           <ProjectCalendar />
+        </div>
+        <div className="now-todo">
+          <h2>오늘 할 일</h2>
+          <div className="now-todo-list">
+            {/* <div className="not-todo">
+              <div className="todo-text">오늘의 할 일이 없습니다</div>
+            </div> */}
+            <div className="now-todo-item">
+              <h4>하이하이</h4>
+              <span>{year}-{month}-{day}</span>
+            </div>
+          </div>
         </div>
       </div>
       {isPopup ? <Project 
