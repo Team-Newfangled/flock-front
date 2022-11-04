@@ -14,9 +14,15 @@ export const changeDeadlineColor = (projectId, todoId, color) => {
 };
 
 export const putTodo = (Id, startDate, endDate) => {
-  const res = authAPI.patch(`/todo//${Id}`,{
+  const res = authAPI.patch(`/todo/${Id}`,{
     "end_date": endDate,
     "start_date": startDate
   });
   return res;
 };
+
+export const patchContent = (Id, content) => {
+  return authAPI.patch(`/todo/${Id}`, {
+    content
+  })
+}

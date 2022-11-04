@@ -20,6 +20,7 @@ import { getUserInfo} from "../store/users/userData";
 import useLogin from "../hooks/useLogin";
 import NotFound from "../components/common/NotFound";
 import Loding from "../components/common/Loading";
+import { roleTrue } from "../store/users/isRoleData";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -45,6 +46,12 @@ const App = () => {
       getUser(localStorage.getItem('user_id'));
     }
   }, [getUser, isLogin, user.access_token])
+
+  useEffect(() => {
+    if(localStorage.getItem('role')){
+      dispatch(roleTrue())
+    }
+  }, [])
 
   return (
     <Router>

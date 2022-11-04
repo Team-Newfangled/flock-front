@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import TeamHeader from "../../components/header/Header";
 import { roleFalse, roleTrue } from "../../store/users/isRoleData";
@@ -15,6 +15,7 @@ const Project = () => {
   const params = useParams();
   const dispatch = useDispatch();
 
+  const todoModal = useSelector((state) => state.todoModal.show);
   const [todos,setTodos] = useState([]);
 
   const getRole = async() => {
@@ -22,8 +23,10 @@ const Project = () => {
     .then((res) => {
       console.log(res)
       if(res.data.role === 'Leader'){
+        localStorage.setItem('role', true)
         dispatch(roleTrue())
       } else {
+        localStorage.setItem('role', false)
         dispatch(roleFalse())
       }
     }).catch((err) => {
@@ -44,7 +47,7 @@ const Project = () => {
     }
   )()
   getRole();
-  },[])
+  },[todoModal])
 
 
   return (

@@ -1,7 +1,9 @@
+import axios from "axios";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { dropTodoModal } from "../../../store/modal/todoModal";
+import { patchContent } from "../../../util/api/deadline";
 import { getTeamMembers, patchManager } from "../../../util/api/team";
 
 const EditTodoModal = () => {
@@ -21,10 +23,10 @@ const EditTodoModal = () => {
   const onSubmit = async(e) => {
     e.preventDefault();
 
-    await patchManager(todoModal.id, manager)
-    .then((res) => {
-      console.log(res);
-    }).catch((err) => {
+    axios.all([patchManager(todoModal.id, `${manager === '' ? todoModal.manager : manager}`), patchContent(todoModal.id, title)])
+    .then(axios.spread((res1, res2) => {
+      console.log(res1, res2);
+    })).catch((err) => {
       console.log(err);
     })
     dispatch(dropTodoModal());
