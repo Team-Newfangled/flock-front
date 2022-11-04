@@ -13,7 +13,15 @@
     line-height: 44px;
   }
 }
-
+.nowcover{
+  position: relative;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  width: 80%;
+  height: auto;
+}
 .tName{
   font-weight: 700;
   font-size: 26px;
@@ -55,11 +63,9 @@ h3{
   color: #0067E0;
   padding: 10px;
 }
-
 .people{
   width: 46%;
   height: 100%;
-
   border: #EFF2F9;
   margin-right: 3%;
   border-radius: 16px;
