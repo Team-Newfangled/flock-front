@@ -8,7 +8,7 @@ function List({todos, setTodos}) {
     {
       todos.map((item, i) => {
         return (
-          <Item text={item.content} done={item.completed} id={item.id} todos={todos} setTodos={setTodos} key={i}/>
+          <Item text={item.content} done={item.completed} id={item.id} manager={item.manager} todos={todos} setTodos={setTodos} key={i}/>
         )
       })
     }

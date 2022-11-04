@@ -1,8 +1,11 @@
-import React, { useState,useEffect } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
 import { deleteTodoItems, getTodoItems, patchTodoItems } from '../../../util/api/project';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import EditIcon from "../../../images/todo-edit.svg";
+import { showTodoModal } from '../../../store/modal/todoModal';
 
 const Remove = styled.div`
     display: flex;
@@ -17,6 +20,11 @@ const Remove = styled.div`
     display: none;
     
 `;
+
+const Edit = styled.div`
+    cursor: pointer;
+    display: none;
+`;
  
 const TodoItemBlock = styled.div`
     display: flex;
@@ -29,6 +37,9 @@ const TodoItemBlock = styled.div`
     left: 50%;
     &:hover {
         ${Remove} {
+            display: initial;
+        }
+        ${Edit} {
             display: initial;
         }
     }
@@ -64,8 +75,8 @@ const Text = styled.div`
         `}
 `;
  
-function Item({ id, done, text, todos, setTodos}) {
-
+function Item({ id, done, text, manager, todos, setTodos}) {
+    const dispatch = useDispatch();
     const params = useParams()
 
     const patch = async(e) => {
@@ -95,13 +106,15 @@ function Item({ id, done, text, todos, setTodos}) {
         })
     }
 
-
     return (
         <TodoItemBlock>
             <CheckCircle done={done} onClick={patch}>
                 {done && <MdDone />}
             </CheckCircle>
             <Text done={done}>{text}</Text>
+            <Edit onClick={() => dispatch(showTodoModal({ text, id, manager }))}>
+                <img src={EditIcon} alt="수정"/>
+            </Edit>
             <Remove onClick={del}>
                 <MdDelete />
             </Remove>

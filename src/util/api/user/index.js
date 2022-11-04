@@ -42,3 +42,7 @@ export const getUserInfo = async(user_id) => {
 export const getNowTodo = (user_id, year, month, day) => {
   return authAPI.get(`/users/${user_id}/todo?year=${year}&month=${month}&day=${day}`)
 }
+
+export const getUserRole = (team_id) => {
+  return authAPI.get(`/teams/${team_id}`)
+}

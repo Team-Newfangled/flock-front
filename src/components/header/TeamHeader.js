@@ -16,7 +16,7 @@ const Header = ({teams,setTeams}) => {
 
   return(
     <header className={scroll > 3.5 ? 'head-up' : null}>
-      <div className="logo" onClick={() => navigate('/')}>
+      <div className="logo" onClick={() => navigate('/CreateTeam')}>
         <Logo />
       </div>
       <div className="navButton">

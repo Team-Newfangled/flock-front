@@ -76,7 +76,7 @@ const CreateTeam = () => {
                             let img = a.cover_image;
                             return(
                               <div key={a.id} style={{ position: "relative", width: "180px", height: "200px", marginRight: "10px"}}>
-                                <Link to={`/project/${a.id}`} className="p-create">
+                                <Link to={`/project/${x['team-id']}/${a.id}`} className="p-create">
                                   <p className="p-name">{a.name}</p>
                                   <img className="coverimg" src={img || require('../../images/cover.svg').default} alt="커버"/>
                                 </Link>

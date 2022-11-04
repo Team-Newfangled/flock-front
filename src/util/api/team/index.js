@@ -55,3 +55,9 @@ export const getWating = async(team_id)=> {
     )
     return res
 }
+
+export const patchManager = (todo_id, member_id) => {
+    return authAPI.patch(`/todo/${todo_id}/manager`, {
+        member_id
+    });
+}

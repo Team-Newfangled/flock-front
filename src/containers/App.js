@@ -56,7 +56,7 @@ const App = () => {
         <Route path="/teamleader/:team_id/:team_name" element={<Teamleader/>}/>
         <Route path="/Member/:team_id/:team_name" element={<Member/>}/> {/* 팀원 신청 */}
         <Route path="/deadline/:project_id" element={<Deadline/>}/>
-        <Route path="/Project/:project_id" element={<Project/>}/>
+        <Route path="/Project/:team_id/:project_id" element={<Project/>}/>
         <Route path="/Feed/:project_id" element={<Feed/>}/>
         <Route path="/Progress/:project_id" element={<Progress/>}/>
         <Route path="/Pen" element={<Pen/>}/>

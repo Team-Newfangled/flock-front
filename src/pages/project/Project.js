@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import TeamHeader from "../../components/header/Header";
 import '../../styles/Project.scss';
 import { getTodoItems } from "../../util/api/project";
+import { getUserRole } from "../../util/api/user";
 import Head from './todo/Head.js';
 import List from './todo/List.js';
 import Todo from "./todo/Todo.js";
@@ -12,7 +13,18 @@ const Project = () => {
   
   const params = useParams();
 
-  const [todos,setTodos] = useState([])
+  const [todos,setTodos] = useState([]);
+  const [role, setRole] = useState('');
+
+  const getRole = async() => {
+    await getUserRole(params.team_id)
+    .then((res) => {
+      setRole(res.data.role);
+    }).catch((err) => {
+      console.log(err);
+    })
+  };
+
   useEffect(() => {
   (
     async () => {
@@ -25,6 +37,7 @@ const Project = () => {
       })
     }
   )()
+  getRole();
   },[])
 
 
@@ -32,7 +45,7 @@ const Project = () => {
     <>
       <TeamHeader/>
       <Todo>
-        <Head project_id={params.project_id} todos={todos} setTodos={setTodos}/>
+        {role === 'Leader' && <Head project_id={params.project_id} todos={todos} setTodos={setTodos}/>}
         <List project_id={params.project_id} todos={todos} setTodos={setTodos}/>
       </Todo>
       <div>
