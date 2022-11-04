@@ -66,13 +66,14 @@ const Teamleader = () =>{
           <h2 className="tName">{pn}</h2>
           <div className="sBox">
             <div className="people">
-              <h3>팀원 관리</h3>
-              <People team_id={id}/>
+              <h3>현재 커버</h3>
+              <img className="nowcover" src={projectMembers || require('../../../images/cover.svg').default} alt="현재 커버"/>
+              <p></p>
             </div>
             <div className="ssBox">
               <div className="projectbbb">
                 <h3>프로젝트 관리</h3>
-                <img className="changecover" src={projectMembers || require('../../../images/changecover.svg').default} alt="커버 변경하기"/>
+                <img className="changecover" src={pim || require('../../../images/changecover.svg').default} alt="커버 변경하기"/>
                 <div className="projectRname">
                   <input className='capyInput' maxlength='253' placeholder={projectMembers} type="text" value={pim}
                     onChange={(e)=>(setpim(e.target.value), changeCoverErro(e.target.value.length))}>
