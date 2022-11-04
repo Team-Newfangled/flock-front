@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import TeamHeader from "../../components/header/Header";
+import { roleFalse, roleTrue } from "../../store/users/isRoleData";
 import '../../styles/Project.scss';
 import { getTodoItems } from "../../util/api/project";
 import { getUserRole } from "../../util/api/user";
@@ -10,16 +12,20 @@ import Todo from "./todo/Todo.js";
 
 
 const Project = () => {
-  
   const params = useParams();
+  const dispatch = useDispatch();
 
   const [todos,setTodos] = useState([]);
-  const [role, setRole] = useState('');
 
   const getRole = async() => {
     await getUserRole(params.team_id)
     .then((res) => {
-      setRole(res.data.role);
+      console.log(res)
+      if(res.data.role === 'Leader'){
+        dispatch(roleTrue())
+      } else {
+        dispatch(roleFalse())
+      }
     }).catch((err) => {
       console.log(err);
     })
@@ -45,7 +51,7 @@ const Project = () => {
     <>
       <TeamHeader/>
       <Todo>
-        {role === 'Leader' && <Head project_id={params.project_id} todos={todos} setTodos={setTodos}/>}
+        <Head project_id={params.project_id} todos={todos} setTodos={setTodos}/>
         <List project_id={params.project_id} todos={todos} setTodos={setTodos}/>
       </Todo>
       <div>

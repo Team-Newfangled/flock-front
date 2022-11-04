@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import '../../../styles/Todo.scss';
-import { createTodoItems, getTodoItems } from "../../../util/api/project";
+import { createTodoItems } from "../../../util/api/project";
 
 function Head({project_id,todos,setTodos}) {
-
+  const isRole = useSelector((state) => state.isRoleData.role);
   const [todo,setTodo] = useState('')
   
   const func = async(e) => {
@@ -28,6 +29,7 @@ function Head({project_id,todos,setTodos}) {
     <>
     <div className="headBlock">
       <h1 className="todoH1">TO-DO!</h1>
+      {isRole && 
       <form onSubmit={func}>
         <input className="plus" type='text' placeholder='할 일을 적어주세요'
         onChange={(e) => setTodo(e.target.value)}
@@ -36,7 +38,7 @@ function Head({project_id,todos,setTodos}) {
         <button className="plusBtn" type='submit'>
           <img src={require('../../../images/Add.svg').default}/>
         </button>
-      </form>
+      </form>}
     </div>
     </>
   )

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
 import { deleteTodoItems, getTodoItems, patchTodoItems } from '../../../util/api/project';
 import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import EditIcon from "../../../images/todo-edit.svg";
 import { showTodoModal } from '../../../store/modal/todoModal';
 
@@ -79,6 +79,8 @@ function Item({ id, done, text, manager, todos, setTodos}) {
     const dispatch = useDispatch();
     const params = useParams()
 
+    const isRole = useSelector((state) => state.isRoleData.role);
+
     const patch = async(e) => {
         e.preventDefault()
         
@@ -112,12 +114,16 @@ function Item({ id, done, text, manager, todos, setTodos}) {
                 {done && <MdDone />}
             </CheckCircle>
             <Text done={done}>{text}</Text>
-            <Edit onClick={() => dispatch(showTodoModal({ text, id, manager }))}>
-                <img src={EditIcon} alt="수정"/>
-            </Edit>
-            <Remove onClick={del}>
-                <MdDelete />
-            </Remove>
+            {isRole &&
+            <>
+                <Edit onClick={() => dispatch(showTodoModal({ text, id, manager }))}>
+                    <img src={EditIcon} alt="수정"/>
+                </Edit>
+                <Remove onClick={del}>
+                    <MdDelete />
+                </Remove>
+            </>
+            }
         </TodoItemBlock>
     );
 }
