@@ -18,7 +18,7 @@ const Login = ({loginClick}) => {
           </div>
           <h2>로그인</h2>
           <GoogleLoginButton />
-          <GitHubLoginButton />
+          {/* <GitHubLoginButton /> */}
           <span className="loginFnt">소셜계정을 통해 간편하게 로그인 하세요!</span>
         </div>
       </>

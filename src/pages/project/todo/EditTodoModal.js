@@ -16,9 +16,9 @@ const EditTodoModal = () => {
   const params = useParams();
   const ref = useRef();
 
-  const handleClick = () => {
+  const dropHandle = useCallback(() => {
     dispatch(dropTodoModal());
-  };
+  }, [dispatch]);
 
   const onSubmit = async(e) => {
     e.preventDefault();
@@ -29,14 +29,14 @@ const EditTodoModal = () => {
     })).catch((err) => {
       console.log(err);
     })
-    dispatch(dropTodoModal());
+    dropHandle();
   };
 
   const clickOutside = useCallback((e) => {
     if(ref.current && !ref.current.contains(e.target)){
-      dispatch(dropTodoModal());
+      dropHandle()
     }
-  }, [dispatch])
+  }, [dropHandle])
 
   const getTeamList = useCallback(async() => {
     await getTeamMembers(params.team_id)
@@ -59,7 +59,7 @@ const EditTodoModal = () => {
   return(
     <div className="edit-todo-bg">
       <div className="edit-todo-modal" ref={ref}>
-        <button className="close" onClick={handleClick}>
+        <button className="close" onClick={dropHandle}>
             <img alt="close" src={require('../../../images/Close.svg').default}/>
         </button>
         <h2>{todoModal.name}</h2>

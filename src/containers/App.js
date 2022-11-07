@@ -57,19 +57,23 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Main/>}/>
-        <Route path="/Profile" element={<Profile/>}/>
-        <Route path="/CreateTeam" element={<CreateTeam/>}/>
-        <Route path="/teamcode/:team_id/:team_name" element={<TeamCode/>}/> {/* 팀 정보, 팀원 수락 제외 완료  */}
-        <Route path="/teamleader/:team_id/:team_name" element={<Teamleader/>}/>
-        <Route path="/Member/:team_id/:team_name" element={<Member/>}/> {/* 팀원 신청 */}
-        <Route path="/deadline/:project_id" element={<Deadline/>}/>
-        <Route path="/Project/:team_id/:project_id" element={<Project/>}/>
-        <Route path="/Feed/:project_id" element={<Feed/>}/>
-        <Route path="/Progress/:project_id" element={<Progress/>}/>
-        <Route path="/Pen" element={<Pen/>}/>
-        <Route path="/Ongoing" element={<Ongoing/>}/>
+        <Route path="*" element={isLogin ? <NotFound /> : <Main />} />
         <Route path="/redirect" element={<Loding />} />
-        <Route path="*" element={<NotFound />} />
+        {isLogin &&
+        <>
+          <Route path="/Profile" element={<Profile/>}/>
+          <Route path="/CreateTeam" element={<CreateTeam/>}/>
+          <Route path="/teamcode/:team_id/:team_name" element={<TeamCode/>}/> {/* 팀 정보, 팀원 수락 제외 완료  */}
+          <Route path="/teamleader/:team_id/:team_name" element={<Teamleader/>}/>
+          <Route path="/Member/:team_id/:team_name" element={<Member/>}/> {/* 팀원 신청 */}
+          <Route path="/deadline/:project_id" element={<Deadline/>}/>
+          <Route path="/Project/:team_id/:project_id" element={<Project/>}/>
+          <Route path="/Feed/:project_id" element={<Feed/>}/>
+          <Route path="/Progress/:project_id" element={<Progress/>}/>
+          <Route path="/Pen" element={<Pen/>}/>
+          <Route path="/Ongoing" element={<Ongoing/>}/>
+        </>
+        }
       </Routes>
     </Router>
   );
