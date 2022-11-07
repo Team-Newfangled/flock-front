@@ -34,10 +34,14 @@ const Teamleader = () =>{
     }
   }
 
-  const changename = async (id, project_name)=> {
-    await patchProject(id, project_name)
+  const changename = async (id)=> {
+    if(prn.length === 0) {
+      alert('변경하실 프로젝트 명을 입력해주세요.')
+      return
+    }
+    await patchProject(id, prn)
     .then((res)=>{
-      setPn(project_name);
+      setPn(prn);
       setPrn("");
       console.log(res);
     })
@@ -87,7 +91,7 @@ const Teamleader = () =>{
                   <input className='capyInput' placeholder={pn} type="text" value={prn}
                   onChange={(e)=>{setPrn(e.target.value)}}></input>
                   <button className='capyBtn' onClick={()=>{
-                    changename(id,prn);
+                    changename(id);
                   }}>수정</button>
                 </div>
               </div>

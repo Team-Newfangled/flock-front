@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Nouislider from "nouislider-react";
 import '../../styles/Progress.scss'
 import {patchSlider} from "../../util/api/project";
@@ -6,26 +6,48 @@ import {patchSlider} from "../../util/api/project";
 const ProItem = ({items,setItems, names}) => {
   const [value, setValue] = useState([])
   const [isRender, setRender] = useState(false);
-  const [total, setTotal] = useState();
+  const [total, setTotal] = useState(0);
 
-  const displayvalue = async (idx, event, todo_id) => {
-    const temp = value
+  const displayvalue = async(idx, event, todo_id) => {
+    let temp = value
     temp[idx] = parseInt(event[0])
     setValue(temp)
     setRender(prev => !prev)
     await patchSlider(todo_id, temp[idx])
     .then((res)=>{
-      console.log(total);
-      console.log(res);
+      setTotal(totalHandler())
     })
+  }
 
-}
+  const totalHandler = useCallback(() => {
+    let sum = 0;
+    value.map((val) => sum += val);
+    return parseInt(sum / value.length);
+  }, [value]);
+
+  const getPercent = useCallback(() => {
+    let v = [];
+    items.map((item) => v.push(item.percent))
+    setValue([...v])
+  }, [items]);
+
+  useEffect(() => {
+    getPercent();
+  }, [getPercent])
+
+  useEffect(() => {
+    setTotal(totalHandler())
+  }, [totalHandler, value])
+
   return(
       <>
+        <div className="total-wrap">
+          <span>total</span>
+          <h2>{total}%</h2>
+        </div>
         <div className="promain">
           {
-            items.map( (res, i ) => {
-              value.push(res.percent);
+            value.length !== 0 && items.map( (res, i ) => {
               return (
                       <div className="proiteam" key={i}>
                         <div className="probox">

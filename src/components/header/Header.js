@@ -37,7 +37,7 @@ const Header = () => {
 
   return(
     <header className={scroll > 3.5 ? 'head-up' : null}>
-      <div className="logo" onClick={() => navigate('/')}>
+      <div className="logo" onClick={() => {isLogin ? navigate('/CreateTeam') : navigate('/')}}>
         <Logo />
       </div>
         <div className="nav">
