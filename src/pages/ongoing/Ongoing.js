@@ -26,6 +26,8 @@ const Ongoing = () => {
             <div className="Ongoningiteam">
                 {
                     members.map((member,idx) => {
+                        console.log("member: ", member)
+                        console.log("idx: ", idx)
                         return (
                         <div className="Ongoning" key={idx}>
                             <img alt="user" src={require('../../images/userimg.svg').default}/>

@@ -13,22 +13,21 @@ const Progress = () => {
 
     const [items, setItems] = useState([])
 
-    useEffect (() => {
-      (
-        async () => {
-          const res = await getTodoItems(params.project_id)
-          let arr = res.data.results
-          arr.map(a => {
-            (
-              async () => {
-               const res =  await getUserInfo(a['writer_id'])
-               a["name"] = res.data.nickname
-              }
-            )()
+    const getTodoItem = async() => {
+      await getTodoItems(params.project_id)
+      .then((res) => {
+        res.data.results.map(async(todo) => {
+          await getUserInfo(todo['manager'])
+          .then((res) => {
+            todo['name'] = res.data.nickname;
           })
-          setItems([...arr])
-        }
-      )();
+        })
+        setItems([...res.data.results])
+      })
+    };
+
+    useEffect (() => {
+      getTodoItem();
     },[])
 
     return(

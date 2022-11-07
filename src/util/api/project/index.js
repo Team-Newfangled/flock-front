@@ -97,3 +97,11 @@ export const patchTodoItems = async(todo_id,state) => {
     )
     return res
 }
+export const patchSlider = (todo_id,state) => {
+    return authAPI.patch(
+        `/todo/${todo_id}/percent`,
+        {
+            "percent" : state
+        }
+    )
+}
