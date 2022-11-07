@@ -41,6 +41,7 @@ const EditTodoModal = () => {
   const getTeamList = useCallback(async() => {
     await getTeamMembers(params.team_id)
     .then((res) => {
+      console.log(res)
       setTeamList([...res.data.results]);
     }).catch((err) => {
       console.log(err)

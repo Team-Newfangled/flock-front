@@ -18,7 +18,6 @@ const ProItem = ({items,setItems}) => {
     setRender(prev => !prev)
     await patchSlider(todo_id, temp[idx])
     .then((res)=>{
-      
       console.log(total);
       console.log(res);
     })

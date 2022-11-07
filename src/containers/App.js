@@ -69,7 +69,7 @@ const App = () => {
           <Route path="/deadline/:project_id" element={<Deadline/>}/>
           <Route path="/Project/:team_id/:project_id" element={<Project/>}/>
           <Route path="/Feed/:project_id" element={<Feed/>}/>
-          <Route path="/Progress/:project_id" element={<Progress/>}/>
+          <Route path="/Progress/:team_id/:project_id" element={<Progress/>}/>
           <Route path="/Pen" element={<Pen/>}/>
           <Route path="/Ongoing" element={<Ongoing/>}/>
         </>

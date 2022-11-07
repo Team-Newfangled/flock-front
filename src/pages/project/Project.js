@@ -49,7 +49,6 @@ const Project = () => {
   getRole();
   },[todoModal])
 
-
   return (
     <>
       <TeamHeader/>
@@ -58,7 +57,7 @@ const Project = () => {
         <List project_id={params.project_id} todos={todos} setTodos={setTodos}/>
       </Todo>
       <div>
-        <Link to={`/progress/${params.project_id}`}>
+        <Link to={`/progress/${params.team_id}/${params.project_id}`}>
           <img className='go' src={require('../../images/go.svg').default} />
         </Link>
         <div className="iBox">

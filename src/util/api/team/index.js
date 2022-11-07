@@ -37,11 +37,10 @@ export const patchRecognize = async(team_id,user_id) => {
     return res
 }
 // team member
-export const getTeamMembers = async(team_id) => {
-    const res = await authAPI.get(
+export const getTeamMembers = (team_id) => {
+    return authAPI.get(
         `/teams/${team_id}/members`
     )
-    return res
 }
 export const getTeamLeader = async(team_id) => {
     const res = await authAPI.get(

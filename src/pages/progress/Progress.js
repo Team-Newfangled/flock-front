@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TeamHeader from "../../components/header/Header";
 import { getTodoItems } from "../../util/api/project";
@@ -13,7 +13,7 @@ const Progress = () => {
 
     const [items, setItems] = useState([])
 
-    const getTodoItem = async() => {
+    const getTodoItem = useCallback(async() => {
       await getTodoItems(params.project_id)
       .then((res) => {
         res.data.results.map(async(todo) => {
@@ -24,11 +24,11 @@ const Progress = () => {
         })
         setItems([...res.data.results])
       })
-    };
+    }, [params.project_id]);
 
     useEffect (() => {
       getTodoItem();
-    },[])
+    },[getTodoItem])
 
     return(
         <>
