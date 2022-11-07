@@ -11,7 +11,8 @@ const Progress = () => {
 
     const params = useParams()
 
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState([]);
+    const [names, setNames] = useState([]);
 
     const getTodoItem = useCallback(async() => {
       await getTodoItems(params.project_id)
@@ -19,7 +20,7 @@ const Progress = () => {
         res.data.results.map(async(todo) => {
           await getUserInfo(todo['manager'])
           .then((res) => {
-            todo['name'] = res.data.nickname;
+            setNames((prev) => [...prev, res.data.nickname])
           })
         })
         setItems([...res.data.results])
@@ -37,7 +38,7 @@ const Progress = () => {
                 <Head project_id={params.project_id} todos={items} setTodos={setItems}/>
                 <List project_id={params.project_id} todos={items} setTodos={setItems}/>
             </Todo>
-            <ProItem items={items} setItems={setItems}/>
+            <ProItem items={items} setItems={setItems} names={names}/>
         </>
     )}
 

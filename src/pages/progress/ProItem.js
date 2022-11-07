@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import Nouislider from "nouislider-react";
 import '../../styles/Progress.scss'
 import {patchSlider} from "../../util/api/project";
-const ProItem = ({items,setItems}) => {
 
-  const params = useParams()
-  const navigate = useNavigate()
+const ProItem = ({items,setItems, names}) => {
   const [value, setValue] = useState([])
   const [isRender, setRender] = useState(false);
   const [total, setTotal] = useState();
@@ -34,7 +31,7 @@ const ProItem = ({items,setItems}) => {
                         <div className="probox">
                           <div className="proName">{res.content}</div>
                           <div className="color"/>
-                          <div className="">담당자: {res.name}</div>
+                          <div className="">담당자: {names[i]}</div>
                         </div>
                         <div className="nouislider-1">
                             <Nouislider
