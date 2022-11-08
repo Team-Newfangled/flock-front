@@ -96,6 +96,7 @@ const Feed = () => {
                 <List project_id={params.project_id} todos={todos} setTodos={setTodos}/>
             </Todo>
             <div className="feedmain">
+            {items.length === 0 && <div style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}><h2>피드를 작성해주세요.</h2></div>}
             {
                 items.map((a,i) => {
                     return(
