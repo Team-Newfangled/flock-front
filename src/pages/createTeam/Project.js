@@ -20,7 +20,6 @@ const Project = ({isOne, projectClick, team_id, projects, setProjects}) => {
       if(temp[0][team_id] === undefined){
         temp[0][team_id] = [res.data];
       }else {
-        console.log(1)
         temp[0][team_id].unshift(res.data)
       }
       setProjects([...temp])

@@ -9,7 +9,7 @@ import ProjectCalendar from "../../components/common/calendar/Calendar";
 import Chat from "../../components/common/chat/Chat";
 import { getTeams } from "../../util/api/team";
 import { getProjects } from "../../util/api/project";
-import { getNowTodo } from "../../util/api/user";
+import { getNowTodo, getUserRole } from "../../util/api/user";
 
 const CreateTeam = () => {
   const [teamId, setTeamId] = useState('');
@@ -20,9 +20,22 @@ const CreateTeam = () => {
   const month = ("0" + (1 + date.getMonth())).slice(-2);
   const day = ("0" + date.getDate()).slice(-2);
 
-  const projectClick = (team_id) => {
-    setIsPopup(!isPopup);
+  const projecthandler = (team_id) => {
+    setIsPopup((prev) => !prev);
     setTeamId(team_id);
+  };
+
+  const projectClick = async(team_id) => {
+    await getUserRole(team_id)
+    .then((res) => {
+      if(res.data.role === 'Leader'){
+        projecthandler(team_id)
+      } else {
+        alert('팀장만 추가가 가능합니다.')
+      }
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 
   const getNowDateTodo = async() => {
@@ -123,7 +136,7 @@ const CreateTeam = () => {
         </div> 
       </div> 
       {isPopup ? <Project 
-                    projectClick={projectClick} 
+                    projectClick={projecthandler} 
                     team_id={teamId} 
                     projects={projects} 
                     setProjects={setProjects} 
