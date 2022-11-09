@@ -15,16 +15,15 @@ const Project = ({isOne, projectClick, team_id, projects, setProjects}) => {
 
     await createProjects(team_id, name)
     .then((res) => {
-      let temp = "";
-      if(isOne){
-        temp = [...projects.map((value) => value)];
-        temp.unshift(res.data)
-        setProjects([...temp])
+      let temp = [];
+      temp = [...projects]
+      if(temp[0][team_id] === undefined){
+        temp[0][team_id] = [res.data];
       }else {
-        temp = {...projects.map((value) => value)[0]}
-        temp[team_id].unshift(res.data)
-        setProjects([temp])
+        console.log(1)
+        temp[0][team_id].unshift(res.data)
       }
+      setProjects([...temp])
     })
     
     projectClick()
